@@ -73,7 +73,7 @@
                         <tr>
                           <th>Nro</th>
                           <th>Razon Social</th>
-                          <th>Nro. CI/NIT</th>
+                          <th>CI/NIT</th>
                           <th>Nro. Celular</th>
                           <th>Fecha de ingreso</th>
                           <th>Modificar</th>
