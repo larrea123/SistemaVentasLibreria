@@ -49,4 +49,38 @@ class Marca extends CI_Controller {
         }                
 	}
 
+    public function agregar()
+	{
+        if($this->session->userdata('rol')=='admin')
+        {
+            $this->load->view('inc/cabecera');
+            $this->load->view('inc/menulateral');
+            $this->load->view('inc/menusuperior');
+            $this->load->view('marca/marca_agregar');
+            $this->load->view('inc/creditos');	
+            $this->load->view('inc/pie');
+        }
+        else
+        {
+            if($this->session->userdata('rol')=='contador')
+            {
+                $this->load->view('inc/cabecera');
+                $this->load->view('inc/menulateral_contador');
+                $this->load->view('inc/menusuperior');
+                $this->load->view('marca/contador/marca_agregar');
+                $this->load->view('inc/creditos');	
+                $this->load->view('inc/pie');
+            }
+            else
+            {
+                $this->load->view('inc/cabecera');
+                $this->load->view('inc/menulateral');
+                $this->load->view('inc/menusuperior');
+                $this->load->view('marca/vendedor/marca_agregar');
+                $this->load->view('inc/creditos');	
+                $this->load->view('inc/pie');
+            }
+        }
+	}
+
 }
