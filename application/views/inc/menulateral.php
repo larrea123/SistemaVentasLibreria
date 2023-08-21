@@ -60,12 +60,12 @@
                       <li>
                           <?php echo form_open_multipart('categoria/index');?>
                             <button type="submit" class="col-md-11 btn btn-dark" style="background-color: transparent; border: none;">
-                              Categoria
+                              Categorias
                             </button>
                           <?php echo form_close();?>
                       </li>
                       <li>
-                          <?php echo form_open_multipart('producto/index');?>
+                          <?php echo form_open_multipart('marca/index');?>
                             <button type="submit" class="col-md-11 btn btn-dark" style="background-color: transparent; border: none;">
                               Marcas
                             </button>
