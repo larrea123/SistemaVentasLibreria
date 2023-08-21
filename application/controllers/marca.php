@@ -83,4 +83,15 @@ class Marca extends CI_Controller {
         }
 	}
 
+    public function agregarbd()
+	{
+        $data['idUsuario']=$this->session->userdata('idusuario');
+        $data['nombreMarca']=strtoupper($_POST['NombreMarca']);
+
+        $this->marca_model->agregarmarca($data);
+        redirect('marca/index','refresh');
+	}
+
+
+
 }
