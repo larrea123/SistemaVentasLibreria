@@ -1,14 +1,14 @@
-      <div class="main_container">
-        <div class="col-md-3 left_col">
-          <div class="left_col scroll-view">
-            <div class="navbar nav_title" style="border: 0;">
-              <a href="#" class="site_title"><i class="fa fa-paw"></i> <span>Gentelella Alela!</span></a>
+      <div class="main_container bg-png">
+        <div class="col-md-3 left_col menu_fixed bg-png">
+          <div class="left_col scroll-view bg-png">
+            <div class="navbar nav_title bg-png" style="border: 0;">
+              <a href="#" class="site_title"><i class="fa fa-paw"></i> <span>Librería JAZUL</span></a>
             </div>
 
-            <div class="clearfix"></div>
+            <div class="clearfix bg-png"></div>
 
             <!-- menu profile quick info -->
-            <div class="profile clearfix">
+            <div class="profile clearfix bg-png">
               <div class="profile_pic">
                 <img src="<?php echo base_url(); ?>gentelella/production/images/picture.jpg" alt="..." class="img-circle profile_img">
               </div>
@@ -90,7 +90,7 @@
             <!-- /sidebar menu -->
 
             <!-- /menu footer buttons -->
-            <div class="sidebar-footer hidden-small">
+            <div class="sidebar-footer hidden-small bg-png">
               <a data-toggle="tooltip" data-placement="top" title="Settings">
                 <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
               </a>

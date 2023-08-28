@@ -2,7 +2,7 @@
         <div class="col-md-3 left_col menu_fixed  bg-png">
           <div class="left_col scroll-view  bg-png">
             <div class="navbar nav_title  bg-png" style="border: 0;">
-              <a href="#" class="site_title"><i class="fa fa-paw"></i> <span>Librería JAZUL/span></a>
+              <a href="#" class="site_title"><i class="fa fa-paw"></i> <span>Librería JAZUL<span></a>
             </div>
 
             <div class="clearfix bg-png"></div>
