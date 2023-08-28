@@ -86,9 +86,10 @@ class Proveedor extends CI_Controller {
     public function agregarbd()
 	{
         $data['idUsuario']=$this->session->userdata('idusuario');
-        $data['razonSocial']=strtoupper($_POST['RazonSocial']);
-        $data['ciNit']=$_POST['CiNit'];
+        $data['nombreProveedor']=strtoupper($_POST['NombreProveedor']);
+        $data['correo']=strtoupper($_POST['Correo']);
         $data['telefono']=$_POST['Telefono'];
+        $data['direccion']=strtoupper($_POST['Direccion']);
 
         $this->proveedor_model->agregarproveedor($data);
         redirect('proveedor/index','refresh');
@@ -149,9 +150,10 @@ class Proveedor extends CI_Controller {
         $idproveedor=$_POST['idproveedor'];
 
         $data['idUsuario']=$this->session->userdata('idusuario');
-        $data['razonSocial']=strtoupper($_POST['RazonSocial']);
-        $data['ciNit']=$_POST['CiNit'];
+        $data['nombreProveedor']=strtoupper($_POST['NombreProveedor']);
+        $data['correo']=strtoupper($_POST['Correo']);
         $data['telefono']=$_POST['Telefono'];
+        $data['direccion']=strtoupper($_POST['Direccion']);
         $data['fechaActualizacion']=date('Y-m-d H:i:s');
         
         $this->proveedor_model->modificarproveedor($idproveedor,$data);

@@ -45,7 +45,7 @@
                   <div class="card-box">
                     <div class="btn-group">
                       <?php 
-                        echo form_open_multipart('proveedor/index2');
+                        echo form_open_multipart('proveedor/index');
                       ?>
                       <button type="submit" name="buttonInhabilitados" class="btn btn-outline-success">
                         <i class="fa fa-arrow-circle-left"></i> Volver a proveedores
