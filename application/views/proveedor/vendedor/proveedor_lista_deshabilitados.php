@@ -3,7 +3,7 @@
   <div class="">
     <div class="page-title">
       <div class="title_left">
-        <h3><i class="fa fa-users"></i> USUARIOS</h3>
+        <h3><i class="fa fa-users"></i> Lista de Proveedores Deshabilitados</h3>
       </div>
 
       <div class="title_right">
@@ -23,7 +23,7 @@
       <div class="col-md-12 col-sm-12 ">
         <div class="x_panel">
           <div class="x_title">
-            <h2><i class="fa fa-users"></i> Mis Datos</h2>
+            <h2><i class="fa fa-cubes"></i>Lista de Proveedores Deshabilitados</h2>
             <ul class="nav navbar-right panel_toolbox">
               <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
               </li>
@@ -43,6 +43,17 @@
             <div class="row">
                 <div class="col-sm-12">
                   <div class="card-box table-responsive">
+                    <div class="btn-group">
+                      <?php 
+                        echo form_open_multipart('proveedor/index');
+                      ?>
+                      <button type="submit" name="buttonDeshabilitados" class="btn btn-info">
+                          <i class="fa fa-eye"></i> Regresar a Proveedores
+                      </button>
+                      <?php 
+                        echo form_close();
+                      ?>
+                    </div>
                     <br><br>
                     <p class="text-muted font-13 m-b-30">
                       The Buttons extension for DataTables provides a common set of options, API methods and styling to display buttons on a page that will interact with a DataTable. The core library provides the based framework upon which plug-ins can built.
@@ -51,42 +62,38 @@
                       <thead>
                         <tr>
                           <th>Nro</th>
-                          <th>Nombre Usuario</th>
-                          <th>Rol Usuario</th>
-                          <th>Nombre</th>
-                          <th>Nro. Carnet</th>
-                          <th>Nro. Celular</th>
+                          <th>Nombre Proveedor</th>
                           <th>Direccion</th>
+                          <th>Telefono</th>
+                          <th>Correo</th>
                           <th>Fecha de ingreso</th>
-                          <th>Modificar</th>
+                          <!--<th>Habilitar</th>-->
                         </tr>
                       </thead>
 
                       <tbody>
                       <?php
                         $indice=1;
-                        foreach ($infousuario->result() as $row)
+                        foreach ($proveedor->result() as $row)
                         {
                       ?>
                         <tr>
                           <td><?php echo $indice; ?></td>
-                          <td><?php echo $row->login; ?></td>
-                          <td><?php echo $row->rol; ?></td>
-                          <td><?php echo $row->nombres. ' ' . $row->primerApellido. ' ' . $row->segundoApellido; ?></td>
-                          <td><?php echo $row->cedulaIdentidad; ?></td>
-                          <td><?php echo $row->telefono; ?></td>
+                          <td><?php echo $row->nombreProveedor; ?></td>
                           <td><?php echo $row->direccion; ?></td>
+                          <td><?php echo $row->telefono; ?></td>
+                          <td><?php echo $row->correo; ?></td>
                           <td><?php echo formatearFecha($row->fechaRegistro); ?></td>
-                          <td>
+                          <!--<td>
                           <?php 
-                              echo form_open_multipart('usuario/modificar');
+                              echo form_open_multipart('proveedor/habilitarbd');
                               ?>
-                              <input type="hidden" name="idusuario" value="<?php echo $row->idUsuario; ?>">
-                              <button type="submit" class="btn btn-success">MODIFICAR</button>
+                              <input type="hidden" name="idproveedor" value="<?php echo $row->idProveedor; ?>">
+                              <button type="submit" class="btn btn-success">HABILITAR</button>
                               <?php   
                               echo form_close();
                               ?>                            
-                          </td>
+                          </td>-->
                         </tr>
                         <?php
                           $indice++;
