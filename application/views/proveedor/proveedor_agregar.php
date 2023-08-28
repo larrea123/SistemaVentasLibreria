@@ -3,7 +3,7 @@
   <div class="">
     <div class="page-title">
       <div class="title_left">
-        <h3><i class="fa fa-users"></i> USUARIOS</h3>
+        <h3><i class="fa fa-users"></i> PROVEEDORES</h3>
       </div>
 
       <div class="title_right">
@@ -23,7 +23,7 @@
       <div class="col-md-12 col-sm-12 ">
         <div class="x_panel">
           <div class="x_title">
-            <h2><i class="fa fa-users"></i> Insertar nuevo usuario</h2>
+            <h2><i class="fa fa-users"></i> Insertar nuevo proveedor</h2>
             <ul class="nav navbar-right panel_toolbox">
               <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
               </li>
@@ -45,10 +45,10 @@
                   <div class="card-box">
                     <div class="btn-group">
                       <?php 
-                        echo form_open_multipart('usuario/index2');
+                        echo form_open_multipart('proveedor/index2');
                       ?>
                       <button type="submit" name="buttonInhabilitados" class="btn btn-outline-success">
-                        <i class="fa fa-arrow-circle-left"></i> Volver a usuarios
+                        <i class="fa fa-arrow-circle-left"></i> Volver a proveedores
                       </button>
                       <?php 
                         echo form_close();
@@ -57,69 +57,36 @@
                     </div>
                     <br><br>
                     <p class="text-muted font-13 m-b-30">
-                      Usted va a insertar un nuevo usuario, por favor llene el siguiente campo:
+                      Usted va a insertar un nuevo proveedor, por favor llene el siguiente campo:
                     </p>
                     <?php 
-                      echo form_open_multipart('usuario/agregarbd');
+                      echo form_open_multipart('proveedor/agregarbd');
                     ?>
                     <div class="item form-group has-feedback">
-                      <label class="col-form-label col-md-1 label-align" for="inputN">Nombre Usuario:</label>
+                      <label class="col-form-label col-md-1 label-align" for="inputN">Nombre proveedor:</label>
                       <div class="col-md-3">
-                          <input type="text" name="Login" class="form-control has-feedback-left">
+                          <input type="text" name="NombreProveedor" class="form-control has-feedback-left">
                           <span class="fa fa-sign-in form-control-feedback left" aria-hidden="true"></span>
                       </div>
-                      <label class="col-form-label col-md-1 label-align" for="primerapellido">Password:</label>
-                      <div class="col-md-3">
-                          <input type="password" name="Password" class="form-control has-feedback-left">
-                          <span class="fa fa-key form-control-feedback left" aria-hidden="true"></span>
-                      </div>
-                      <label class="col-form-label col-md-1 label-align" for="rol">Rol Usuario:</label>
-                      <div class="col-md-3">
-                          <select class="form-control" name="Rol" required>
-                              <option value="" disabled selected >Seleccione un rol:</option>
-                              <option value="admin" >admin</option>
-                              <option value="vendedor">vendedor</option>
-                              <option value="contador">contador</option>
-                          </select>
-                      </div>                      
-                    </div>
-
-                    <div class="item form-group has-feedback">
-                      <label class="col-form-label col-md-1 label-align" for="nombres">Nombres:</label>
-                      <div class="col-md-3">
-                          <input type="text" name="Nombres" class="form-control has-feedback-left">
-                          <span class="fa fa-male form-control-feedback left" aria-hidden="true"></span>
-                      </div>
-                      <label class="col-form-label col-md-1 label-align" for="primerapellido">Primer Apellido:</label>
-                      <div class="col-md-3">
-                          <input type="text" name="PrimerApellido" class="form-control has-feedback-left">
-                          <span class="fa fa-male form-control-feedback left" aria-hidden="true"></span>
-                      </div>
-                      <label class="col-form-label col-md-1 label-align" for="segundoapellido">Segundo Apellido:</label>
-                      <div class="col-md-3">
-                          <input type="text" name="SegundoApellido" class="form-control has-feedback-left">
-                          <span class="fa fa-male form-control-feedback left" aria-hidden="true"></span>
-                      </div>
-                    </div>
-
-                    <div class="item form-group has-feedback">
-                      <label class="col-form-label col-md-1 label-align" for="numeroci">Nro. Carnet:</label>
-                      <div class="col-md-3">
-                          <input type="text" name="CedulaIdentidad" class="form-control has-feedback-left">
-                          <span class="fa fa-list-alt form-control-feedback left" aria-hidden="true"></span>
-                      </div>
-                      <label class="col-form-label col-md-1 label-align" for="numerocelular">Nro. Celular:</label>
+                      <label class="col-form-label col-md-1 label-align" for="telf">Telefono:</label>
                       <div class="col-md-3">
                           <input type="text" name="Telefono" class="form-control has-feedback-left">
                           <span class="fa fa-mobile-phone form-control-feedback left" aria-hidden="true"></span>
-                      </div>
-                      <label class="col-form-label col-md-1 label-align" for="genero">Direccion:</label>
+                      </div> 
+                      <label class="col-form-label col-md-1 label-align" for="correo">Correo:</label>
+                      <div class="col-md-3">
+                          <input type="text" name="Correo" class="form-control has-feedback-left">
+                          <span class="fa fa-male form-control-feedback left" aria-hidden="true"></span>
+                      </div>             
+                    </div>
+
+                    <div class="item form-group has-feedback">
+                      <label class="col-form-label col-md-1 label-align" for="dir">Direccion:</label>
                       <div class="col-md-3">
                         <textarea name="Direccion" class="form-control has-feedback-left"></textarea>
                         <span class="fa fa-list form-control-feedback left" aria-hidden="true"></span>
-                      </div>     
-                    </div>
-                                        
+                      </div>
+                    </div>            
                     <button type="submit" class="btn btn-success">
                         <i class="fa fa-plus-circle"></i> Insertar
                     </button>
