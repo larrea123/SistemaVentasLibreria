@@ -3,7 +3,7 @@
   <div class="">
     <div class="page-title">
       <div class="title_left">
-        <h3><i class="fa fa-users"></i> Lista de Usuarios Deshabilitados</h3>
+        <h3><i class="fa fa-users"></i> Lista de Proveedores Deshabilitados</h3>
       </div>
 
       <div class="title_right">
@@ -23,7 +23,7 @@
       <div class="col-md-12 col-sm-12 ">
         <div class="x_panel">
           <div class="x_title">
-            <h2><i class="fa fa-cubes"></i>Lista de Usuarios Deshabilitados</h2>
+            <h2><i class="fa fa-cubes"></i>Lista de Proveedores Deshabilitados</h2>
             <ul class="nav navbar-right panel_toolbox">
               <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
               </li>
@@ -45,10 +45,10 @@
                   <div class="card-box table-responsive">
                     <div class="btn-group">
                       <?php 
-                        echo form_open_multipart('usuario/index2');
+                        echo form_open_multipart('proveedor/index');
                       ?>
                       <button type="submit" name="buttonDeshabilitados" class="btn btn-info">
-                          <i class="fa fa-eye"></i> Regresar a Usuarios
+                          <i class="fa fa-eye"></i> Regresar a Proveedores
                       </button>
                       <?php 
                         echo form_close();
@@ -62,12 +62,10 @@
                       <thead>
                         <tr>
                           <th>Nro</th>
-                          <th>Nombre Usuario</th>
-                          <th>Rol Usuario</th>
-                          <th>Nombre</th>
-                          <th>Nro. Carnet</th>
-                          <th>Nro. Celular</th>
+                          <th>Nombre Proveedor</th>
                           <th>Direccion</th>
+                          <th>Telefono</th>
+                          <th>Correo</th>
                           <th>Fecha de ingreso</th>
                           <th>Habilitar</th>
                         </tr>
@@ -76,23 +74,21 @@
                       <tbody>
                       <?php
                         $indice=1;
-                        foreach ($usuario->result() as $row)
+                        foreach ($proveedor->result() as $row)
                         {
                       ?>
                         <tr>
                           <td><?php echo $indice; ?></td>
-                          <td><?php echo $row->login; ?></td>
-                          <td><?php echo $row->rol; ?></td>
-                          <td><?php echo $row->nombres. ' ' . $row->primerApellido. ' ' . $row->segundoApellido; ?></td>
-                          <td><?php echo $row->cedulaIdentidad; ?></td>
-                          <td><?php echo $row->telefono; ?></td>
+                          <td><?php echo $row->nombreProveedor; ?></td>
                           <td><?php echo $row->direccion; ?></td>
+                          <td><?php echo $row->telefono; ?></td>
+                          <td><?php echo $row->correo; ?></td>
                           <td><?php echo formatearFecha($row->fechaRegistro); ?></td>
                           <td>
                           <?php 
-                              echo form_open_multipart('usuario/habilitarbd');
+                              echo form_open_multipart('proveedor/habilitarbd');
                               ?>
-                              <input type="hidden" name="idusuario" value="<?php echo $row->idUsuario; ?>">
+                              <input type="hidden" name="idproveedor" value="<?php echo $row->idProveedor; ?>">
                               <button type="submit" class="btn btn-success">HABILITAR</button>
                               <?php   
                               echo form_close();
