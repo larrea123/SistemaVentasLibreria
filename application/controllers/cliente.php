@@ -85,13 +85,78 @@ class Cliente extends CI_Controller {
 
     public function agregarbd()
 	{
-        $data['idUsuario']=$this->session->userdata('idusuario');
-        $data['razonSocial']=strtoupper($_POST['RazonSocial']);
-        $data['ciNit']=$_POST['CiNit'];
-        $data['telefono']=$_POST['Telefono'];
+        $this->load->library('form_validation');
+        $this->form_validation->set_rules(
+            'RazonSocial',
+            'Razon del cliente',
+            'required|min_length[3]|max_length[30]|alpha_numeric_spaces',
+            array('required'=>'Se requiere ingresar la razon social del cliente.',
+                    'min_length'=>'La razon social debe tener al menos 3 caracteres.',
+                    'max_length'=>'¡La razon social no debe contener más de 30 caracteres!.',
+                    'alpha_numeric_spaces'=>'¡La razon social solo debe contener letras!.'
+                    )
+        );
+        $this->form_validation->set_rules(
+            'CiNit',
+            'Número de Carnet o Nit del cliente',
+            'required|min_length[7]|max_length[12]',
+            array('required'=>'Se requiere ingresar el C.I. o Nit del cliente.',
+                    'min_length'=>'¡Ingrese un número de carnet o Nit válido!.',
+                    'max_length'=>'¡El número de carnet o Nit no debe contener más de 12 caracteres!.'
+                    )
+        );
+        $this->form_validation->set_rules(
+            'Telefono',
+            'Número de Celular del cliente',
+            'required|exact_length[8]|is_natural',
+            array('required'=>'Se requiere ingresar el Nro. Celular del cliente.',
+                    'exact_length'=>'¡Ingrese un número de celular válido!.',
+                    'is_natural'=>'¡No ingrese caracteres que no sean números!.'
+                    )
+        );
 
-        $this->cliente_model->agregarcliente($data);
-        redirect('cliente/index','refresh');
+        if($this->form_validation->run()==FALSE)
+        {
+            if($this->session->userdata('rol')=='admin')
+            {
+                $this->load->view('inc/cabecera');
+                $this->load->view('inc/menulateral');
+                $this->load->view('inc/menusuperior');
+                $this->load->view('cliente/cliente_agregar');
+                $this->load->view('inc/creditos');	
+                $this->load->view('inc/pie');
+            }
+            else
+            {
+                if($this->session->userdata('rol')=='contador')
+                {
+                    $this->load->view('inc/cabecera');
+                    $this->load->view('inc/menulateral_contador');
+                    $this->load->view('inc/menusuperior');
+                    $this->load->view('cliente/contador/cliente_agregar');
+                    $this->load->view('inc/creditos');	
+                    $this->load->view('inc/pie');
+                }
+                else
+                {
+                    $this->load->view('inc/cabecera');
+                    $this->load->view('inc/menulateral');
+                    $this->load->view('inc/menusuperior');
+                    $this->load->view('cliente/vendedor/cliente_agregar');
+                    $this->load->view('inc/creditos');	
+                    $this->load->view('inc/pie');
+                }
+            }
+        }
+        else{
+            $data['idUsuario']=$this->session->userdata('idusuario');
+            $data['razonSocial']=strtoupper($_POST['RazonSocial']);
+            $data['ciNit']=$_POST['CiNit'];
+            $data['telefono']=$_POST['Telefono'];
+
+            $this->cliente_model->agregarcliente($data);
+            redirect('cliente/index','refresh');
+        }
 	}
 
     public function eliminarbd()
@@ -146,16 +211,90 @@ class Cliente extends CI_Controller {
 
     public function modificarbd()
     {
-        $idcliente=$_POST['idcliente'];
+        $this->load->library('form_validation');
+        $this->form_validation->set_rules(
+            'RazonSocial',
+            'Razon del cliente',
+            'required|min_length[3]|max_length[30]|alpha_numeric_spaces',
+            array('required'=>'Se requiere ingresar la razon social del cliente.',
+                    'min_length'=>'La razon social debe tener al menos 3 caracteres.',
+                    'max_length'=>'¡La razon social no debe contener más de 30 caracteres!.',
+                    'alpha_numeric_spaces'=>'¡La razon social solo debe contener letras!.'
+                    )
+        );
+        $this->form_validation->set_rules(
+            'CiNit',
+            'Número de Carnet o Nit del cliente',
+            'required|min_length[7]|max_length[12]',
+            array('required'=>'Se requiere ingresar el C.I. o Nit del cliente.',
+                    'min_length'=>'¡Ingrese un número de carnet o Nit válido!.',
+                    'max_length'=>'¡El número de carnet o Nit no debe contener más de 12 caracteres!.'
+                    )
+        );
+        $this->form_validation->set_rules(
+            'Telefono',
+            'Número de Celular del cliente',
+            'required|exact_length[8]|is_natural',
+            array('required'=>'Se requiere ingresar el Nro. Celular del cliente.',
+                    'exact_length'=>'¡Ingrese un número de celular válido!.',
+                    'is_natural'=>'¡No ingrese caracteres que no sean números!.'
+                    )
+        );
 
-        $data['idUsuario']=$this->session->userdata('idusuario');
-        $data['razonSocial']=strtoupper($_POST['RazonSocial']);
-        $data['ciNit']=$_POST['CiNit'];
-        $data['telefono']=$_POST['Telefono'];
-        $data['fechaActualizacion']=date('Y-m-d H:i:s');
+        if($this->form_validation->run()==FALSE)
+        {
+            if($this->session->userdata('rol')=='admin')
+            {
+                $idcliente=$_POST['idcliente'];
+                $data['infocliente']=$this->cliente_model->recuperarcliente($idcliente);
+
+                $this->load->view('inc/cabecera');
+                $this->load->view('inc/menulateral');
+                $this->load->view('inc/menusuperior');
+                $this->load->view('cliente/cliente_modificar',$data);
+                $this->load->view('inc/creditos');	
+                $this->load->view('inc/pie');
+            }
+            else
+            {
+                if($this->session->userdata('rol')=='contador')
+                {
+                    $idcliente=$_POST['idcliente'];
+                    $data['infocliente']=$this->cliente_model->recuperarcliente($idcliente);
         
-        $this->cliente_model->modificarcliente($idcliente,$data);
-        redirect('cliente/index','refresh');
+                    $this->load->view('inc/cabecera');
+                    $this->load->view('inc/menulateral_contador');
+                    $this->load->view('inc/menusuperior');
+                    $this->load->view('cliente/contador/cliente_modificar',$data);
+                    $this->load->view('inc/creditos');	
+                    $this->load->view('inc/pie');
+                }
+                else
+                {
+                    $idcliente=$_POST['idcliente'];
+                    $data['infocliente']=$this->cliente_model->recuperarcliente($idcliente);
+        
+                    $this->load->view('inc/cabecera');
+                    $this->load->view('inc/menulateral_vendedor');
+                    $this->load->view('inc/menusuperior');
+                    $this->load->view('cliente/vendedor/cliente_modificar',$data);
+                    $this->load->view('inc/creditos');	
+                    $this->load->view('inc/pie');
+                }
+            }
+        }
+        else{ 
+            $idcliente=$_POST['idcliente'];
+
+            $data['idUsuario']=$this->session->userdata('idusuario');
+            $data['razonSocial']=strtoupper($_POST['RazonSocial']);
+            $data['ciNit']=$_POST['CiNit'];
+            $data['telefono']=$_POST['Telefono'];
+            $data['fechaActualizacion']=date('Y-m-d H:i:s');
+            
+            $this->cliente_model->modificarcliente($idcliente,$data);
+            redirect('cliente/index','refresh');
+        }
     }
     public function deshabilitarbd() 
     {

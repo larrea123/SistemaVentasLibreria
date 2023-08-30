@@ -65,17 +65,29 @@
                       echo form_open_multipart('usuario/modificarbd');
                     ?>
                     <input type="hidden" name="idusuario" value="<?php echo $row->idUsuario;?>">
+                    
                     <div class="item form-group has-feedback">
-                      <label class="col-form-label col-md-1 label-align" for="inputN">Nombre Usuario:</label>
+                      <label class="col-form-label col-md-1 label-align" for="nombres">Nombres:</label>
                       <div class="col-md-3">
-                          <input type="text" name="Login" class="form-control has-feedback-left" value="<?php echo $row->login;?>">
-                          <span class="fa fa-sign-in form-control-feedback left" aria-hidden="true"></span>
+                          <input type="text" name="Nombres" class="form-control has-feedback-left" value="<?php echo $row->nombres;?>">
+                          <span class="fa fa-male form-control-feedback left" aria-hidden="true"></span>
+                          <?php echo form_error('Nombres'); ?>
                       </div>
-                      <label class="col-form-label col-md-1 label-align" for="primerapellido">Password:</label>
+                      <label class="col-form-label col-md-1 label-align" for="primerapellido">Primer Apellido:</label>
                       <div class="col-md-3">
-                          <input type="password" name="Password" class="form-control has-feedback-left" value="<?php echo $row->password;?>">
-                          <span class="fa fa-key form-control-feedback left" aria-hidden="true"></span>
+                          <input type="text" name="PrimerApellido" class="form-control has-feedback-left" value="<?php echo $row->primerApellido;?>">
+                          <span class="fa fa-male form-control-feedback left" aria-hidden="true"></span>
+                          <?php echo form_error('PrimerApellido'); ?>
                       </div>
+                      <label class="col-form-label col-md-1 label-align" for="segundoapellido">Segundo Apellido:</label>
+                      <div class="col-md-3">
+                          <input type="text" name="SegundoApellido" class="form-control has-feedback-left" value="<?php echo $row->segundoApellido;?>">
+                          <span class="fa fa-male form-control-feedback left" aria-hidden="true"></span>
+                          <?php echo form_error('SegundoApellido'); ?>
+                      </div>
+                    </div>
+
+                    <div class="item form-group has-feedback">
                       <label class="col-form-label col-md-1 label-align" for="rol">Rol Usuario:</label>
                       <div class="col-md-3">
                           <select class="form-control" name="Rol" required>
@@ -84,43 +96,38 @@
                               <option value="vendedor">vendedor</option>
                               <option value="contador">contador</option>
                           </select>
-                      </div>                      
-                    </div>
-
-                    <div class="item form-group has-feedback">
-                      <label class="col-form-label col-md-1 label-align" for="nombres">Nombres:</label>
-                      <div class="col-md-3">
-                          <input type="text" name="Nombres" class="form-control has-feedback-left" value="<?php echo $row->nombres;?>">
-                          <span class="fa fa-male form-control-feedback left" aria-hidden="true"></span>
                       </div>
-                      <label class="col-form-label col-md-1 label-align" for="primerapellido">Primer Apellido:</label>
-                      <div class="col-md-3">
-                          <input type="text" name="PrimerApellido" class="form-control has-feedback-left" value="<?php echo $row->primerApellido;?>">
-                          <span class="fa fa-male form-control-feedback left" aria-hidden="true"></span>
-                      </div>
-                      <label class="col-form-label col-md-1 label-align" for="segundoapellido">Segundo Apellido:</label>
-                      <div class="col-md-3">
-                          <input type="text" name="SegundoApellido" class="form-control has-feedback-left" value="<?php echo $row->segundoApellido;?>">
-                          <span class="fa fa-male form-control-feedback left" aria-hidden="true"></span>
-                      </div>
-                    </div>
-
-                    <div class="item form-group has-feedback">
                       <label class="col-form-label col-md-1 label-align" for="numeroci">Nro. Carnet:</label>
                       <div class="col-md-3">
                           <input type="text" name="CedulaIdentidad" class="form-control has-feedback-left" value="<?php echo $row->cedulaIdentidad;?>">
                           <span class="fa fa-list-alt form-control-feedback left" aria-hidden="true"></span>
+                          <?php echo form_error('CedulaIdentidad'); ?>
                       </div>
                       <label class="col-form-label col-md-1 label-align" for="numerocelular">Nro. Celular:</label>
                       <div class="col-md-3">
                           <input type="text" name="Telefono" class="form-control has-feedback-left" value="<?php echo $row->telefono;?>">
                           <span class="fa fa-mobile-phone form-control-feedback left" aria-hidden="true"></span>
-                      </div>
+                          <?php echo form_error('Telefono'); ?>
+                      </div>    
+                    </div>
+
+                    <div class="item form-group has-feedback">
                       <label class="col-form-label col-md-1 label-align" for="genero">Direccion:</label>
                       <div class="col-md-3">
                         <textarea name="Direccion" class="form-control has-feedback-left" ><?php echo $row->direccion; ?></textarea>
                         <span class="fa fa-list form-control-feedback left" aria-hidden="true"></span>
-                      </div>     
+                        <?php echo form_error('Direccion'); ?>
+                      </div> 
+                      <!--<label class="col-form-label col-md-1 label-align" for="inputN">Nombre Usuario:</label>
+                      <div class="col-md-3">
+                          <input type="text" name="Login" class="form-control has-feedback-left" value="<?php echo $row->login;?>">
+                          <span class="fa fa-sign-in form-control-feedback left" aria-hidden="true"></span>
+                      </div>
+                      <label class="col-form-label col-md-1 label-align" for="primerapellido">Password:</label>
+                      <div class="col-md-3">
+                          <input type="password" name="Password" class="form-control has-feedback-left" value="<?php echo $row->password;?>">
+                          <span class="fa fa-key form-control-feedback left" aria-hidden="true"></span>
+                      </div>-->                      
                     </div>
                                         
                     <button type="submit" class="btn btn-success">

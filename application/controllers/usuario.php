@@ -144,34 +144,103 @@ class Usuario extends CI_Controller {
 
     public function agregarbd()
 	{
-        $clave1L=strtoupper($_POST['Nombres']);
-        $clave2L=strtoupper($_POST['PrimerApellido']);
-        $clave3L=$_POST['CedulaIdentidad'];
+        $this->load->library('form_validation');
+        $this->form_validation->set_rules(
+            'Nombres',
+            'Nombre del empleado',
+            'required|min_length[3]|max_length[20]|alpha_numeric_spaces',
+            array('required'=>'Se requiere ingresar el nombre del empleado.',
+                    'min_length'=>'El nombre debe tener al menos 3 caracteres.',
+                    'max_length'=>'¡El nombre no debe contener más de 20 caracteres!.',
+                    'alpha_numeric_spaces'=>'¡El nombre solo debe contener letras!.'
+                    )
+        );
+        $this->form_validation->set_rules(
+            'PrimerApellido',
+            'Primer apellido del empleado',
+            'required|min_length[3]|max_length[15]|alpha',
+            array('required'=>'Se requiere ingresar el primer apellido del empleado.',
+                    'min_length'=>'El apellido debe tener al menos 3 caracteres.',
+                    'max_length'=>'¡El apellido no debe contener más de 15 caracteres!.',
+                    'alpha'=>'¡El apellido solo debe contener letras!.'
+                    )
+        );
+        $this->form_validation->set_rules(
+            'SegundoApellido',
+            'Segundo apellido del empleado',
+            'min_length[3]|max_length[15]|alpha',
+            array('min_length'=>'El apellido debe tener al menos 3 caracteres.',
+                    'max_length'=>'¡El apellido no debe contener más de 15 caracteres!.',
+                    'alpha'=>'¡El apellido solo debe contener letras!.'
+                    )
+        );
+        $this->form_validation->set_rules(
+            'CedulaIdentidad',
+            'Número de Carnet del empleado',
+            'required|min_length[7]|max_length[12]',
+            array('required'=>'Se requiere ingresar el C.I. del empleado.',
+                    'min_length'=>'¡El número de carnet no debe contener menos de 7 caracteres!.',
+                    'max_length'=>'¡El número de carnet no debe contener más de 12 caracteres!.'
+                    )
+        );
+        $this->form_validation->set_rules(
+            'Telefono',
+            'Número de Celular del empleado',
+            'required|exact_length[8]|is_natural',
+            array('required'=>'Se requiere ingresar el Nro. Celular del empleado.',
+                    'exact_length'=>'¡Ingrese un número de celular válido!.',
+                    'is_natural'=>'¡No ingrese caracteres que no sean números!.'
+                    )
+        );
+        $this->form_validation->set_rules(
+            'Direccion',
+            'Dirección del domicilio del empleado',
+            'required|min_length[6]|max_length[100]',
+            array('required'=>'Se requiere ingresar la direccion.',
+                    'min_length'=>'La direccion debe tener al menos 6 caracteres.',
+                    'max_length'=>'¡La direccion no debe contener más de 100 caracteres!.'
+                    )
+        );
+        if($this->form_validation->run()==FALSE)
+        {
+            $this->load->view('inc/cabecera');
+            $this->load->view('inc/menulateral');
+            $this->load->view('inc/menusuperior');
+            $this->load->view('usuario/usuario_agregar');
+            $this->load->view('inc/creditos');	
+            $this->load->view('inc/pie');
+        }
+        else{
 
-        $encriptar=$clave1L[0].$clave2L.substr($clave3L,-3);
-        $data['login']=$encriptar;
+            $clave1L=strtoupper($_POST['Nombres']);
+            $clave2L=strtoupper($_POST['PrimerApellido']);
+            $clave3L=$_POST['CedulaIdentidad'];
 
-        /*$data['login']=$_POST['Login'];
-        $clave1P=$_POST['CedulaIdentidad'];
-        $clave2P=strtoupper($_POST['PrimerApellido']);
-        $clave3P=strtoupper($_POST['Nombres']);
+            $encriptar=$clave1L[0].$clave2L.substr($clave3L,-3);
+            $data['login']=$encriptar;
 
-        $encriptar2=substr($clave1P,0,3).$clave2P[0].$clave3P[0];*/
-        $encriptar2=md5($clave1L[0].$clave2L[0].substr($clave3L,0,3));
-        $data['password']=$encriptar2;
-        //$data['login']=$_POST['Login'];
-        //$data['password']=md5($_POST['Password']);
-        $data['rol']=$_POST['Rol'];
-        $data['nombres']=strtoupper($_POST['Nombres']);
-        $data['primerApellido']=strtoupper($_POST['PrimerApellido']);
-        $data['segundoApellido']=strtoupper($_POST['SegundoApellido']);
-        $data['cedulaIdentidad']=$_POST['CedulaIdentidad'];
-        $data['telefono']=$_POST['Telefono'];
-        $data['direccion']=strtoupper($_POST['Direccion']);
-        $data['estado']='2';
+            /*$data['login']=$_POST['Login'];
+            $clave1P=$_POST['CedulaIdentidad'];
+            $clave2P=strtoupper($_POST['PrimerApellido']);
+            $clave3P=strtoupper($_POST['Nombres']);
 
-        $this->usuario_model->agregarusuario($data);
-        redirect('usuario/index2','refresh');
+            $encriptar2=substr($clave1P,0,3).$clave2P[0].$clave3P[0];*/
+            $encriptar2=md5($clave1L[0].$clave2L[0].substr($clave3L,0,3));
+            $data['password']=$encriptar2;
+            //$data['login']=$_POST['Login'];
+            //$data['password']=md5($_POST['Password']);
+            $data['rol']=$_POST['Rol'];
+            $data['nombres']=strtoupper($_POST['Nombres']);
+            $data['primerApellido']=strtoupper($_POST['PrimerApellido']);
+            $data['segundoApellido']=strtoupper($_POST['SegundoApellido']);
+            $data['cedulaIdentidad']=$_POST['CedulaIdentidad'];
+            $data['telefono']=$_POST['Telefono'];
+            $data['direccion']=strtoupper($_POST['Direccion']);
+            $data['estado']='2';
+
+            $this->usuario_model->agregarusuario($data);
+            redirect('usuario/index2','refresh');
+        }
 	}
 
     public function eliminarbd()
@@ -227,21 +296,124 @@ class Usuario extends CI_Controller {
 
     public function modificarbd()
     {
-        $idusuario=$_POST['idusuario'];
+        $this->load->library('form_validation');
+        $this->form_validation->set_rules(
+            'Nombres',
+            'Nombre del empleado',
+            'required|min_length[3]|max_length[20]|alpha_numeric_spaces',
+            array('required'=>'Se requiere ingresar el nombre del empleado.',
+                    'min_length'=>'El nombre debe tener al menos 3 caracteres.',
+                    'max_length'=>'¡El nombre no debe contener más de 20 caracteres!.',
+                    'alpha_numeric_spaces'=>'¡El nombre solo debe contener letras!.'
+                    )
+        );
+        $this->form_validation->set_rules(
+            'PrimerApellido',
+            'Primer apellido del empleado',
+            'required|min_length[3]|max_length[15]|alpha',
+            array('required'=>'Se requiere ingresar el primer apellido del empleado.',
+                    'min_length'=>'El apellido debe tener al menos 3 caracteres.',
+                    'max_length'=>'¡El apellido no debe contener más de 15 caracteres!.',
+                    'alpha'=>'¡El apellido solo debe contener letras!.'
+                    )
+        );
+        $this->form_validation->set_rules(
+            'SegundoApellido',
+            'Segundo apellido del empleado',
+            'min_length[3]|max_length[15]|alpha',
+            array('min_length'=>'El apellido debe tener al menos 3 caracteres.',
+                    'max_length'=>'¡El apellido no debe contener más de 15 caracteres!.',
+                    'alpha'=>'¡El apellido solo debe contener letras!.'
+                    )
+        );
+        $this->form_validation->set_rules(
+            'CedulaIdentidad',
+            'Número de Carnet del empleado',
+            'required|min_length[7]|max_length[12]',
+            array('required'=>'Se requiere ingresar el C.I. del empleado.',
+                    'min_length'=>'¡El número de carnet no debe contener menos de 7 caracteres!.',
+                    'max_length'=>'¡El número de carnet no debe contener más de 12 caracteres!.'
+                    )
+        );
+        $this->form_validation->set_rules(
+            'Telefono',
+            'Número de Celular del empleado',
+            'required|exact_length[8]|is_natural',
+            array('required'=>'Se requiere ingresar el Nro. Celular del empleado.',
+                    'exact_length'=>'¡Ingrese un número de celular válido!.',
+                    'is_natural'=>'¡No ingrese caracteres que no sean números!.'
+                    )
+        );
+        $this->form_validation->set_rules(
+            'Direccion',
+            'Dirección del domicilio del empleado',
+            'required|min_length[6]|max_length[100]',
+            array('required'=>'Se requiere ingresar la direccion.',
+                    'min_length'=>'La direccion debe tener al menos 6 caracteres.',
+                    'max_length'=>'¡La direccion no debe contener más de 100 caracteres!.'
+                    )
+        );
 
-        $data['login']=$_POST['Login'];
-        $data['password']=md5($_POST['Password']);
-        $data['rol']=$_POST['Rol'];
-        $data['nombres']=strtoupper($_POST['Nombres']);
-        $data['primerApellido']=strtoupper($_POST['PrimerApellido']);
-        $data['segundoApellido']=strtoupper($_POST['SegundoApellido']);
-        $data['cedulaIdentidad']=$_POST['CedulaIdentidad'];
-        $data['telefono']=$_POST['Telefono'];
-        $data['direccion']=strtoupper($_POST['Direccion']);
-        $data['fechaActualizacion']=date('Y-m-d H:i:s');
+        if($this->form_validation->run()==FALSE)
+        {
+            if($this->session->userdata('rol')=='admin')
+            {
+                $idusuario=$_POST['idusuario'];
+                $data['infousuario']=$this->usuario_model->recuperarusuario($idusuario);
+
+                $this->load->view('inc/cabecera');
+                $this->load->view('inc/menulateral');
+                $this->load->view('inc/menusuperior');
+                $this->load->view('usuario/usuario_modificar',$data);
+                $this->load->view('inc/creditos');	
+                $this->load->view('inc/pie');
+            }
+            else
+            {
+                if($this->session->userdata('rol')=='contador')
+                {
+                    $idusuario=$_POST['idusuario'];
+                    $data['infousuario']=$this->usuario_model->recuperarusuario($idusuario);
         
-        $this->usuario_model->modificarusuario($idusuario,$data);
-        redirect('usuario/index2','refresh');
+                    $this->load->view('inc/cabecera');
+                    $this->load->view('inc/menulateral_contador');
+                    $this->load->view('inc/menusuperior');
+                    $this->load->view('usuario/contador/usuario_modificar',$data);
+                    $this->load->view('inc/creditos');	
+                    $this->load->view('inc/pie');
+                }
+                else
+                {
+                    $idusuario=$_POST['idusuario'];
+                    $data['infousuario']=$this->usuario_model->recuperarusuario($idusuario);
+        
+                    $this->load->view('inc/cabecera');
+                    $this->load->view('inc/menulateral_vendedor');
+                    $this->load->view('inc/menusuperior');
+                    $this->load->view('usuario/vendedor/usuario_modificar',$data);
+                    $this->load->view('inc/creditos');	
+                    $this->load->view('inc/pie');
+                }
+            }
+        }
+        else{
+
+            $idusuario=$_POST['idusuario'];
+
+            /*$data['login']=$_POST['Login'];
+            $data['password']=md5($_POST['Password']);*/
+            $data['rol']=$_POST['Rol'];
+            $data['nombres']=strtoupper($_POST['Nombres']);
+            $data['primerApellido']=strtoupper($_POST['PrimerApellido']);
+            $data['segundoApellido']=strtoupper($_POST['SegundoApellido']);
+            $data['cedulaIdentidad']=$_POST['CedulaIdentidad'];
+            $data['telefono']=$_POST['Telefono'];
+            $data['direccion']=strtoupper($_POST['Direccion']);
+            $data['fechaActualizacion']=date('Y-m-d H:i:s');
+            
+            $this->usuario_model->modificarusuario($idusuario,$data);
+            redirect('usuario/index2','refresh');
+        }
     }
 
     public function modificar1()

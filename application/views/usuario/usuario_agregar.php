@@ -66,18 +66,24 @@
                     <div class="item form-group has-feedback">
                       <label class="col-form-label col-md-1 label-align" for="nombres">Nombres:</label>
                       <div class="col-md-3">
-                          <input type="text" name="Nombres" class="form-control has-feedback-left">
+                          <input type="text" name="Nombres" class="form-control has-feedback-left"
+                          value="<?php echo set_value('Nombres');?>">
                           <span class="fa fa-male form-control-feedback left" aria-hidden="true"></span>
+                          <?php echo form_error('Nombres'); ?>
                       </div>
                       <label class="col-form-label col-md-1 label-align" for="primerapellido">Primer Apellido:</label>
                       <div class="col-md-3">
-                          <input type="text" name="PrimerApellido" class="form-control has-feedback-left">
+                          <input type="text" name="PrimerApellido" class="form-control has-feedback-left"
+                          value="<?php echo set_value('PrimerApellido');?>">
                           <span class="fa fa-male form-control-feedback left" aria-hidden="true"></span>
+                          <?php echo form_error('PrimerApellido'); ?>
                       </div>
                       <label class="col-form-label col-md-1 label-align" for="segundoapellido">Segundo Apellido:</label>
                       <div class="col-md-3">
-                          <input type="text" name="SegundoApellido" class="form-control has-feedback-left">
+                          <input type="text" name="SegundoApellido" class="form-control has-feedback-left"
+                          value="<?php echo set_value('SegundoApellido');?>">
                           <span class="fa fa-male form-control-feedback left" aria-hidden="true"></span>
+                          <?php echo form_error('SegundoApellido'); ?>
                       </div>
                     </div>
 
@@ -93,13 +99,17 @@
                       </div> 
                       <label class="col-form-label col-md-1 label-align" for="numeroci">Nro. Carnet:</label>
                       <div class="col-md-3">
-                          <input type="text" name="CedulaIdentidad" class="form-control has-feedback-left">
+                          <input type="text" name="CedulaIdentidad" class="form-control has-feedback-left"
+                          value="<?php echo set_value('CedulaIdentidad');?>">
                           <span class="fa fa-list-alt form-control-feedback left" aria-hidden="true"></span>
+                          <?php echo form_error('CedulaIdentidad'); ?>
                       </div>
                       <label class="col-form-label col-md-1 label-align" for="numerocelular">Nro. Celular:</label>
                       <div class="col-md-3">
-                          <input type="text" name="Telefono" class="form-control has-feedback-left">
+                          <input type="text" name="Telefono" class="form-control has-feedback-left"
+                          value="<?php echo set_value('Telefono');?>">
                           <span class="fa fa-mobile-phone form-control-feedback left" aria-hidden="true"></span>
+                          <?php echo form_error('Telefono'); ?>
                       </div>  
                     </div>
 
@@ -108,6 +118,7 @@
                       <div class="col-md-3">
                         <textarea name="Direccion" class="form-control has-feedback-left"></textarea>
                         <span class="fa fa-list form-control-feedback left" aria-hidden="true"></span>
+                        <?php echo form_error('Direccion'); ?>
                       </div> 
                       <!--<label class="col-form-label col-md-1 label-align" for="inputN">Nombre Usuario:</label>
                       <div class="col-md-3">

@@ -66,18 +66,24 @@
                     <div class="item form-group has-feedback">
                       <label class="col-form-label col-md-1 label-align" for="razonsocial">Razon Social:</label>
                       <div class="col-md-3">
-                          <input type="text" name="RazonSocial" class="form-control has-feedback-left">
+                          <input type="text" name="RazonSocial" class="form-control has-feedback-left"
+                          value="<?php echo set_value('RazonSocial');?>">
                           <span class="fa fa-male form-control-feedback left" aria-hidden="true"></span>
+                          <?php echo form_error('RazonSocial'); ?>
                       </div>
                       <label class="col-form-label col-md-1 label-align" for="cinit">CI/NIT:</label>
                       <div class="col-md-3">
-                          <input type="text" name="CiNit" class="form-control has-feedback-left">
+                          <input type="text" name="CiNit" class="form-control has-feedback-left"
+                          value="<?php echo set_value('CiNit');?>">
                           <span class="fa fa-list-alt form-control-feedback left" aria-hidden="true"></span>
+                          <?php echo form_error('CiNit'); ?>
                       </div>
                       <label class="col-form-label col-md-1 label-align" for="telefono">Nro. Celular:</label>
                       <div class="col-md-3">
-                          <input type="text" name="Telefono" class="form-control has-feedback-left">
+                          <input type="text" name="Telefono" class="form-control has-feedback-left"
+                          value="<?php echo set_value('Telefono');?>">
                           <span class="fa fa-mobile-phone form-control-feedback left" aria-hidden="true"></span>
+                          <?php echo form_error('Telefono'); ?>
                       </div>
                     </div>
             
