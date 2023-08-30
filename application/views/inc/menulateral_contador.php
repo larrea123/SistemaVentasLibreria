@@ -30,7 +30,7 @@
                     <ul class="nav child_menu">
                       <li>
                           <?php echo form_open_multipart('usuario/index2');?>
-                            <button type="submit" class="col-md-11 btn btn-dark" style="background-color: transparent; border: none;">
+                            <button type="submit" class="col-md-11 btn btn-dark bg-lcv" style="background-color: transparent; border: none;">
                               Usuarios
                             </button>
                           <?php echo form_close();?>
@@ -52,21 +52,21 @@
                     <ul class="nav child_menu">
                       <li>
                           <?php echo form_open_multipart('producto/index');?>
-                            <button type="submit" class="col-md-11 btn btn-dark" style="background-color: transparent; border: none;">
+                            <button type="submit" class="col-md-11 btn btn-dark bg-lcv" style="background-color: transparent; border: none;">
                               Productos
                             </button>
                           <?php echo form_close();?>
                       </li>
                       <li>
                           <?php echo form_open_multipart('categoria/index');?>
-                            <button type="submit" class="col-md-11 btn btn-dark" style="background-color: transparent; border: none;">
+                            <button type="submit" class="col-md-11 btn btn-dark  bg-lcv" style="background-color: transparent; border: none;">
                               Categoria
                             </button>
                           <?php echo form_close();?>
                       </li>
                       <li>
                           <?php echo form_open_multipart('marca/index');?>
-                            <button type="submit" class="col-md-11 btn btn-dark" style="background-color: transparent; border: none;">
+                            <button type="submit" class="col-md-11 btn btn-dark  bg-lcv" style="background-color: transparent; border: none;">
                               Marcas
                             </button>
                           <?php echo form_close();?>
@@ -77,7 +77,7 @@
                     <ul class="nav child_menu">
                       <li>
                           <?php echo form_open_multipart('proveedor/index');?>
-                            <button type="submit" class="col-md-11 btn btn-dark" style="background-color: transparent; border: none;">
+                            <button type="submit" class="col-md-11 btn btn-dark  bg-lcv" style="background-color: transparent; border: none;">
                               Proveedores
                             </button>
                           <?php echo form_close();?>

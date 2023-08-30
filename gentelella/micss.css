@@ -6,22 +6,23 @@
 /*Side Bar Gentelella, color de fondo*/
 .nav.side-menu > li.active > a {
   background: -webkit-gradient(linear, left top, left bottom, from(#7955ef), to(#4c695c)), #bc1365;
-  background: linear-gradient(#830000, #350a0aaf), #000000;
+  /*background: linear-gradient(#830000, #350a0aaf), #000000;*/
+  background: linear-gradient(#881182, #b97ec1af), #d60a0a;
 }
 
 /*Side Bar Gentelella, puntos del unordered list*/
 .nav-md ul.nav.child_menu li:before{
-  background: #830000;
+  background:#881182;
 }
 
 /*Side Bar Gentelella, borde de la derecha*/
 .nav.side-menu>li.current-page, .nav.side-menu>li.active {
-    border-right: 5px solid #c41123da;
+    border-right: 5px solid #881182;
 }
 
 /*Side Bar Gentelella, línea blanca al desplegar unordered list*/
 .nav-md ul.nav.child_menu li:after {
-    border-left: 2px solid #830000;
+    border-left: 2px solid #881182;
 }
 
 .bg-png {
