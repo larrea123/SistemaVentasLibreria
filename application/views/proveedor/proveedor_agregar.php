@@ -65,18 +65,24 @@
                     <div class="item form-group has-feedback">
                       <label class="col-form-label col-md-1 label-align" for="inputN">Nombre proveedor:</label>
                       <div class="col-md-3">
-                          <input type="text" name="NombreProveedor" class="form-control has-feedback-left">
+                          <input type="text" name="NombreProveedor" class="form-control has-feedback-left"
+                          value="<?php echo set_value('NombreProveedor');?>">
                           <span class="fa fa-sign-in form-control-feedback left" aria-hidden="true"></span>
+                          <?php echo form_error('NombreProveedor'); ?>
                       </div>
                       <label class="col-form-label col-md-1 label-align" for="telf">Telefono:</label>
                       <div class="col-md-3">
-                          <input type="text" name="Telefono" class="form-control has-feedback-left">
+                          <input type="text" name="Telefono" class="form-control has-feedback-left"
+                          value="<?php echo set_value('Telefono');?>">
                           <span class="fa fa-mobile-phone form-control-feedback left" aria-hidden="true"></span>
+                          <?php echo form_error('Telefono'); ?>
                       </div> 
                       <label class="col-form-label col-md-1 label-align" for="correo">Correo:</label>
                       <div class="col-md-3">
-                          <input type="text" name="Correo" class="form-control has-feedback-left">
+                          <input type="text" name="Correo" class="form-control has-feedback-left"
+                          value="<?php echo set_value('Correo');?>">
                           <span class="fa fa-male form-control-feedback left" aria-hidden="true"></span>
+                          <?php echo form_error('Correo'); ?>
                       </div>             
                     </div>
 
@@ -85,6 +91,7 @@
                       <div class="col-md-3">
                         <textarea name="Direccion" class="form-control has-feedback-left"></textarea>
                         <span class="fa fa-list form-control-feedback left" aria-hidden="true"></span>
+                        <?php echo form_error('Direccion'); ?>
                       </div>
                     </div>            
                     <button type="submit" class="btn btn-success">

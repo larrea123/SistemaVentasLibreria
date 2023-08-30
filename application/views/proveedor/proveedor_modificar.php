@@ -70,16 +70,19 @@
                       <div class="col-md-3">
                           <input type="text" name="NombreProveedor" class="form-control has-feedback-left" value="<?php echo $row->nombreProveedor;?>">
                           <span class="fa fa-sign-in form-control-feedback left" aria-hidden="true"></span>
+                          <?php echo form_error('NombreProveedor'); ?>
                       </div>
                       <label class="col-form-label col-md-1 label-align" for="telf">Telefono:</label>
                       <div class="col-md-3">
                           <input type="text" name="Telefono" class="form-control has-feedback-left" value="<?php echo $row->telefono;?>">
                           <span class="fa fa-mobile-phone form-control-feedback left" aria-hidden="true"></span>
+                          <?php echo form_error('Telefono'); ?>
                       </div>
                       <label class="col-form-label col-md-1 label-align" for="correo">Correo:</label>
                       <div class="col-md-3">
                           <input type="text" name="Correo" class="form-control has-feedback-left" value="<?php echo $row->correo;?>">
                           <span class="fa fa-male form-control-feedback left" aria-hidden="true"></span>
+                          <?php echo form_error('Correo'); ?>
                       </div>                  
                     </div>
 
@@ -88,6 +91,7 @@
                       <div class="col-md-3">
                         <textarea name="Direccion" class="form-control has-feedback-left" ><?php echo $row->direccion; ?></textarea>
                         <span class="fa fa-list form-control-feedback left" aria-hidden="true"></span>
+                        <?php echo form_error('Direccion'); ?>
                       </div>     
                     </div>
                                         
