@@ -62,27 +62,6 @@
                     <?php 
                       echo form_open_multipart('usuario/agregarbd');
                     ?>
-                    <div class="item form-group has-feedback">
-                      <label class="col-form-label col-md-1 label-align" for="inputN">Nombre Usuario:</label>
-                      <div class="col-md-3">
-                          <input type="text" name="Login" class="form-control has-feedback-left">
-                          <span class="fa fa-sign-in form-control-feedback left" aria-hidden="true"></span>
-                      </div>
-                      <label class="col-form-label col-md-1 label-align" for="primerapellido">Password:</label>
-                      <div class="col-md-3">
-                          <input type="password" name="Password" class="form-control has-feedback-left">
-                          <span class="fa fa-key form-control-feedback left" aria-hidden="true"></span>
-                      </div>
-                      <label class="col-form-label col-md-1 label-align" for="rol">Rol Usuario:</label>
-                      <div class="col-md-3">
-                          <select class="form-control" name="Rol" required>
-                              <option value="" disabled selected >Seleccione un rol:</option>
-                              <option value="admin" >admin</option>
-                              <option value="vendedor">vendedor</option>
-                              <option value="contador">contador</option>
-                          </select>
-                      </div>                      
-                    </div>
 
                     <div class="item form-group has-feedback">
                       <label class="col-form-label col-md-1 label-align" for="nombres">Nombres:</label>
@@ -103,6 +82,15 @@
                     </div>
 
                     <div class="item form-group has-feedback">
+                    <label class="col-form-label col-md-1 label-align" for="rol">Rol Usuario:</label>
+                      <div class="col-md-3">
+                          <select class="form-control" name="Rol" required>
+                              <option value="" disabled selected >Seleccione un rol:</option>
+                              <option value="admin" >admin</option>
+                              <option value="vendedor">vendedor</option>
+                              <option value="contador">contador</option>
+                          </select>
+                      </div> 
                       <label class="col-form-label col-md-1 label-align" for="numeroci">Nro. Carnet:</label>
                       <div class="col-md-3">
                           <input type="text" name="CedulaIdentidad" class="form-control has-feedback-left">
@@ -112,12 +100,26 @@
                       <div class="col-md-3">
                           <input type="text" name="Telefono" class="form-control has-feedback-left">
                           <span class="fa fa-mobile-phone form-control-feedback left" aria-hidden="true"></span>
-                      </div>
+                      </div>  
+                    </div>
+
+                    <div class="item form-group has-feedback">
                       <label class="col-form-label col-md-1 label-align" for="genero">Direccion:</label>
                       <div class="col-md-3">
                         <textarea name="Direccion" class="form-control has-feedback-left"></textarea>
                         <span class="fa fa-list form-control-feedback left" aria-hidden="true"></span>
-                      </div>     
+                      </div> 
+                      <!--<label class="col-form-label col-md-1 label-align" for="inputN">Nombre Usuario:</label>
+                      <div class="col-md-3">
+                          <input type="text" name="Login" class="form-control has-feedback-left">
+                          <span class="fa fa-sign-in form-control-feedback left" aria-hidden="true"></span>
+                      </div>
+                      <label class="col-form-label col-md-1 label-align" for="password">Password:</label>
+                      <div class="col-md-3">
+                          <input type="password" name="Password" class="form-control has-feedback-left">
+                          <span class="fa fa-key form-control-feedback left" aria-hidden="true"></span>
+                      </div>-->
+                                           
                     </div>
                                         
                     <button type="submit" class="btn btn-success">

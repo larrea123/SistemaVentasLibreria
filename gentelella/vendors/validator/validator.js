@@ -31,11 +31,11 @@
     FormValidator.prototype = {
         // Validation error texts
         texts : {
-            invalid         : 'inupt is not as expected',
+            invalid         : 'recuerda ingresar 8 caracteres',
             short           : 'input is too short',
             long            : 'input is too long',
             checked         : 'must be checked',
-            empty           : 'please put something here',
+            empty           : 'Porfavor completa este campo',
             select          : 'Please select an option',
             number_min      : 'too low',
             number_max      : 'too high',
@@ -45,7 +45,7 @@
             email_repeat    : 'emails do not match',
             date            : 'invalid date',
             time            : 'invalid time',
-            password_repeat : 'passwords do not match',
+            password_repeat : 'La contraseña no coincide',
             no_match        : 'no match',
             complete        : 'input is not complete'
         },
