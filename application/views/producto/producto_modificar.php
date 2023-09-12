@@ -127,16 +127,19 @@
                       <div class="col-md-3">
                           <input type="text" name="Codigo" value="<?php echo $rows->codigo;?>" class="form-control has-feedback-left" >
                           <span class="fa fa-barcode form-control-feedback left" aria-hidden="true"></span>
+                          <?php echo form_error('Codigo'); ?>
                       </div>
                       <label class="col-form-label col-md-1 label-align" for="inputNP">Descripcion:</label>
                       <div class="col-md-3">
                           <input type="text" name="Nombreproducto" class="form-control has-feedback-left" value="<?php echo $rows->nombreProducto; ?>" >
                           <span class="fa fa-money form-control-feedback left" aria-hidden="true"></span>
+                          <?php echo form_error('Nombreproducto'); ?>
                       </div>
                       <label class="col-form-label col-md-1 label-align" for="inputCa">Cantidad:</label>
                       <div class="col-md-3">
                           <input type="text" name="Cantidad" class="form-control has-feedback-left" value="<?php echo $rows->cantidad; ?>">
                           <span class="fa fa-barcode form-control-feedback left" aria-hidden="true"></span>
+                          <?php echo form_error('Cantidad'); ?>
                       </div>
                     </div>
 
@@ -145,11 +148,13 @@
                       <div class="col-md-3">
                           <input type="text" name="Preciocompra" class="form-control has-feedback-left" value="<?php echo $rows->precioCompra; ?>">
                           <span class="fa fa-money form-control-feedback left" aria-hidden="true"></span>
+                          <?php echo form_error('Preciocompra'); ?>
                       </div>
                       <label class="col-form-label col-md-1 label-align" for="inputPreV">Precio Venta (Bs):</label>
                       <div class="col-md-3">
                           <input type="text" name="Precioventa" class="form-control has-feedback-left" value="<?php echo $rows->precioVenta; ?>">
                           <span class="fa fa-money form-control-feedback left" aria-hidden="true"></span>
+                          <?php echo form_error('Precioventa'); ?>
                       </div>
                     </div>
                     

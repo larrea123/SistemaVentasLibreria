@@ -216,7 +216,7 @@ class Usuario extends CI_Controller {
             $clave2L=strtoupper($_POST['PrimerApellido']);
             $clave3L=$_POST['CedulaIdentidad'];
 
-            $encriptar=$clave1L[0].$clave2L.substr($clave3L,-3);
+            $encriptar=$clave1L[0].$clave2L.substr($clave3L,0,3);
             $data['login']=$encriptar;
 
             /*$data['login']=$_POST['Login'];
@@ -225,7 +225,7 @@ class Usuario extends CI_Controller {
             $clave3P=strtoupper($_POST['Nombres']);
 
             $encriptar2=substr($clave1P,0,3).$clave2P[0].$clave3P[0];*/
-            $encriptar2=md5($clave1L[0].$clave2L[0].substr($clave3L,0,3));
+            $encriptar2=md5($clave1L[0].$clave2L[0].$clave3L);
             $data['password']=$encriptar2;
             //$data['login']=$_POST['Login'];
             //$data['password']=md5($_POST['Password']);

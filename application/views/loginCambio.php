@@ -39,6 +39,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <div class="rounded badge-light">
             </div>
             <div class="field item form-group">
+                <label class="col-form-label col-md-4 col-sm-4  label-align">Antigua Contraseña<span class="required"></span></label>
+				<div class="col-md-7 col-sm-7">
+					<input class="form-control" type="text" id="password3" readonly name="PasswordAn" value="<?php echo $row->nombres[0]. $row->primerApellido[0].$row->cedulaIdentidad; ?> "  />
+				</div>
+            </div>
+            <div class="field item form-group">
                 <label class="col-form-label col-md-4 col-sm-4  label-align">Nueva Contraseña<span class="required"></span></label>
 				<div class="col-md-7 col-sm-7">
 					<input class="form-control" type="password" id="password1" name="Password" required />
