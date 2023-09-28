@@ -102,7 +102,10 @@
                           <input type="text" name="CedulaIdentidad" class="form-control has-feedback-left"
                           value="<?php echo set_value('CedulaIdentidad');?>">
                           <span class="fa fa-list-alt form-control-feedback left" aria-hidden="true"></span>
-                          <?php echo form_error('CedulaIdentidad'); ?>
+                          <?php echo form_error('CedulaIdentidad'); 
+                            if ($msg == '2') { ?>
+                              <p id="validar"> (*) numero de carnet ya existente</p>
+                          <?php } ?>
                       </div>
                       <label class="col-form-label col-md-1 label-align" for="numerocelular">Nro. Celular:</label>
                       <div class="col-md-3">

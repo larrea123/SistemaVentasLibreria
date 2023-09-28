@@ -133,10 +133,12 @@ class Usuario extends CI_Controller {
 
     public function agregar()
 	{
+        $data['msg'] = $this->uri->segment(3);
+
         $this->load->view('inc/cabecera');
         $this->load->view('inc/menulateral');
         $this->load->view('inc/menusuperior');
-        $this->load->view('usuario/usuario_agregar');
+        $this->load->view('usuario/usuario_agregar',$data);
         $this->load->view('inc/creditos');	
         $this->load->view('inc/pie');
 
@@ -203,43 +205,52 @@ class Usuario extends CI_Controller {
         );
         if($this->form_validation->run()==FALSE)
         {
+            $data['msg'] = $this->uri->segment(3);
+
             $this->load->view('inc/cabecera');
             $this->load->view('inc/menulateral');
             $this->load->view('inc/menusuperior');
-            $this->load->view('usuario/usuario_agregar');
+            $this->load->view('usuario/usuario_agregar',$data);
             $this->load->view('inc/creditos');	
             $this->load->view('inc/pie');
         }
         else{
+            $carnet = $_POST['CedulaIdentidad'];
+            $validarcarnet = $this->cliente_model->validarcarnet($carnet);
+            if ($validarcarnet->num_rows() > 0) {
+                redirect('usuario/agregar/2', 'refresh');
+            } 
+            else {
 
-            $clave1L=strtoupper($_POST['Nombres']);
-            $clave2L=strtoupper($_POST['PrimerApellido']);
-            $clave3L=$_POST['CedulaIdentidad'];
+                $clave1L=strtoupper($_POST['Nombres']);
+                $clave2L=strtoupper($_POST['PrimerApellido']);
+                $clave3L=$_POST['CedulaIdentidad'];
 
-            $encriptar=$clave1L[0].$clave2L.substr($clave3L,0,3);
-            $data['login']=$encriptar;
+                $encriptar=$clave1L[0].$clave2L.substr($clave3L,0,3);
+                $data['login']=$encriptar;
 
-            /*$data['login']=$_POST['Login'];
-            $clave1P=$_POST['CedulaIdentidad'];
-            $clave2P=strtoupper($_POST['PrimerApellido']);
-            $clave3P=strtoupper($_POST['Nombres']);
+                /*$data['login']=$_POST['Login'];
+                $clave1P=$_POST['CedulaIdentidad'];
+                $clave2P=strtoupper($_POST['PrimerApellido']);
+                $clave3P=strtoupper($_POST['Nombres']);
 
-            $encriptar2=substr($clave1P,0,3).$clave2P[0].$clave3P[0];*/
-            $encriptar2=md5($clave1L[0].$clave2L[0].$clave3L);
-            $data['password']=$encriptar2;
-            //$data['login']=$_POST['Login'];
-            //$data['password']=md5($_POST['Password']);
-            $data['rol']=$_POST['Rol'];
-            $data['nombres']=strtoupper($_POST['Nombres']);
-            $data['primerApellido']=strtoupper($_POST['PrimerApellido']);
-            $data['segundoApellido']=strtoupper($_POST['SegundoApellido']);
-            $data['cedulaIdentidad']=$_POST['CedulaIdentidad'];
-            $data['telefono']=$_POST['Telefono'];
-            $data['direccion']=strtoupper($_POST['Direccion']);
-            $data['estado']='2';
+                $encriptar2=substr($clave1P,0,3).$clave2P[0].$clave3P[0];*/
+                $encriptar2=md5($clave1L[0].$clave2L[0].$clave3L);
+                $data['password']=$encriptar2;
+                //$data['login']=$_POST['Login'];
+                //$data['password']=md5($_POST['Password']);
+                $data['rol']=$_POST['Rol'];
+                $data['nombres']=strtoupper($_POST['Nombres']);
+                $data['primerApellido']=strtoupper($_POST['PrimerApellido']);
+                $data['segundoApellido']=strtoupper($_POST['SegundoApellido']);
+                $data['cedulaIdentidad']=$_POST['CedulaIdentidad'];
+                $data['telefono']=$_POST['Telefono'];
+                $data['direccion']=strtoupper($_POST['Direccion']);
+                $data['estado']='2';
 
-            $this->usuario_model->agregarusuario($data);
-            redirect('usuario/index2','refresh');
+                $this->usuario_model->agregarusuario($data);
+                redirect('usuario/index2','refresh');
+            }
         }
 	}
 

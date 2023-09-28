@@ -69,4 +69,11 @@ class Usuario_model extends CI_Model {
         $this->db->where('U.estado','0');
         return $this->db->get(); //devolucion del resultado de la consulta*/
     }
+    public function validarcarnet($carnet)
+    {
+        $this->db->select('cedulaIdentidad');
+        $this->db->from('usuario');
+        $this->db->where('cedulaIdentidad', $carnet);
+        return $this->db->get();
+    }
 }
