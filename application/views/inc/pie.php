@@ -29,7 +29,6 @@
     <script src="<?php echo base_url(); ?>gentelella/vendors/pdfmake/build/vfs_fonts.js"></script>
 
     <!-- Custom Theme Scripts -->
-    <script src="<?php echo base_url(); ?>gentelella/build/js/custom.min.js"></script>
-
-  </body>
+    <script src="<?php echo base_url(); ?>gentelella/build/js/custom.min.js"></script>    
+  </body>   
 </html>

@@ -282,24 +282,24 @@ class Usuario extends CI_Controller {
                 $idusuario=$_POST['idusuario'];
                 $data['infousuario']=$this->usuario_model->recuperarusuario($idusuario);
     
-                $this->load->view('inc/cabecera');
+                /*$this->load->view('inc/cabecera');
                 $this->load->view('inc/menulateral_contador');
-                $this->load->view('inc/menusuperior');
+                $this->load->view('inc/menusuperior');*/
                 $this->load->view('usuario/contador/usuario_modificar',$data);
-                $this->load->view('inc/creditos');	
-                $this->load->view('inc/pie');
+               /* $this->load->view('inc/creditos');	
+                $this->load->view('inc/pie');*/
             }
             else
             {
                 $idusuario=$_POST['idusuario'];
                 $data['infousuario']=$this->usuario_model->recuperarusuario($idusuario);
     
-                $this->load->view('inc/cabecera');
+               /* $this->load->view('inc/cabecera');
                 $this->load->view('inc/menulateral_vendedor');
-                $this->load->view('inc/menusuperior');
+                $this->load->view('inc/menusuperior');*/
                 $this->load->view('usuario/vendedor/usuario_modificar',$data);
-                $this->load->view('inc/creditos');	
-                $this->load->view('inc/pie');
+                /*$this->load->view('inc/creditos');	
+                $this->load->view('inc/pie');*/
             }
         }
 
@@ -459,6 +459,16 @@ class Usuario extends CI_Controller {
         $data['password']=md5($_POST['Password']);
         $data['fechaActualizacion']=date('Y-m-d H:i:s');
         $data['estado']='1';
+        
+        $this->usuario_model->modificarusuario($idusuario,$data);
+        redirect('marca/index','refresh');
+    }
+    public function modificar3()
+    {
+        $idusuario=$_POST['idusuario'];
+
+        $data['password']=md5($_POST['Password']);
+        $data['fechaActualizacion']=date('Y-m-d H:i:s');
         
         $this->usuario_model->modificarusuario($idusuario,$data);
         redirect('marca/index','refresh');
