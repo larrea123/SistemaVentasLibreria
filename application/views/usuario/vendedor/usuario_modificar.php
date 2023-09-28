@@ -73,18 +73,18 @@
                       </div>
                       <label class="col-form-label col-md-1 label-align" for="primerapellido">Password:</label>
                       <div class="col-md-3">
-                          <input type="password" name="Password" class="form-control has-feedback-left" value="<?php echo $row->password;?>">
-                          <span class="fa fa-key form-control-feedback left" aria-hidden="true"></span>
-                      </div>
-                      <label class="col-form-label col-md-1 label-align" for="rol">Rol Usuario:</label>
+                          <input class="form-control has-feedback-left" type="password" id="password1" name="Password" required='required' >
+                          <span class="fa fa-sign-in form-control-feedback left" aria-hidden="true"></span>
+                          <span style="position: absolute;right:15px;top:7px;" onclick="hideshow()" >
+					                	<i id="slash" class="fa fa-eye-slash"></i>
+                            <i id="eye" class="fa fa-eye"></i>
+                          </span>
+                      </div>  
+                      <label class="col-form-label col-md-1 label-align" for="primerapellido">Repita el Password:</label>
                       <div class="col-md-3">
-                          <select class="form-control" readonly name="Rol" required>
-                              <option value="<?php echo $row->rol;?>"><?php echo $row->rol;?></option>
-                              <option value="admin" >admin</option>
-                              <option value="vendedor">vendedor</option>
-                              <option value="contador">contador</option>
-                          </select>
-                      </div>                      
+                          <input class="form-control" type="password" name="password2" data-validate-linked='Password' required='required' >
+                          <span class="fa fa-key form-control-feedback left" aria-hidden="true"></span>
+                      </div>                    
                     </div>
 
                     <div class="item form-group has-feedback">
@@ -106,6 +106,15 @@
                     </div>
 
                     <div class="item form-group has-feedback">
+                      <label class="col-form-label col-md-1 label-align" for="rol">Rol Usuario:</label>
+                      <div class="col-md-3">
+                          <select class="form-control" readonly name="Rol" required>
+                              <option value="<?php echo $row->rol;?>"><?php echo $row->rol;?></option>
+                              <option value="admin" >admin</option>
+                              <option value="vendedor">vendedor</option>
+                              <option value="contador">contador</option>
+                          </select>
+                      </div>  
                       <label class="col-form-label col-md-1 label-align" for="numeroci">Nro. Carnet:</label>
                       <div class="col-md-3">
                           <input type="text" name="CedulaIdentidad" readonly class="form-control has-feedback-left" value="<?php echo $row->cedulaIdentidad;?>">
@@ -115,7 +124,9 @@
                       <div class="col-md-3">
                           <input type="text" name="Telefono" readonly class="form-control has-feedback-left" value="<?php echo $row->telefono;?>">
                           <span class="fa fa-mobile-phone form-control-feedback left" aria-hidden="true"></span>
-                      </div>
+                      </div>    
+                    </div>
+                    <div class="item form-group has-feedback">
                       <label class="col-form-label col-md-1 label-align" for="genero">Direccion:</label>
                       <div class="col-md-3">
                         <textarea name="Direccion" readonly class="form-control has-feedback-left" ><?php echo $row->direccion; ?></textarea>
@@ -131,6 +142,54 @@
                       }
                     ?>
                   </div>
+                  
+                  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+                        <script src="<?php echo base_url(); ?>gentelella/vendors/validator/multifield.js"></script>
+                        <script src="<?php echo base_url(); ?>gentelella/vendors/validator/validator.js"></script>
+                      <script>
+                        function hideshow(){
+                          var password = document.getElementById("password1");
+                          var slash = document.getElementById("slash");
+                          var eye = document.getElementById("eye");
+                          
+                          if(password.type === 'password'){
+                            password.type = "text";
+                            slash.style.display = "block";
+                            eye.style.display = "none";
+                          }
+                          else{
+                            password.type = "password";
+                            slash.style.display = "none";
+                            eye.style.display = "block";
+                          }
+
+                        }
+                      </script>
+                        <script>
+                            // initialize a validator instance from the "FormValidator" constructor.
+                            // A "<form>" element is optionally passed as an argument, but is not a must
+                            var validator = new FormValidator({
+                                "events": ['blur', 'input', 'change']
+                            }, document.forms[0]);
+                            // on form "submit" event
+                            document.forms[0].onsubmit = function(e) {
+                                var submit = true,
+                                    validatorResult = validator.checkAll(this);
+                                console.log(validatorResult);
+                                return !!validatorResult.valid;
+                            };
+                            // on form "reset" event
+                            document.forms[0].onreset = function(e) {
+                                validator.reset();
+                            };
+                            // stuff related ONLY for this demo page:
+                            $('.toggleValidationTooltips').change(function() {
+                                validator.settings.alerts = !this.checked;
+                                if (this.checked)
+                                    $('form .alert').remove();
+                            }).prop('checked', false);   
+                        </script>
+                        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
                 </div>
               </div>
             </div>

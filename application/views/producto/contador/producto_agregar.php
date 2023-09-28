@@ -95,7 +95,7 @@
                       </div>
                       <label class="col-form-label col-md-1 label-align" for="categoria">Categoria:</label>
                       <div class="col-md-3">
-                          <select class="form-control" name="idCategoria">
+                          <select class="form-control" name="idCategoria" required>
                           <option value="" disabled selected >Seleccione una categoria:</option>
                           <?php
                               foreach ($categoria->result() as $row)
@@ -114,31 +114,41 @@
                     <div class="item form-group has-feedback">
                       <label class="col-form-label col-md-1 label-align" for="inputCo">Codigo:</label>
                       <div class="col-md-3">
-                          <input type="text" name="Codigo" class="form-control has-feedback-left">
+                          <input type="text" name="Codigo" class="form-control has-feedback-left"
+                          value="<?php echo set_value('Codigo');?>">
                           <span class="fa fa-barcode form-control-feedback left" aria-hidden="true"></span>
+                          <?php echo form_error('Codigo'); ?>
                       </div>
                       <label class="col-form-label col-md-1 label-align" for="inputNP">Descripcion:</label>
                       <div class="col-md-3">
-                          <input type="text" name="Nombreproducto" class="form-control has-feedback-left">
+                          <input type="text" name="Nombreproducto" class="form-control has-feedback-left"
+                          value="<?php echo set_value('Nombreproducto');?>">
                           <span class="fa fa-money form-control-feedback left" aria-hidden="true"></span>
+                          <?php echo form_error('Nombreproducto'); ?>
                       </div>
                       <label class="col-form-label col-md-1 label-align" for="inputCa">Cantidad:</label>
                       <div class="col-md-3">
-                          <input type="text" name="Cantidad" class="form-control has-feedback-left">
+                          <input type="text" name="Cantidad" class="form-control has-feedback-left"
+                          value="<?php echo set_value('Cantidad');?>">
                           <span class="fa fa-barcode form-control-feedback left" aria-hidden="true"></span>
+                          <?php echo form_error('Cantidad'); ?>
                       </div>
                     </div>
 
                     <div class="item form-group has-feedback">
                       <label class="col-form-label col-md-1 label-align" for="inputPreC">Precio Compra (Bs):</label>
                       <div class="col-md-3">
-                          <input type="text" name="Preciocompra" class="form-control has-feedback-left">
+                          <input type="text" name="Preciocompra" class="form-control has-feedback-left"
+                          value="<?php echo set_value('Preciocompra');?>">
                           <span class="fa fa-money form-control-feedback left" aria-hidden="true"></span>
+                          <?php echo form_error('Preciocompra'); ?>
                       </div>
                       <label class="col-form-label col-md-1 label-align" for="inputPreV">Precio Venta (Bs):</label>
                       <div class="col-md-3">
-                          <input type="text" name="Precioventa" class="form-control has-feedback-left">
+                          <input type="text" name="Precioventa" class="form-control has-feedback-left"
+                          value="<?php echo set_value('Precioventa');?>">
                           <span class="fa fa-money form-control-feedback left" aria-hidden="true"></span>
+                          <?php echo form_error('Precioventa'); ?>
                       </div>
                     </div>
                     
