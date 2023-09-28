@@ -13,5 +13,27 @@ function formatearFecha ($fecha)
     return $fechaformateada;
 }
 
+function mensajeLogin($msg)
+{
+        switch ($msg) {
+            case '1':
+				$mensaje='<p style="text-shadow: none;" class="text-success font-weight-bold">Gracias por usar el sistema!</p>';
+                break;
+
+            case '2':
+				$mensaje='<p style="text-shadow: none;" class="text-danger font-weight-bold">Usuario u contraseña incorrecta</p>';
+                break;
+
+            case '3':
+				$mensaje='<p style="text-shadow: none;" class="text-danger font-weight-bold">Acceso no valido - favor inicie sesión</p>';
+                break;
+
+            default:
+                $mensaje="";
+                break;
+        }
+        return $mensaje;
+}
+
 
 ?>

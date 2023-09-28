@@ -53,10 +53,12 @@ class Cliente extends CI_Controller {
 	{
         if($this->session->userdata('rol')=='admin')
         {
+            $data['msg'] = $this->uri->segment(3);
+
             $this->load->view('inc/cabecera');
             $this->load->view('inc/menulateral');
             $this->load->view('inc/menusuperior');
-            $this->load->view('cliente/cliente_agregar');
+            $this->load->view('cliente/cliente_agregar',$data);
             $this->load->view('inc/creditos');	
             $this->load->view('inc/pie');
         }
@@ -64,19 +66,23 @@ class Cliente extends CI_Controller {
         {
             if($this->session->userdata('rol')=='contador')
             {
+                $data['msg'] = $this->uri->segment(3);
+
                 $this->load->view('inc/cabecera');
                 $this->load->view('inc/menulateral_contador');
                 $this->load->view('inc/menusuperior');
-                $this->load->view('cliente/contador/cliente_agregar');
+                $this->load->view('cliente/contador/cliente_agregar',$data);
                 $this->load->view('inc/creditos');	
                 $this->load->view('inc/pie');
             }
             else
             {
+                $data['msg'] = $this->uri->segment(3);
+
                 $this->load->view('inc/cabecera');
                 $this->load->view('inc/menulateral');
                 $this->load->view('inc/menusuperior');
-                $this->load->view('cliente/vendedor/cliente_agregar');
+                $this->load->view('cliente/vendedor/cliente_agregar',$data);
                 $this->load->view('inc/creditos');	
                 $this->load->view('inc/pie');
             }
@@ -119,10 +125,13 @@ class Cliente extends CI_Controller {
         {
             if($this->session->userdata('rol')=='admin')
             {
+
+                $data['msg'] = $this->uri->segment(3);
+
                 $this->load->view('inc/cabecera');
                 $this->load->view('inc/menulateral');
                 $this->load->view('inc/menusuperior');
-                $this->load->view('cliente/cliente_agregar');
+                $this->load->view('cliente/cliente_agregar',$data);
                 $this->load->view('inc/creditos');	
                 $this->load->view('inc/pie');
             }
@@ -130,32 +139,44 @@ class Cliente extends CI_Controller {
             {
                 if($this->session->userdata('rol')=='contador')
                 {
+                    $data['msg'] = $this->uri->segment(3);
+
                     $this->load->view('inc/cabecera');
                     $this->load->view('inc/menulateral_contador');
                     $this->load->view('inc/menusuperior');
-                    $this->load->view('cliente/contador/cliente_agregar');
+                    $this->load->view('cliente/contador/cliente_agregar',$data);
                     $this->load->view('inc/creditos');	
                     $this->load->view('inc/pie');
                 }
                 else
                 {
+                    $data['msg'] = $this->uri->segment(3);
+
                     $this->load->view('inc/cabecera');
                     $this->load->view('inc/menulateral');
                     $this->load->view('inc/menusuperior');
-                    $this->load->view('cliente/vendedor/cliente_agregar');
+                    $this->load->view('cliente/vendedor/cliente_agregar',$data);
                     $this->load->view('inc/creditos');	
                     $this->load->view('inc/pie');
                 }
             }
         }
         else{
-            $data['idUsuario']=$this->session->userdata('idusuario');
-            $data['razonSocial']=strtoupper($_POST['RazonSocial']);
-            $data['ciNit']=$_POST['CiNit'];
-            $data['telefono']=$_POST['Telefono'];
+            $carnet = $_POST['CiNit'];
+            $validarcarnet = $this->cliente_model->validarcarnet($carnet);
+            if ($validarcarnet->num_rows() > 0) {
+                redirect('cliente/agregar/2', 'refresh');
+            } 
+            else {
 
-            $this->cliente_model->agregarcliente($data);
-            redirect('cliente/index','refresh');
+                $data['idUsuario']=$this->session->userdata('idusuario');
+                $data['razonSocial']=strtoupper($_POST['RazonSocial']);
+                $data['ciNit']=$_POST['CiNit'];
+                $data['telefono']=$_POST['Telefono'];
+
+                $this->cliente_model->agregarcliente($data);
+                redirect('cliente/index','refresh');
+            }
         }
 	}
 

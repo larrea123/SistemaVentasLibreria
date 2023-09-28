@@ -76,7 +76,10 @@
                           <input type="text" name="CiNit" class="form-control has-feedback-left"
                           value="<?php echo set_value('CiNit');?>">
                           <span class="fa fa-list-alt form-control-feedback left" aria-hidden="true"></span>
-                          <?php echo form_error('CiNit'); ?>
+                          <?php echo form_error('CiNit');
+                            if ($msg == '2') { ?>
+                              <p id="validar"> (*) numero de carnet ya existente</p>
+                          <?php } ?>
                       </div>
                       <label class="col-form-label col-md-1 label-align" for="telefono">Nro. Celular:</label>
                       <div class="col-md-3">

@@ -60,4 +60,11 @@ class Cliente_model extends CI_Model {
         $this->db->where('U.estado','0');
         return $this->db->get(); //devolucion del resultado de la consulta*/
     }
+    public function validarcarnet($carnet)
+    {
+        $this->db->select('ciNit');
+        $this->db->from('cliente');
+        $this->db->where('ciNit', $carnet);
+        return $this->db->get();
+    }
 }
