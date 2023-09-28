@@ -44,6 +44,16 @@
                 <div class="col-sm-12">
                   <div class="card-box table-responsive">
                     <div class="btn-group">
+                    <?php 
+                        echo form_open_multipart('cliente/agregar');
+                      ?>
+                      <button type="submit" class="btn btn-success">
+                        <i class="fa fa-plus-circle"></i> Insertar Cliente
+                      </button>
+                      <?php 
+                        echo form_close();
+                      ?>
+                      ⠀<!--aquí se encuentra un caracter en blanco con el propósito de separar los botones de forma "limpia"-->
                       <?php 
                         echo form_open_multipart('cliente/deshabilitados');
                       ?>
@@ -53,20 +63,10 @@
                       <?php 
                         echo form_close();
                       ?>
-                      ⠀<!--aquí se encuentra un caracter en blanco con el propósito de separar los botones de forma "limpia"-->
-                      <?php 
-                        echo form_open_multipart('cliente/agregar');
-                      ?>
-                      <button type="submit" class="btn btn-success">
-                        <i class="fa fa-plus-circle"></i> Insertar Cliente
-                      </button>
-                      <?php 
-                        echo form_close();
-                      ?>
                     </div>
                     <br><br>
                     <p class="text-muted font-13 m-b-30">
-                      The Buttons extension for DataTables provides a common set of options, API methods and styling to display buttons on a page that will interact with a DataTable. The core library provides the based framework upon which plug-ins can built.
+                      Estimado usuario, a continuación se muestra el registro de todos los clientes de la librería.
                     </p>
                     <table id="datatable-buttons" class="table table-striped table-bordered" style="width:100%">
                       <thead>
