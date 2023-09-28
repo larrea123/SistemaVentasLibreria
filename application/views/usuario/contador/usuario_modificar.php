@@ -91,27 +91,18 @@
             </div>	-->
                       
                       <div class="col-md-3">
-                        <div class="field item form-group">
-                          <label class="col-form-label col-md-4 col-sm-4  label-align">Nueva Contraseña<span class="required"></span></label>
-				                  <div class="col-md-7 col-sm-7">
-					                  <input class="form-control" type="password" id="password1" name="password2" required />
-					
-					                  <span style="position: absolute;right:15px;top:7px;" onclick="hideshow()" >
-						                  <i id="slash" class="fa fa-eye-slash"></i>
-						                  <i id="eye" class="fa fa-eye"></i>
-					                  </span>
-				                  </div>
-			                  </div>
-                      </div>  
-                      
+                          <input type="password" name="Password" class="form-control has-feedback-left" value="<?php echo $row->password;?>">
+                          <span class="fa fa-key form-control-feedback left" aria-hidden="true"></span>
+                      </div>
+                      <label class="col-form-label col-md-1 label-align" for="rol">Rol Usuario:</label>
                       <div class="col-md-3">
-                      <div class="field item form-group">
-                <label class="col-form-label col-md-4 col-sm-4  label-align">Repite la contraeña<span class="required"></span></label>
-                <div class="col-md-7 col-sm-7">
-                    <input class="form-control" type="password" name="Password" data-validate-linked='Password' required='required' />
-                </div>
-            </div>
-                      </div>                    
+                          <select class="form-control" readonly name="Rol" required>
+                              <option value="<?php echo $row->rol;?>"><?php echo $row->rol;?></option>
+                              <option value="admin" >admin</option>
+                              <option value="vendedor">vendedor</option>
+                              <option value="contador">contador</option>
+                          </select>
+                      </div>                      
                     </div>
 
                     <div class="item form-group has-feedback">
@@ -169,18 +160,8 @@
                       }
                     ?>
                   </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>  
-<!-- /page content -->
                   
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+                  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
                         <script src="<?php echo base_url(); ?>gentelella/vendors/validator/multifield.js"></script>
                         <script src="<?php echo base_url(); ?>gentelella/vendors/validator/validator.js"></script>
                       <script>
@@ -227,3 +208,13 @@
                             }).prop('checked', false);   
                         </script>
                         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>  
+<!-- /page content -->

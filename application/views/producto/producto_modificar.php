@@ -86,7 +86,7 @@
                       </div>
                       <label class="col-form-label col-md-1 label-align" for="proveedor">Proveedor:</label>
                       <div class="col-md-3">
-                          <select class="form-control" name="idProveedor">
+                          <select class="form-control" name="idProveedor" required>
                               <option value="<?php echo $rows->idProveedor; ?>">
                                 <?php echo $rows->nombreProveedor; ?>
                               </option>
@@ -104,7 +104,7 @@
                       </div>
                       <label class="col-form-label col-md-1 label-align" for="categoria">Categoria:</label>
                       <div class="col-md-3">
-                          <select class="form-control" name="idCategoria">
+                          <select class="form-control" name="idCategoria" required>
                             <option value="<?php echo $rows->idCategoria; ?>">
                               <?php echo $rows->nombreCategoria; ?>
                             </option>

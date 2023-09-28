@@ -44,6 +44,16 @@
                 <div class="col-sm-12">
                   <div class="card-box table-responsive">
                     <div class="btn-group">
+                    <?php 
+                        echo form_open_multipart('producto/agregar');
+                      ?>
+                      <button type="submit" class="btn btn-success">
+                        <i class="fa fa-plus-circle"></i> Insertar Productos
+                      </button>
+                      <?php 
+                        echo form_close();
+                      ?>
+                      ⠀<!--aquí se encuentra un caracter en blanco con el propósito de separar los botones de forma "limpia"-->
                       <?php 
                         echo form_open_multipart('producto/deshabilitados');
                       ?>
@@ -53,16 +63,8 @@
                       <?php 
                         echo form_close();
                       ?>
-                      ⠀<!--aquí se encuentra un caracter en blanco con el propósito de separar los botones de forma "limpia"-->
-                      <?php 
-                        echo form_open_multipart('producto/agregar');
-                      ?>
-                      <button type="submit" class="btn btn-success">
-                        <i class="fa fa-plus-circle"></i> Insertar Productos
-                      </button>
-                      <?php 
-                        echo form_close();
-                      ?>
+                      
+
                     </div>
                     <br><br>
                     <p class="text-muted font-13 m-b-30">
