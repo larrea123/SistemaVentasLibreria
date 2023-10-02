@@ -74,7 +74,7 @@ class Marca extends CI_Controller {
             else
             {
                 $this->load->view('inc/cabecera');
-                $this->load->view('inc/menulateral');
+                $this->load->view('inc/menulateral_vendedor');
                 $this->load->view('inc/menusuperior');
                 $this->load->view('marca/vendedor/marca_agregar');
                 $this->load->view('inc/creditos');	
@@ -85,11 +85,59 @@ class Marca extends CI_Controller {
 
     public function agregarbd()
 	{
-        $data['idUsuario']=$this->session->userdata('idusuario');
-        $data['nombreMarca']=strtoupper($_POST['NombreMarca']);
+        $this->load->library('form_validation');
+        $this->form_validation->set_rules(
+            'NombreMarca',
+            'Ingrese el nombre de la marca',
+            'required|min_length[3]|max_length[30]|alpha_numeric_spaces',
+            array('required'=>'Se requiere ingresar el nombre de la marca.',
+                    'min_length'=>'el nombre de la marca debe tener al menos 3 caracteres.',
+                    'max_length'=>'¡el nombre de la marca no debe contener más de 30 caracteres!.',
+                    'alpha_numeric_spaces'=>'¡El nombre de la marca solo debe contener letras!.'
+                    )
+        );
 
-        $this->marca_model->agregarmarca($data);
-        redirect('marca/index','refresh');
+        if($this->form_validation->run()==FALSE)
+        {
+            if($this->session->userdata('rol')=='admin')
+            {
+                $this->load->view('inc/cabecera');
+                $this->load->view('inc/menulateral');
+                $this->load->view('inc/menusuperior');
+                $this->load->view('marca/marca_agregar');
+                $this->load->view('inc/creditos');	
+                $this->load->view('inc/pie');
+            }
+            else
+            {
+                if($this->session->userdata('rol')=='contador')
+                {
+                    $this->load->view('inc/cabecera');
+                    $this->load->view('inc/menulateral_contador');
+                    $this->load->view('inc/menusuperior');
+                    $this->load->view('marca/contador/marca_agregar');
+                    $this->load->view('inc/creditos');	
+                    $this->load->view('inc/pie');
+                }
+                else
+                {
+                    $this->load->view('inc/cabecera');
+                    $this->load->view('inc/menulateral');
+                    $this->load->view('inc/menusuperior');
+                    $this->load->view('marca/vendedor/marca_agregar');
+                    $this->load->view('inc/creditos');	
+                    $this->load->view('inc/pie');
+                }
+            }
+        }
+        else{
+
+                $data['idUsuario']=$this->session->userdata('idusuario');
+                $data['nombreMarca']=strtoupper($_POST['NombreMarca']);
+
+                $this->marca_model->agregarmarca($data);
+                redirect('marca/index','refresh');
+        }
 	}
 
 
@@ -145,14 +193,70 @@ class Marca extends CI_Controller {
 
     public function modificarbd()
     {
-        $idmarca=$_POST['idmarca'];
+        $this->load->library('form_validation');
+        $this->form_validation->set_rules(
+            'NombreMarca',
+            'Ingrese el nombre de la marca',
+            'required|min_length[3]|max_length[30]|alpha_numeric_spaces',
+            array('required'=>'Se requiere ingresar el nombre de la marca.',
+                    'min_length'=>'el nombre de la marca debe tener al menos 3 caracteres.',
+                    'max_length'=>'¡el nombre de la marca no debe contener más de 30 caracteres!.',
+                    'alpha_numeric_spaces'=>'¡El nombre de la marca solo debe contener letras!.'
+                    )
+        );
 
-        $data['idUsuario']=$this->session->userdata('idusuario');
-        $data['nombreMarca']=strtoupper($_POST['NombreMarca']);
-        $data['fechaActualizacion']=date('Y-m-d H:i:s');
+        if($this->form_validation->run()==FALSE)
+        {
+            if($this->session->userdata('rol')=='admin')
+            {
+                $idmarca=$_POST['idmarca'];
+                $data['infomarca']=$this->marca_model->recuperarmarca($idmarca);
+
+                $this->load->view('inc/cabecera');
+                $this->load->view('inc/menulateral');
+                $this->load->view('inc/menusuperior');
+                $this->load->view('marca/marca_modificar',$data);
+                $this->load->view('inc/creditos');	
+                $this->load->view('inc/pie');
+            }
+            else
+            {
+                if($this->session->userdata('rol')=='contador')
+                {
+                    $idmarca=$_POST['idmarca'];
+                    $data['infomarca']=$this->marca_model->recuperarmarca($idmarca);
         
-        $this->marca_model->modificarmarca($idmarca,$data);
-        redirect('marca/index','refresh');
+                    $this->load->view('inc/cabecera');
+                    $this->load->view('inc/menulateral_contador');
+                    $this->load->view('inc/menusuperior');
+                    $this->load->view('marca/contador/marca_modificar',$data);
+                    $this->load->view('inc/creditos');	
+                    $this->load->view('inc/pie');
+                }
+                else
+                {
+                    $idmarca=$_POST['idmarca'];
+                    $data['infomarca']=$this->marca_model->recuperarmarca($idmarca);
+        
+                    $this->load->view('inc/cabecera');
+                    $this->load->view('inc/menulateral_vendedor');
+                    $this->load->view('inc/menusuperior');
+                    $this->load->view('marca/vendedor/marca_modificar',$data);
+                    $this->load->view('inc/creditos');	
+                    $this->load->view('inc/pie');
+                }
+            }
+        }
+        else{
+                $idmarca=$_POST['idmarca'];
+
+                $data['idUsuario']=$this->session->userdata('idusuario');
+                $data['nombreMarca']=strtoupper($_POST['NombreMarca']);
+                $data['fechaActualizacion']=date('Y-m-d H:i:s');
+                
+                $this->marca_model->modificarmarca($idmarca,$data);
+                redirect('marca/index','refresh');
+        }
     }
     public function deshabilitarbd() 
     {

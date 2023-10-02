@@ -169,11 +169,11 @@ class Producto extends CI_Controller {
         $this->form_validation->set_rules(
             'Nombreproducto',
             'Descripcion del producto',
-            'required|min_length[5]|max_length[15]|alpha_numeric_spaces',
+            'required|min_length[5]|max_length[30]|alpha_numeric_spaces',
             array(
                 'required'=>'Se requiere ingresar la Descripcion del producto.',
                 'min_length'=>'La Descripcion del producto debe tener al menos 5 caracteres.',
-                'max_length'=>'¡La Descripcion del producto no debe contener más de 15 caracteres!.',
+                'max_length'=>'¡La Descripcion del producto no debe contener más de 30 caracteres!.',
                 'alpha_numeric_spaces'=>'¡La Descripcion del producto solo debe contener letras y numeros!.'
                 )
         );
@@ -191,7 +191,7 @@ class Producto extends CI_Controller {
         $this->form_validation->set_rules(
             'Preciocompra',
             'Precio de Compra del producto',
-            'required|min_length[1]|max_length[4]|numeric',
+            'required|min_length[1]|max_length[5]|numeric',
             array(
                 'required'=>'Se requiere ingresar el Precio de Compra del producto.',
                 'min_length'=>'El Precio de Compra del producto debe tener al menos 1 cifra.',
@@ -202,7 +202,7 @@ class Producto extends CI_Controller {
         $this->form_validation->set_rules(
             'Precioventa',
             'Precio de Venta del producto',
-            'required|min_length[1]|max_length[4]|numeric',
+            'required|min_length[1]|max_length[5]|numeric',
             array(
                 'required'=>'Se requiere ingresar el Precio de Venta del producto.',
                 'min_length'=>'El Precio de Venta del producto debe tener al menos 1 cifra.',
@@ -371,7 +371,7 @@ class Producto extends CI_Controller {
         $this->form_validation->set_rules(
             'Nombreproducto',
             'Descripcion del producto',
-            'required|min_length[5]|max_length[15]|alpha_numeric_spaces',
+            'required|min_length[5]|max_length[30]|alpha_numeric_spaces',
             array(
                 'required'=>'Se requiere ingresar la Descripcion del producto.',
                 'min_length'=>'La Descripcion del producto debe tener al menos 5 caracteres.',
@@ -393,7 +393,7 @@ class Producto extends CI_Controller {
         $this->form_validation->set_rules(
             'Preciocompra',
             'Precio de Compra del producto',
-            'required|min_length[1]|max_length[4]|numeric',
+            'required|min_length[1]|max_length[5]|numeric',
             array(
                 'required'=>'Se requiere ingresar el Precio de Compra del producto.',
                 'min_length'=>'El Precio de Compra del producto debe tener al menos 1 cifra.',
@@ -404,7 +404,7 @@ class Producto extends CI_Controller {
         $this->form_validation->set_rules(
             'Precioventa',
             'Precio de Venta del producto',
-            'required|min_length[1]|max_length[4]|numeric',
+            'required|min_length[1]|max_length[5]|numeric',
             array(
                 'required'=>'Se requiere ingresar el Precio de Venta del producto.',
                 'min_length'=>'El Precio de Venta del producto debe tener al menos 1 cifra.',

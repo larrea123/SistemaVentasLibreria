@@ -70,6 +70,7 @@
                       <div class="col-md-3">
                           <input type="text" name="NombreCategoria" class="form-control has-feedback-left" value="<?php echo $row->nombreCategoria;?>">
                           <span class="fa fa-male form-control-feedback left" aria-hidden="true"></span>
+                          <?php echo form_error('NombreCategoria'); ?>
                       </div>
                     </div>
                                         

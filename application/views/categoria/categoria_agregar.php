@@ -66,8 +66,10 @@
                     <div class="item form-group has-feedback">
                       <label class="col-form-label col-md-1 label-align" for="razonsocial">Nombre Categoria:</label>
                       <div class="col-md-3">
-                          <input type="text" name="NombreCategoria" class="form-control has-feedback-left">
+                          <input type="text" name="NombreCategoria" class="form-control has-feedback-left"
+                          value="<?php echo set_value('NombreCategoria');?>">
                           <span class="fa fa-male form-control-feedback left" aria-hidden="true"></span>
+                          <?php echo form_error('NombreCategoria'); ?>
                       </div>
                     </div>
             

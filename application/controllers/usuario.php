@@ -226,7 +226,7 @@ class Usuario extends CI_Controller {
                 $clave2L=strtoupper($_POST['PrimerApellido']);
                 $clave3L=$_POST['CedulaIdentidad'];
 
-                $encriptar=$clave1L[0].$clave2L.substr($clave3L,0,3);
+                $encriptar=$clave1L[0].$clave2L.$clave3L;
                 $data['login']=$encriptar;
 
                 /*$data['login']=$_POST['Login'];
@@ -471,7 +471,7 @@ class Usuario extends CI_Controller {
         $data['fechaActualizacion']=date('Y-m-d H:i:s');
         
         $this->usuario_model->modificarusuario($idusuario,$data);
-        redirect('marca/index','refresh');
+        redirect('usuario/index2','refresh');
     }
     public function deshabilitarbd() 
     {
