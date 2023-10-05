@@ -165,7 +165,7 @@
                         </div>
                     </div>
 
-                    <button type="submit" class="btn btn-success">
+                    <button type="submit" class="btn btn-success" disabled >
                         <i class="fa fa-plus-circle"></i>Insertar
                     </button>
                 </div>

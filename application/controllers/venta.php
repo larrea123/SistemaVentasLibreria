@@ -64,13 +64,27 @@ class Venta extends CI_Controller
             $this->load->view('venta/venta_agregar');
             $this->load->view('inc/creditos');	
             $this->load->view('inc/pie');
-        } else {
-            $this->load->view('inc/cabecera');
-            $this->load->view('inc/menulateral');
-            $this->load->view('inc/menusuperior');
-            $this->load->view('venta/venta_agregar');
-            $this->load->view('inc/creditos');	
-            $this->load->view('inc/pie');
+        }
+        else
+        {
+            if($this->session->userdata('rol')=='contador')
+            {
+                $this->load->view('inc/cabecera');
+                $this->load->view('inc/menulateral_contador');
+                $this->load->view('inc/menusuperior');
+                $this->load->view('venta/venta_agregar');
+                $this->load->view('inc/creditos');	
+                $this->load->view('inc/pie');
+            }
+            else
+            {
+                $this->load->view('inc/cabecera');
+                $this->load->view('inc/menulateral_vendedor');
+                $this->load->view('inc/menusuperior');
+                $this->load->view('venta/venta_agregar');
+                $this->load->view('inc/creditos');	
+                $this->load->view('inc/pie');
+            }
         }
     }
     public function vistaActualizar()
