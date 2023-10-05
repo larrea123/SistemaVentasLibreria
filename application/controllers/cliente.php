@@ -180,6 +180,16 @@ class Cliente extends CI_Controller {
         }
 	}
 
+    public function agregarbd2()
+	{
+        $data['idUsuario']=$this->session->userdata('idusuario');
+        $data['razonSocial']=strtoupper($_POST['RazonSocial']);
+        $data['ciNit']=$_POST['CiNit'];
+        $data['telefono']=$_POST['Telefono'];
+
+        $this->cliente_model->agregarcliente($data);
+        redirect('venta/vistaAgregarVenta','refresh'); 
+    }
     public function eliminarbd()
     {
         $idcliente=$_POST['idcliente'];

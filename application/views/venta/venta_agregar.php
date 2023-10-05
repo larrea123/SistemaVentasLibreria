@@ -28,7 +28,7 @@
                         </div>
                     </div>
                     <div class="x_content">
-                        <!-- Inicio Div x_content -->
+                        <!-- Inicio Div x_content 
                         <?php
                         echo form_open_multipart('venta/index');
                         ?>
@@ -37,22 +37,21 @@
                         </button>
                         <?php
                         echo form_close();
-                        ?>
+                        ?>-->
                         <br>
 
                         <div class="item form-group has-feedback">
-                            <label class="col-form-label col-md-1 label-align">Carnet Identidad:</label>
+                            <label class="col-form-label col-md-1 label-align">Nit / Carnet Identidad:</label>
                             <div class="col-md-3">
                                 <input type="search" name="carnet" id="carnet" class="form-control"></input>
                             </div>
                             <input hidden name="idCli" id="idCli" value="0">
-                            <input hidden name="idUsuario" id="idUsuario" value="<?php echo $_SESSION['idusuario'] ?>">
-                            <input hidden name="idSucursal" id="idSucursal" value="<?php echo $_SESSION['idSucursal'] ?>">
+                            <!--<input hidden name="idUsuario" id="idUsuario" value="<?php echo $_SESSION['idusuario'] ?>">-->
 
 
-                            <label class="col-form-label col-md-1 label-align" for="nombre">Nombre Cliente:</label>
+                            <label class="col-form-label col-md-1 label-align" for="razon">Razon Social:</label>
                             <div class="col-md-3">
-                                <input class="form-control" disabled name="nombre" id="nombre" placeholder="Sin nombre" />
+                                <input class="form-control" disabled name="razon" id="razon" placeholder="Sin nombre" />
                                 <div id="suggestions">
                                     <ul id="autoSuggestionsList"></ul>
                                 </div>
@@ -67,17 +66,17 @@
 
                         <div class="item form-group has-feedback">
 
-                            <label class="col-form-label col-md-1 label-align" for="primerapellido">Primer apellido:</label>
+                            <label class="col-form-label col-md-1 label-align" for="telefono">Telefono:</label>
 
                             <div class="col-md-3">
-                                <input id="primerA" disabled class="form-control" placeholder="Sin primer apellido" value=""></input>
+                                <input id="telefono" disabled class="form-control" placeholder="Sin telefono" value=""></input>
                             </div>
 
-                            <label class="col-form-label col-md-1 label-align" for="primerapellido">Segundo Apellido:</label>
+                            <!--<label class="col-form-label col-md-1 label-align" for="primerapellido">Segundo Apellido:</label>
 
                             <div class="col-md-3">
                                 <input id="segundoA" disabled class="form-control" placeholder="Sin segundo apellido" value=""></input>
-                            </div>    
+                            </div>    -->
                         </div>
                     </div><!-- Fin Div x_content -->
                 </div><!-- Fin Div x_panel -->
@@ -100,7 +99,7 @@
 
                         <div class="item form-group has-feedback">
 
-                            <label class="col-form-label col-md-1 label-align" for="nombre">Nro. Chasis:</label>
+                            <label class="col-form-label col-md-1 label-align" for="nombre">Nombre Producto:</label>
                             <div class="col-md-3">
                                 <input type="search" class="form-control" value="" name="producto" id="producto" placeholder="Escriba nombre del producto" />
                                 <input type="hidden" name="producto1" id="producto1" value="">
@@ -112,11 +111,16 @@
                             </div>
                         </div>
                         <div class="item form-group has-feedback">
+                            <label class="col-form-label col-md-1 label-align">Categoria:</label>
+                            <div class="col-md-3">
+                                <input name="categoria" disabled id="categoria" class="form-control" value="" placeholder="Sin categoria"></input>
+                            </div>
+
                             <label class="col-form-label col-md-1 label-align">Precio Unitario:</label>
                             <div class="col-md-3">
                                 <input name="precioU" disabled id="precioU" class="form-control" value="" placeholder="Sin precio unitario"></input>
                             </div>
-                            <div class="col-md-1"></div>
+
                             <div class="col-md-3">
                                 <button id="agregarTabla" disabled type="text" class="btn btn-success">
                                     <i class="fa fa-plus-circle"></i> Agregar a la tabla
@@ -137,7 +141,7 @@
                             <tr class="headings bg-green">
                                 <th class="column-title">Nombre </th>
                                 <th class="column-title">Marca </th>
-                                <th class="column-title">Modelo </th>
+                                <th class="column-title">Categoría </th>
                                 <th class="column-title">Precio </th>
                                 <th class="column-title">Cantidad </th>
                                 <th class="column-title">SubTotal </th>
@@ -161,7 +165,7 @@
                         </div>
                     </div>
 
-                    <button type="submit" class="btn btn-success" onclick="guardaryeditar(event)">
+                    <button type="submit" class="btn btn-success">
                         <i class="fa fa-plus-circle"></i>Insertar
                     </button>
                 </div>
@@ -187,54 +191,28 @@
                     Usted va a insertar un nuevo cliente, por favor llene el siguiente campo:
                 </p>
                 <div class="item form-group has-feedback">
-
-                    <label class="col-form-label col-md-1 label-align" for="nombres">Nombres:</label>
-                    <div class="col-md-3">
-                        <input type="text" name="nombres" class="form-control has-feedback-left"
-                        value="<?php echo set_value('nombres');?>">
-                        <span class="fa fa-male form-control-feedback left" aria-hidden="true"></span>
-                        <?php echo form_error('nombres'); ?>
-                    </div>
-
-                    <label class="col-form-label col-md-1 label-align" for="primerapellido">Primer Apellido:</label>
-                    <div class="col-md-3">
-                        <input type="text" name="primerapellido" class="form-control has-feedback-left"
-                        value="<?php echo set_value('primerapellido');?>">
-                        <span class="fa fa-male form-control-feedback left" aria-hidden="true"></span>
-                        <?php echo form_error('primerapellido'); ?>
-                    </div>
-
-                    <label class="col-form-label col-md-1 label-align" for="segundoapellido">Segundo Apellido:</label>
-                    <div class="col-md-3">
-                        <input type="text" name="segundoapellido" class="form-control has-feedback-left"
-                        value="<?php echo set_value('segundoapellido');?>">
-                        <span class="fa fa-male form-control-feedback left" aria-hidden="true"></span>
-                        <?php echo form_error('segundoapellido'); ?>
-                    </div>
-                </div>
-        
-                <div class="item form-group has-feedback">
-                    <label class="col-form-label col-md-1 label-align" for="numeroci">Nro. Carnet:</label>
-                    <div class="col-md-3">
-                        <input type="text" name="cedulaidentidad" class="form-control has-feedback-left"
-                        value="<?php echo set_value('cedulaidentidad');?>">
-                        <span class="fa fa-list-alt form-control-feedback left" aria-hidden="true"></span>
-                        <?php echo form_error('cedulaidentidad'); ?>
-                    </div>
-                    <label class="col-form-label col-md-1 label-align" for="numerocelular">Nro. Celular:</label>
-                    <div class="col-md-3">
-                        <input type="text" name="telefono" class="form-control has-feedback-left"
-                        value="<?php echo set_value('telefono');?>">
-                        <span class="fa fa-mobile-phone form-control-feedback left" aria-hidden="true"></span>
-                        <?php echo form_error('telefono'); ?>
-                    </div>
-                    <label class="col-form-label col-md-1 label-align" for="direccion">Direccion:</label>
-                    <div class="col-md-3">
-                        <textarea name="direccion" class="form-control has-feedback-left"></textarea>
-                        <span class="fa fa-list form-control-feedback left" aria-hidden="true"></span>
-                        <?php echo form_error('direccion'); ?>
-                    </div>
-                </div>   
+                  <label class="col-form-label col-md-1 label-align" for="razonsocial">Razon Social:</label>
+                  <div class="col-md-3">
+                      <input type="text" name="RazonSocial" class="form-control has-feedback-left"
+                      value="<?php echo set_value('RazonSocial');?>">
+                      <span class="fa fa-male form-control-feedback left" aria-hidden="true"></span>
+                      <?php echo form_error('RazonSocial'); ?>
+                  </div>
+                  <label class="col-form-label col-md-1 label-align" for="cinit">CI/NIT:</label>
+                  <div class="col-md-3">
+                      <input type="text" name="CiNit" class="form-control has-feedback-left"
+                      value="<?php echo set_value('CiNit');?>">
+                      <span class="fa fa-list-alt form-control-feedback left" aria-hidden="true"></span>
+                      <?php echo form_error('CiNit');   ?>
+                  </div>
+                  <label class="col-form-label col-md-1 label-align" for="telefono">Nro. Celular:</label>
+                  <div class="col-md-3">
+                      <input type="text" name="Telefono" class="form-control has-feedback-left"
+                      value="<?php echo set_value('Telefono');?>">
+                      <span class="fa fa-mobile-phone form-control-feedback left" aria-hidden="true"></span>
+                      <?php echo form_error('Telefono'); ?>
+                  </div>
+                </div> 
             </div>
             <div class="modal-footer">
                 <button type="submit" class="btn btn-success">
@@ -326,7 +304,8 @@
         select: function(event, ui) {
             $('#producto').val(ui.item.nombre); // display the selected text
             $('#marca').val(ui.item.marca); // display the selected text
-            $('#precioU').val(ui.item.precioUnitario); // save selected id to input
+            $('#categoria').val(ui.item.categoria); // display the selected text
+            $('#precioU').val(ui.item.precioVenta); // save selected id to input
             $('button[id=agregarTabla]').removeAttr('disabled');
             producto = ui.item;
             return false;
@@ -353,9 +332,8 @@
         select: function(event, ui) {
             // Set selection
             $('#carnet').val(ui.item.value); // display the selected text
-            $('#primerA').val(ui.item.primerApellido); // display the selected text
-            $('#segundoA').val(ui.item.segundoApellido); // display the selected text
-            $('#nombre').val(ui.item.nombres); // save selected id to input
+            $('#telefono').val(ui.item.telefono); // display the selected text
+            $('#razon').val(ui.item.razonSocial); // save selected id to input
             $('#idCli').val(ui.item.idCliente); // save selected id to input
             cliente = ui.item;
 
@@ -372,10 +350,10 @@
             markup = "<tr name='fila' id='fila" + count + "' class='even pointer'>" +
                 "<td>" + producto.nombre + "<input class='form-control' name='idProducto[]' hidden type='number' value=" + producto.idProducto + " ></td>" +
                 "<td>" + producto.marca + "</td>" +
-                "<td>" + producto.modelo + "</td>" +
-                "<td name='precio'>" + producto.precioUnitario + "</td>" +
+                "<td>" + producto.categoria + "</td>" +
+                "<td name='precio'>" + producto.precioVenta + "</td>" +
                 "<td><input class='form-control' name='cantidad[]' onchange='cambiarSubtotal()' type='number' value='1'></td>" +
-                "<td ><input class='form-control' name='subtotal[]' id='subtotal'  type='number' value=" + producto.precioUnitario + " ></td>" +
+                "<td ><input class='form-control' name='subtotal[]' id='subtotal'  type='number' value=" + producto.precioVenta + " ></td>" +
                 "<td> <input type='button' class='form-control'  onclick='eliminarFila(" + count + ");' value='Eliminar' /></td>" +
                 "</tr>";
             tableBody = $("#bodyTabla");

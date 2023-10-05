@@ -106,27 +106,12 @@ class Venta extends CI_Controller
     }
 
     public function productList()
-    {
-        if($this->session->userdata('tipo')=='admin')
-        {
-            // POST data
-            $postData = $this->input->post();
-
-            // Get data
-            $data = $this->venta_model->getProducts($postData);
-
-            echo json_encode($data);
-        }        
-        else{
-            $idsucursal=$this->session->userdata('idSucursal');
-            // POST data
-            $postData = $this->input->post();
-
-            // Get data
-            $data = $this->venta_model->getProducts2($postData,$idsucursal);
-
-            echo json_encode($data);
-        }
+    {  
+        // POST data
+        $postData = $this->input->post();
+        // Get data
+        $data = $this->venta_model->getProducts($postData);
+        echo json_encode($data);
 
     }
 
@@ -148,7 +133,7 @@ class Venta extends CI_Controller
         $postData = $this->input->post();
 
         // Get data
-        $data = $this->cliente_model->getClients($postData);
+        $data = $this->venta_model->getClients($postData);
 
         echo json_encode($data);
     }
