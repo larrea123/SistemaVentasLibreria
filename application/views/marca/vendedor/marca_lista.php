@@ -87,7 +87,7 @@
                       ?>
                         <tr>
                           <td><?php echo $indice; ?></td>
-                          <td><?php echo $row->nombreMarca; ?></td>
+                          <td><?php echo $row->nombre; ?></td>
                           <td><?php echo formatearFecha($row->fechaRegistro); ?></td>
                           <!--<td>
                           <?php 

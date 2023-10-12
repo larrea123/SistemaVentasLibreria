@@ -178,13 +178,13 @@ class Producto extends CI_Controller {
                 )
         );
         $this->form_validation->set_rules(
-            'Cantidad',
-            'Cantidad en Unidades',
+            'Stock',
+            'Stock en Unidades',
             'required|min_length[1]|max_length[3]|numeric',
             array(
-                'required'=>'Se requiere ingresar la Cantidad en Unidades.',
-                'min_length'=>'La Cantidad debe tenero debe tener al menos 1 unidad.',
-                'max_length'=>'¡La Cantidad no debe contener más de 999 unidades!.',
+                'required'=>'Se requiere ingresar la Stock en Unidades.',
+                'min_length'=>'La Stock debe tenero debe tener al menos 1 unidad.',
+                'max_length'=>'¡La Stock no debe contener más de 999 unidades!.',
                 'numeric'=>'¡El año solo debe contener numeros!.'
                 )
         );
@@ -269,11 +269,10 @@ class Producto extends CI_Controller {
 
             $data['idUsuario']=$this->session->userdata('idusuario');
             $data['codigo']=$_POST['Codigo'];
-            $data['nombreProducto']=strtoupper($_POST['Nombreproducto']);
-            $data['cantidad']=$_POST['Cantidad'];
+            $data['nombre']=strtoupper($_POST['Nombreproducto']);
+            $data['stock']=$_POST['Stock'];
             $data['precioCompra']=$_POST['Preciocompra'];
-            $data['precioVenta']=$_POST['Precioventa'];
-            $data['cantidad']=$_POST['Cantidad'];                  
+            $data['precioVenta']=$_POST['Precioventa'];                 
             $data['idMarca']=$_POST['idMarca'];
             $data['idCategoria']=$_POST['idCategoria'];
             $data['idProveedor']=$_POST['idProveedor'];
@@ -380,13 +379,13 @@ class Producto extends CI_Controller {
                 )
         );
         $this->form_validation->set_rules(
-            'Cantidad',
-            'Cantidad en Unidades',
+            'Stock',
+            'Stock en Unidades',
             'required|min_length[1]|max_length[3]|numeric',
             array(
-                'required'=>'Se requiere ingresar la Cantidad en Unidades.',
-                'min_length'=>'La Cantidad debe tenero debe tener al menos 1 unidad.',
-                'max_length'=>'¡La Cantidad no debe contener más de 999 unidades!.',
+                'required'=>'Se requiere ingresar la Stock en Unidades.',
+                'min_length'=>'La Stock debe tenero debe tener al menos 1 unidad.',
+                'max_length'=>'¡La Stock no debe contener más de 999 unidades!.',
                 'numeric'=>'¡El año solo debe contener numeros!.'
                 )
         );
@@ -482,8 +481,8 @@ class Producto extends CI_Controller {
 
             $data['idUsuario']=$this->session->userdata('idusuario');
             $data['codigo']=$_POST['Codigo'];
-            $data['nombreProducto']=strtoupper($_POST['Nombreproducto']);
-            $data['cantidad']=$_POST['Cantidad'];
+            $data['nombre']=strtoupper($_POST['Nombre']);
+            $data['stock']=$_POST['Stock'];
             $data['precioCompra']=$_POST['Preciocompra'];
             $data['precioVenta']=$_POST['Precioventa'];                 
             $data['idMarca']=$_POST['idMarca'];

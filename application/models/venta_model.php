@@ -6,41 +6,41 @@ class Venta_model extends CI_Model
 
    public function buscarProducto($data) //get
    {
-      $this->db->like('marca.nombreMarca', $data);
+      $this->db->like('marca.nombre', $data);
       $this->db->from('producto'); //tabla productos
       $this->db->where('producto.estado', '1'); //condición where estado = 1
       $this->db->join('marca', 'marca.idMarca = producto.idMarca');
       return $this->db->get();
    }
-
-
    public function getProducts($postData)
    {
 
       $response2 = array();
       if (isset($postData['search'])) {
          // Select record
-         $this->db->select('*');
-         $this->db->from('bdprolibreria.producto'); //tabla productos
-         $this->db->join('bdprolibreria.marca ', 'marca.idMarca = producto.idMarca');
-         $this->db->join('bdprolibreria.categoria', 'categoria.idCategoria = producto.idCategoria');
-         $this->db->where("producto.nombreProducto like '%" . $postData['search'] . "%' ");
-         $this->db->where('producto.estado', '1'); //condición where estado = 1
-
-
+         $this->db->select('P.idProducto, P.codigo, P.nombre, P.stock, 
+         P.precioCompra, P.precioVenta, P.estado, P.fechaRegistro, P.fechaActualizacion,
+         P.idMarca, MA.nombre as nombrem, P.idCategoria, CA.nombre as nombrec');
+         $this->db->from('producto P'); //tabla productos
+         $this->db->join('marca MA', 'P.idMarca=MA.idMarca');
+         $this->db->join('categoria CA', 'P.idCategoria=CA.idCategoria');
+         $this->db->where("P.nombre like '%" . $postData['search'] . "%' ");
+         $this->db->where('P.estado', '1'); //condición where estado = 1
+          
          $records = $this->db->get()->result();
 
 
          foreach ($records as $row) {
-            $value = $row->nombreProducto. ' - ' . $row->nombreMarca;
+            //$value = $row->nombreProducto. ' - ' . $row->nombreMarca;
+            $value = $row->nombre;
             $response2[] = array(
                "value" => $value,
-               "nombre" => $row->nombreProducto,
-               "categoria" => $row->nombreCategoria,
-               "marca" => $row->nombreMarca,
+               "nombre" => $row->nombre,
+               "categoria" => $row->nombre,
+               "marca" => $row->nombre,
                "precioVenta" => $row->precioVenta,
                "idProducto" => $row->idProducto,
-               "cantidad" => $row->cantidad,
+               "cantidad" => $row->stock,
                "codigo" => $row->codigo,
             );
          }
@@ -48,41 +48,74 @@ class Venta_model extends CI_Model
       return $response2;
    }
 
-   public function getProducts2($postData,$idsucursal)
+   public function getProductsantiguo($postData)
    {
 
       $response2 = array();
       if (isset($postData['search'])) {
          // Select record
          $this->db->select('*');
-         $this->db->from('bdproyecto.producto'); //tabla productos
-         $this->db->join('bdproyecto.marca ', 'marca.idMarca = producto.idMarca');
-         $this->db->join('bdproyecto.modelo', 'modelo.idModelo = producto.idModelo');
-         $this->db->join('bdproyecto.sucursal', 'sucursal.idSucursal = producto.idSucursal');
-         $this->db->where("producto.nroChasis like '%" . $postData['search'] . "%' ");
+         $this->db->from('bddproyectolibreria.producto'); //tabla productos
+         $this->db->join('bddproyectolibreria.marca ', 'marca.idMarca = producto.idMarca');
+         $this->db->join('bddproyectolibreria.categoria', 'categoria.idCategoria = producto.idCategoria');
+         $this->db->where("producto.nombre like '%" . $postData['search'] . "%' ");
          $this->db->where('producto.estado', '1'); //condición where estado = 1
-         $this->db->where('sucursal.idSucursal', $idsucursal);
 
 
          $records = $this->db->get()->result();
 
 
          foreach ($records as $row) {
-            $value = $row->nroChasis . ' - ' . $row->nombreMarca. ' - ' . $row->nombreModelo;
+            //$value = $row->nombreProducto. ' - ' . $row->nombreMarca;
+            $value = $row->nombre;
             $response2[] = array(
                "value" => $value,
-               "nombre" => $row->nroChasis,
-               "idProducto"=>$row->idProducto,
-               "marca" => $row->nombreMarca,
-               "modelo" => $row->nombreModelo,
-               "precioUnitario" => $row->precio,
+               "nombre" => $row->nombre,
+               "categoria" => $row->nombre,
+               "marca" => $row->nombre,
+               "precioVenta" => $row->precioVenta,
+               "idProducto" => $row->idProducto,
+               "cantidad" => $row->stock,
+               "codigo" => $row->codigo,
             );
          }
       }
       return $response2;
    }
+   public function getProducts2($postData)
+   {
+
+      $response2 = array();
+      if (isset($postData['search'])) {
+         // Select record
+         $this->db->select('*');
+         $this->db->from('bddproyectolibreria.producto'); //tabla productos
+         $this->db->join('bddproyectolibreria.marca ', 'marca.idMarca = producto.idMarca');
+         $this->db->join('bddproyectolibreria.categoria', 'categoria.idCategoria = producto.idCategoria');
+         $this->db->where("producto.nombre like '%" . $postData['search'] . "%' ");
+         $this->db->where('producto.estado', '1'); //condición where estado = 1
 
 
+         $records = $this->db->get()->result();
+
+
+         foreach ($records as $row) {
+            //$value = $row->nombreProducto. ' - ' . $row->nombreMarca;
+            $value = $row->nombre;
+            $response2[] = array(
+               "value" => $value,
+               "nombre" => $row->nombre,
+               "categoria" => $row->nombre,
+               "marca" => $row->nombre,
+               "precioVenta" => $row->precioVenta,
+               "idProducto" => $row->idProducto,
+               "cantidad" => $row->stock,
+               "codigo" => $row->codigo,
+            );
+         }
+      }
+      return $response2;
+   }
 
    // function getClients($postData,$idProducto){
 
@@ -113,8 +146,8 @@ class Venta_model extends CI_Model
       if (isset($postData['search'])) {
          // Select record
          $this->db->select('*');
-         $this->db->from('bdproyecto.marca'); //tabla productos
-         $this->db->join('bdproyecto.producto ', 'marca.idMarca = producto.idMarca');
+         $this->db->from('bdprolibreria.marca'); //tabla productos
+         $this->db->join('bdprolibreria.producto ', 'marca.idMarca = producto.idMarca');
          $this->db->where("persona.marca like '%" . $postData['search'] . "%' ");
          $this->db->where('producto.nroChasis', $postData); //condición where estado = 1
 
@@ -143,7 +176,6 @@ class Venta_model extends CI_Model
       $this->db->insert('venta', array(
          'idCliente' => $data['idCliente'],
          'idUsuario' => $data['idUsuario'],
-         'idSucursal' => $data['idSucursal'],
          'total' => $data['total'],
          'estado' => 1,
       ));

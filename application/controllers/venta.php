@@ -112,7 +112,7 @@ class Venta extends CI_Controller
 
 
             foreach ($query->result() as $row) {
-                echo "<li class='list-group-item'><a href='javascript:void(0)' data-producto='producto'>$row->nombreMarca</a></li>";
+                echo "<li class='list-group-item'><a href='javascript:void(0)' data-producto='producto'>$row->nombre</a></li>";
             }
         } else {
             echo "<li> <em> No se encuentra... </em> </li>";
@@ -158,7 +158,6 @@ class Venta extends CI_Controller
 
         $data['idCliente'] = $_POST['idCli'];
         $data['idUsuario'] =  $_SESSION['idusuario'];
-        $data['idSucursal'] =  $_SESSION['idSucursal'];
         $data['estado'] = 1;
 
         // $data['idVenta'] = $_POST['idCliente'];

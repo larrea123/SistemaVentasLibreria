@@ -68,7 +68,7 @@
                     <div class="item form-group has-feedback">
                       <label class="col-form-label col-md-1 label-align" for="nombremarca">Nombre Marca:</label>
                       <div class="col-md-3">
-                          <input type="text" name="NombreMarca" class="form-control has-feedback-left" value="<?php echo $row->nombreMarca;?>">
+                          <input type="text" name="NombreMarca" class="form-control has-feedback-left" value="<?php echo $row->nombre;?>">
                           <span class="fa fa-male form-control-feedback left" aria-hidden="true"></span>
                           <?php echo form_error('NombreMarca'); ?>
                       </div>

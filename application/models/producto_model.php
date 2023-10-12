@@ -9,9 +9,9 @@
             $this->db->where('estado','1');
             return $this->db->get();*/
 
-            $this->db->select('P.idProducto, P.codigo, P.nombreProducto, P.cantidad, 
+            $this->db->select('P.idProducto, P.codigo, P.nombre, P.stock, 
             P.precioCompra, P.precioVenta, P.estado, P.fechaRegistro, P.fechaActualizacion,
-            P.idMarca, MA.nombreMarca, P.idCategoria, CA.nombreCategoria, P.idProveedor, PR.nombreProveedor'); //select *
+            P.idMarca, MA.nombre as nombrem, P.idCategoria, CA.nombre as nombrec, P.idProveedor, PR.razonSocial'); //select *
             $this->db->from('producto P'); //tabla
             $this->db->where('P.estado','1');
             $this->db->join('marca MA', 'P.idMarca=MA.idMarca');
@@ -27,9 +27,9 @@
             $this->db->where('estado','0');
             return $this->db->get();*/
 
-            $this->db->select('P.idProducto, P.codigo, P.nombreProducto, P.cantidad, 
+            $this->db->select('P.idProducto, P.codigo, P.nombre, P.stock, 
             P.precioCompra, P.precioVenta, P.estado, P.fechaRegistro, P.fechaActualizacion,
-            P.idMarca, MA.nombreMarca, P.idCategoria, CA.nombreCategoria, P.idProveedor, PR.nombreProveedor'); //select *
+            P.idMarca, MA.nombre as nombrem, P.idCategoria, CA.nombre as nombrec, P.idProveedor, PR.razonSocial'); //select *
             $this->db->from('producto P'); //tabla
             $this->db->where('P.estado','0');
             $this->db->join('marca MA', 'P.idMarca=MA.idMarca');
@@ -56,9 +56,9 @@
             $this->db->where('idProducto',$idproducto);
             return $this->db->get();*/
 
-            $this->db->select('P.idProducto, P.codigo, P.nombreProducto, P.cantidad, 
+            $this->db->select('P.idProducto, P.codigo, P.nombre, P.stock, 
             P.precioCompra, P.precioVenta, P.estado, P.fechaRegistro, P.fechaActualizacion,
-            P.idMarca, MA.nombreMarca, P.idCategoria, CA.nombreCategoria, P.idProveedor, PR.nombreProveedor'); //select *
+            P.idMarca, MA.nombre  as nombrem, P.idCategoria, CA.nombre  as nombrec, P.idProveedor, PR.razonSocial'); //select *
             $this->db->from('producto P'); //tabla
             $this->db->where('idProducto',$idproducto);
             $this->db->join('marca MA', 'P.idMarca=MA.idMarca');

@@ -63,12 +63,19 @@
                       echo form_open_multipart('proveedor/agregarbd');
                     ?>
                     <div class="item form-group has-feedback">
-                      <label class="col-form-label col-md-1 label-align" for="inputN">Nombre proveedor:</label>
+                      <label class="col-form-label col-md-1 label-align" for="inputN">Razon Social:</label>
                       <div class="col-md-3">
-                          <input type="text" name="NombreProveedor" class="form-control has-feedback-left"
-                          value="<?php echo set_value('NombreProveedor');?>">
+                          <input type="text" name="RazonSocial" class="form-control has-feedback-left"
+                          value="<?php echo set_value('RazonSocial');?>">
                           <span class="fa fa-sign-in form-control-feedback left" aria-hidden="true"></span>
-                          <?php echo form_error('NombreProveedor'); ?>
+                          <?php echo form_error('RazonSocial'); ?>
+                      </div>
+                      <label class="col-form-label col-md-1 label-align" for="nit">NIT:</label>
+                      <div class="col-md-3">
+                          <input type="text" name="Nit" class="form-control has-feedback-left"
+                          value="<?php echo set_value('Nit');?>">
+                          <span class="fa fa-list-alt form-control-feedback left" aria-hidden="true"></span>
+                          <?php echo form_error('Nit'); ?>
                       </div>
                       <label class="col-form-label col-md-1 label-align" for="telf">Telefono:</label>
                       <div class="col-md-3">
@@ -76,17 +83,17 @@
                           value="<?php echo set_value('Telefono');?>">
                           <span class="fa fa-mobile-phone form-control-feedback left" aria-hidden="true"></span>
                           <?php echo form_error('Telefono'); ?>
-                      </div> 
+                      </div>              
+                    </div>
+
+                    <div class="item form-group has-feedback">
                       <label class="col-form-label col-md-1 label-align" for="correo">Correo:</label>
                       <div class="col-md-3">
                           <input type="text" name="Correo" class="form-control has-feedback-left"
                           value="<?php echo set_value('Correo');?>">
                           <span class="fa fa-male form-control-feedback left" aria-hidden="true"></span>
                           <?php echo form_error('Correo'); ?>
-                      </div>             
-                    </div>
-
-                    <div class="item form-group has-feedback">
+                      </div>
                       <label class="col-form-label col-md-1 label-align" for="dir">Direccion:</label>
                       <div class="col-md-3">
                         <textarea name="Direccion" class="form-control has-feedback-left"></textarea>

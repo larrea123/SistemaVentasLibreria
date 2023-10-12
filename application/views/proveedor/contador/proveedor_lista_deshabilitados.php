@@ -61,8 +61,9 @@
                     <table id="datatable-buttons" class="table table-striped table-bordered" style="width:100%">
                       <thead>
                         <tr>
-                          <th>Nro</th>
-                          <th>Nombre Proveedor</th>
+                          <th>Nro</th>                          
+                          <th>Razon Social</th>
+                          <th>Nit</th>
                           <th>Direccion</th>
                           <th>Telefono</th>
                           <th>Correo</th>
@@ -79,7 +80,8 @@
                       ?>
                         <tr>
                           <td><?php echo $indice; ?></td>
-                          <td><?php echo $row->nombreProveedor; ?></td>
+                          <td><?php echo $row->razonSocial; ?></td>
+                          <td><?php echo $row->nit; ?></td>
                           <td><?php echo $row->direccion; ?></td>
                           <td><?php echo $row->telefono; ?></td>
                           <td><?php echo $row->correo; ?></td>

@@ -87,13 +87,22 @@ class Proveedor extends CI_Controller {
 	{
         $this->load->library('form_validation');
         $this->form_validation->set_rules(
-            'NombreProveedor',
-            'Ingrese el nombre del proveedor',
+            'RazonSocial',
+            'Ingrese la razon social del proveedor',
             'required|min_length[3]|max_length[30]|alpha_numeric_spaces',
-            array('required'=>'Se requiere ingresar el nombre del proveedor.',
-                    'min_length'=>'el nombre del proveedor debe tener al menos 3 caracteres.',
-                    'max_length'=>'¡el nombre del proveedor no debe contener más de 30 caracteres!.',
-                    'alpha_numeric_spaces'=>'¡El nombre del proveedor solo debe contener letras!.'
+            array('required'=>'Se requiere ingresar la razon social del proveedor.',
+                    'min_length'=>'la razon social del proveedor debe tener al menos 3 caracteres.',
+                    'max_length'=>'¡la razon social del proveedor no debe contener más de 30 caracteres!.',
+                    'alpha_numeric_spaces'=>'¡La razon social del proveedor solo debe contener letras!.'
+                    )
+        );
+        $this->form_validation->set_rules(
+            'Nit',
+            'Nit del proveedor',
+            'required|min_length[7]|max_length[12]',
+            array('required'=>'Se requiere ingresar Nit del proveedor.',
+                    'min_length'=>'¡Ingrese un Nit válido!.',
+                    'max_length'=>'¡El Nit no debe contener más de 12 caracteres!.'
                     )
         );
         $this->form_validation->set_rules(
@@ -158,7 +167,8 @@ class Proveedor extends CI_Controller {
         }
         else{    
             $data['idUsuario']=$this->session->userdata('idusuario');
-            $data['nombreProveedor']=strtoupper($_POST['NombreProveedor']);
+            $data['razonSocial']=strtoupper($_POST['RazonSocial']);
+            $data['nit']=$_POST['Nit'];
             $data['correo']=strtoupper($_POST['Correo']);
             $data['telefono']=$_POST['Telefono'];
             $data['direccion']=strtoupper($_POST['Direccion']);
@@ -222,13 +232,22 @@ class Proveedor extends CI_Controller {
     {
         $this->load->library('form_validation');
         $this->form_validation->set_rules(
-            'NombreProveedor',
-            'Ingrese el nombre del proveedor',
+            'RazonSocial',
+            'Ingrese la razon social del proveedor',
             'required|min_length[3]|max_length[30]|alpha_numeric_spaces',
-            array('required'=>'Se requiere ingresar el nombre del proveedor.',
-                    'min_length'=>'el nombre del proveedor debe tener al menos 3 caracteres.',
-                    'max_length'=>'¡el nombre del proveedor no debe contener más de 30 caracteres!.',
-                    'alpha_numeric_spaces'=>'¡El nombre del proveedor solo debe contener letras!.'
+            array('required'=>'Se requiere ingresar la razon social del proveedor.',
+                    'min_length'=>'la razon social del proveedor debe tener al menos 3 caracteres.',
+                    'max_length'=>'¡la razon social del proveedor no debe contener más de 30 caracteres!.',
+                    'alpha_numeric_spaces'=>'¡La razon social del proveedor solo debe contener letras!.'
+                    )
+        );
+        $this->form_validation->set_rules(
+            'Nit',
+            'Nit del proveedor',
+            'required|min_length[7]|max_length[12]',
+            array('required'=>'Se requiere ingresar Nit del proveedor.',
+                    'min_length'=>'¡Ingrese un Nit válido!.',
+                    'max_length'=>'¡El Nit no debe contener más de 12 caracteres!.'
                     )
         );
         $this->form_validation->set_rules(
@@ -304,7 +323,8 @@ class Proveedor extends CI_Controller {
             $idproveedor=$_POST['idproveedor'];
 
             $data['idUsuario']=$this->session->userdata('idusuario');
-            $data['nombreProveedor']=strtoupper($_POST['NombreProveedor']);
+            $data['razonSocial']=strtoupper($_POST['RazonSocial']);
+            $data['nit']=$_POST['Nit'];
             $data['correo']=strtoupper($_POST['Correo']);
             $data['telefono']=$_POST['Telefono'];
             $data['direccion']=strtoupper($_POST['Direccion']);

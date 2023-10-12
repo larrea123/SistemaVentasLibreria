@@ -70,14 +70,14 @@
                       <div class="col-md-3">
                           <select class="form-control" name="idMarca" required>
                             <option value="<?php echo $rows->idMarca; ?>">
-                              <?php echo $rows->nombreMarca; ?>
+                              <?php echo $rows->nombrem; ?>
                             </option>
                             <?php
                                 foreach ($marca->result() as $Marcarow)
                                 {
                             ?>
                             <option value="<?php echo $Marcarow->idMarca; ?>">
-                                <?php echo $Marcarow->nombreMarca; ?>    
+                                <?php echo $Marcarow->nombre; ?>    
                             </option>
                             <?php        
                                 }
@@ -88,14 +88,14 @@
                       <div class="col-md-3">
                           <select class="form-control" name="idProveedor" required>
                               <option value="<?php echo $rows->idProveedor; ?>">
-                                <?php echo $rows->nombreProveedor; ?>
+                                <?php echo $rows->razonSocial; ?>
                               </option>
                               <?php
                                 foreach($proveedor->result() as $rowProveedor)
                                 {
                               ?>
                               <option value="<?php echo $rowProveedor->idProveedor;?>">
-                                <?php echo $rowProveedor->nombreProveedor;?>
+                                <?php echo $rowProveedor->razonSocial;?>
                               </option>
                               <?php
                                 }
@@ -106,14 +106,14 @@
                       <div class="col-md-3">
                           <select class="form-control" name="idCategoria" required>
                             <option value="<?php echo $rows->idCategoria; ?>">
-                              <?php echo $rows->nombreCategoria; ?>
+                              <?php echo $rows->nombrec; ?>
                             </option>
                             <?php
                                 foreach ($categoria->result() as $row)
                                 {
                             ?>
                             <option value="<?php echo $row->idCategoria; ?>">
-                                <?php echo $row->nombreCategoria; ?>    
+                                <?php echo $row->nombre; ?>    
                             </option>
                             <?php        
                                 }
@@ -131,7 +131,7 @@
                       </div>
                       <label class="col-form-label col-md-1 label-align" for="inputNP">Descripcion:</label>
                       <div class="col-md-3">
-                          <input type="text" name="Nombreproducto" class="form-control has-feedback-left" value="<?php echo $rows->nombreProducto; ?>" >
+                          <input type="text" name="Nombreproducto" class="form-control has-feedback-left" value="<?php echo $rows->nombre; ?>" >
                           <span class="fa fa-money form-control-feedback left" aria-hidden="true"></span>
                           <?php echo form_error('Nombreproducto'); ?>
                       </div>

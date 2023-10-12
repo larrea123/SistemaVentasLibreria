@@ -46,7 +46,7 @@
                                 <input type="search" name="carnet" id="carnet" class="form-control"></input>
                             </div>
                             <input hidden name="idCli" id="idCli" value="0">
-                            <!--<input hidden name="idUsuario" id="idUsuario" value="<?php echo $_SESSION['idusuario'] ?>">-->
+                            <input hidden name="idUsuario" id="idUsuario" value="<?php echo $_SESSION['idusuario'] ?>">
 
 
                             <label class="col-form-label col-md-1 label-align" for="razon">Razon Social:</label>

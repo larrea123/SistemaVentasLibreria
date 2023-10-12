@@ -133,7 +133,7 @@ class Marca extends CI_Controller {
         else{
 
                 $data['idUsuario']=$this->session->userdata('idusuario');
-                $data['nombreMarca']=strtoupper($_POST['NombreMarca']);
+                $data['nombre']=strtoupper($_POST['NombreMarca']);
 
                 $this->marca_model->agregarmarca($data);
                 redirect('marca/index','refresh');
@@ -251,7 +251,7 @@ class Marca extends CI_Controller {
                 $idmarca=$_POST['idmarca'];
 
                 $data['idUsuario']=$this->session->userdata('idusuario');
-                $data['nombreMarca']=strtoupper($_POST['NombreMarca']);
+                $data['nombre']=strtoupper($_POST['NombreMarca']);
                 $data['fechaActualizacion']=date('Y-m-d H:i:s');
                 
                 $this->marca_model->modificarmarca($idmarca,$data);

@@ -133,7 +133,7 @@ class Categoria extends CI_Controller {
         else{
 
             $data['idUsuario']=$this->session->userdata('idusuario');
-            $data['nombreCategoria']=strtoupper($_POST['NombreCategoria']);
+            $data['nombre']=strtoupper($_POST['NombreCategoria']);
 
             $this->categoria_model->agregarcategoria($data);
             redirect('categoria/index','refresh');
@@ -251,7 +251,7 @@ class Categoria extends CI_Controller {
                 $idcategoria=$_POST['idcategoria'];
 
                 $data['idUsuario']=$this->session->userdata('idusuario');
-                $data['nombreCategoria']=strtoupper($_POST['NombreCategoria']);
+                $data['nombre']=strtoupper($_POST['NombreCategoria']);
                 $data['fechaActualizacion']=date('Y-m-d H:i:s');
                 
                 $this->categoria_model->modificarcategoria($idcategoria,$data);

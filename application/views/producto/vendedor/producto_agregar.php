@@ -73,7 +73,7 @@
                               {
                           ?>
                           <option value="<?php echo $rowMarca->idMarca; ?>">
-                              <?php echo $rowMarca->nombreMarca; ?>    
+                              <?php echo $rowMarca->nombre; ?>    
                           </option>
                           <?php        
                               }
@@ -87,7 +87,7 @@
                               <?php
                               foreach($proveedor->result() as $row)
                               {?>
-                                  <option value="<?php echo $row->idProveedor;?>"><?php echo $row->nombreProveedor;?></option>
+                                  <option value="<?php echo $row->idProveedor;?>"><?php echo $row->razonSocial;?></option>
                               <?php
                               }
                               ?>
@@ -102,7 +102,7 @@
                               {
                           ?>
                           <option value="<?php echo $row->idCategoria; ?>">
-                              <?php echo $row->nombreCategoria; ?>    
+                              <?php echo $row->nombre; ?>    
                           </option>
                           <?php        
                               }

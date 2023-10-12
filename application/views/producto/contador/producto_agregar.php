@@ -73,7 +73,7 @@
                               {
                           ?>
                           <option value="<?php echo $rowMarca->idMarca; ?>">
-                              <?php echo $rowMarca->nombreMarca; ?>    
+                              <?php echo $rowMarca->nombre; ?>    
                           </option>
                           <?php        
                               }
@@ -87,7 +87,7 @@
                               <?php
                               foreach($proveedor->result() as $row)
                               {?>
-                                  <option value="<?php echo $row->idProveedor;?>"><?php echo $row->nombreProveedor;?></option>
+                                  <option value="<?php echo $row->idProveedor;?>"><?php echo $row->razonSocial;?></option>
                               <?php
                               }
                               ?>
@@ -102,7 +102,7 @@
                               {
                           ?>
                           <option value="<?php echo $row->idCategoria; ?>">
-                              <?php echo $row->nombreCategoria; ?>    
+                              <?php echo $row->nombre; ?>    
                           </option>
                           <?php        
                               }
@@ -126,12 +126,12 @@
                           <span class="fa fa-money form-control-feedback left" aria-hidden="true"></span>
                           <?php echo form_error('Nombreproducto'); ?>
                       </div>
-                      <label class="col-form-label col-md-1 label-align" for="inputCa">Cantidad:</label>
+                      <label class="col-form-label col-md-1 label-align" for="inputCa">Stock:</label>
                       <div class="col-md-3">
-                          <input type="text" name="Cantidad" class="form-control has-feedback-left"
-                          value="<?php echo set_value('Cantidad');?>">
+                          <input type="text" name="Stock" class="form-control has-feedback-left"
+                          value="<?php echo set_value('Stock');?>">
                           <span class="fa fa-barcode form-control-feedback left" aria-hidden="true"></span>
-                          <?php echo form_error('Cantidad'); ?>
+                          <?php echo form_error('Stock'); ?>
                       </div>
                     </div>
 

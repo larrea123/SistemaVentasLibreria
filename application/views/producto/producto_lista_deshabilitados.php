@@ -63,7 +63,7 @@
                       <thead>
                         <tr>
                           <th>Nro</th>
-                          <th>Nombre Producto</th>
+                          <th>Producto</th>
                           <th>Marca</th>
                           <th>Cantidad</th>
                           <th>Precio Compra</th>
@@ -80,9 +80,9 @@
                       ?>
                         <tr>
                           <td><?php echo $indice; ?></td>
-                          <td><?php echo $row->nombreProducto; ?></td>
-                          <td><?php echo $row->nombreMarca; ?></td>
-                          <td><?php echo $row->cantidad; ?></td>
+                          <td><?php echo $row->nombre; ?></td>
+                          <td><?php echo $row->nombrem; ?></td>
+                          <td><?php echo $row->stock; ?></td>
                           <td><?php echo $row->precioCompra; ?></td>
                           <td><?php echo $row->precioVenta; ?></td>
                           <td>
