@@ -77,13 +77,8 @@ $db['default'] = array(
 	'dsn'	=> '',
 	'hostname' => 'localhost',
 	'username' => 'root',
-<<<<<<< HEAD
 	'password' => '1992',
 	'database' => 'bddproyectolibreria',
-=======
-	'password' => '1995',
-	'database' => 'bdprolibreria',
->>>>>>> dda2c9370c4ee1a4d05536e734b3a577f2fafd36
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,
