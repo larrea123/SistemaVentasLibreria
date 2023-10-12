@@ -303,8 +303,8 @@
         },
         select: function(event, ui) {
             $('#producto').val(ui.item.nombre); // display the selected text
-            $('#marca').val(ui.item.marca); // display the selected text
-            $('#categoria').val(ui.item.categoria); // display the selected text
+            $('#marca').val(ui.item.nombrem); // display the selected text
+            $('#categoria').val(ui.item.nombrec); // display the selected text
             $('#precioU').val(ui.item.precioVenta); // save selected id to input
             $('button[id=agregarTabla]').removeAttr('disabled');
             producto = ui.item;

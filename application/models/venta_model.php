@@ -36,8 +36,8 @@ class Venta_model extends CI_Model
             $response2[] = array(
                "value" => $value,
                "nombre" => $row->nombre,
-               "categoria" => $row->nombre,
-               "marca" => $row->nombre,
+               "categoria" => $row->nombrec,
+               "marca" => $row->nombrem,
                "precioVenta" => $row->precioVenta,
                "idProducto" => $row->idProducto,
                "cantidad" => $row->stock,
