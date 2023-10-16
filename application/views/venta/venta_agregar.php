@@ -118,7 +118,7 @@
 
                             <label class="col-form-label col-md-1 label-align">Precio Unitario:</label>
                             <div class="col-md-3">
-                                <input name="precioU" disabled id="precioU" class="form-control" value="" placeholder="Sin precio unitario"></input>
+                                <input name="precioV" disabled id="precioV" class="form-control" value="" placeholder="Sin precio unitario"></input>
                             </div>
 
                             <div class="col-md-3">
@@ -143,6 +143,7 @@
                                 <th class="column-title">Marca </th>
                                 <th class="column-title">Categoría </th>
                                 <th class="column-title">Precio </th>
+                                <th class="column-title">Stock</th>
                                 <th class="column-title">Cantidad </th>
                                 <th class="column-title">Importe </th>
                                 <th class="column-title no-link last"><span class="nobr">Eliminar</span>
@@ -243,7 +244,7 @@
                 La venta fue realizada con exito!!!
             </div>
 
-            <div class="modal-footer">
+            <!--<div class="modal-footer">
                 <?php echo form_open_multipart('venta/reportepdf'); ?>
                     <?php $ventaID=$this->db->query("SELECT MAX(idVenta) AS Venta 
                                                     FROM venta");
@@ -257,13 +258,13 @@
                         }
                         ?>
                 <?php echo form_close(); ?>
-               <!-- <?php echo form_open_multipart('venta/reportepdf'); ?>
+                <?php echo form_open_multipart('venta/reportepdf'); ?>
                 <button type="submit" class="btn btn-success" text-align="text-center" value="<?php $row->idVenta;?>" ><i class="fa fa-file-pdf-o"></i> Factura</button>
-                <?php echo form_close(); ?> -->
+                <?php echo form_close(); ?>
                 <?php echo form_open_multipart('venta/index'); ?>
                 <button type="submit" class="btn btn-secondary"><i class="fa fa-chevron-left"></i> Lista</button>
                 <?php echo form_close(); ?>
-            </div>
+            </div>-->
         </div>
     </div>
 </div>
@@ -305,7 +306,7 @@
             $('#producto').val(ui.item.nombre); // display the selected text
             $('#marca').val(ui.item.nombrem); // display the selected text
             $('#categoria').val(ui.item.nombrec); // display the selected text
-            $('#precioU').val(ui.item.precioVenta); // save selected id to input
+            $('#precioV ').val(ui.item.precioVenta); // save selected id to input
             $('button[id=agregarTabla]').removeAttr('disabled');
             producto = ui.item;
             return false;
@@ -352,6 +353,7 @@
                 "<td>" + producto.marca + "</td>" +
                 "<td>" + producto.categoria + "</td>" +
                 "<td name='precio'>" + producto.precioVenta + "</td>" +
+                "<td >" + producto.stock + "<input class='form-control stock' name='stock[]' hidden type='number' value=" + producto.stock + " ></td>" +
                 "<td><input class='form-control' name='cantidad[]' onchange='cambiarSubtotal()' type='number' value='1'></td>" +
                 "<td ><input class='form-control' name='subtotal[]' id='subtotal' readonly type='number' value=" + producto.precioVenta + " ></td>" +
                 "<td> <input type='button' class='form-control'  onclick='eliminarFila(" + count + ");' value='Eliminar' /></td>" +
@@ -374,13 +376,19 @@
 
         let cantidad = document.getElementsByName("cantidad[]");
         let precio = document.getElementsByName("precio");
-        //let stock = document.getElementsByName("stock[]");
+        let stock = document.getElementsByName("stock[]");
         let subtotal = document.getElementsByName("subtotal[]");
 
 
         for (var i = 0; i < cantidad.length; i++) {
+            if (cantidad[i].value <= Number(stock[i].value)) {
                 subtotal[i].value = cantidad[i].value * precio[i].innerText;
 
+            } else {
+                alert('No puedes soprepasar el stock');
+                cantidad[i].value = stock[i].innerText;
+                subtotal[i].value = precio[i].innerText;
+            }
         }
         cambiarTotal();
 
@@ -494,12 +502,12 @@
 
         $("#carnet").val("");
         $("#idCli").val(0);
-        $("#nombre").val("");
-        $("#primerA").val("");
+        $("#razon").val("");
+        $("#telefono").val("");
         $("#segundoA").val("");
         $("#producto").val("");
         $("#marca").val("");
-        $("#precioU").val("");
+        $("#precioV").val("");
 
         $(".even").remove();
         cambiarTotal();

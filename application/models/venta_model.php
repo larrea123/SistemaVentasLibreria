@@ -40,7 +40,7 @@ class Venta_model extends CI_Model
                "marca" => $row->nombrem,
                "precioVenta" => $row->precioVenta,
                "idProducto" => $row->idProducto,
-               "cantidad" => $row->stock,
+               "stock" => $row->stock,
                "codigo" => $row->codigo,
             );
          }
@@ -146,10 +146,10 @@ class Venta_model extends CI_Model
       if (isset($postData['search'])) {
          // Select record
          $this->db->select('*');
-         $this->db->from('bdprolibreria.marca'); //tabla productos
-         $this->db->join('bdprolibreria.producto ', 'marca.idMarca = producto.idMarca');
-         $this->db->where("persona.marca like '%" . $postData['search'] . "%' ");
-         $this->db->where('producto.nroChasis', $postData); //condición where estado = 1
+         $this->db->from('bddproyectolibreria.marca'); //tabla productos
+         $this->db->join('bddproyectolibreria.producto ', 'marca.idMarca = producto.idMarca');
+         $this->db->where("cliente.marca like '%" . $postData['search'] . "%' ");
+         $this->db->where('producto.nombre', $postData); //condición where estado = 1
 
          $records = $this->db->get()->result();
 
@@ -186,21 +186,21 @@ class Venta_model extends CI_Model
          $idProductos = $data['idProducto'];
          $cantidades = $data['cantidad'];
          $subtotal = $data['subtotal'];
-         //$stock = $data['stock'];
+         $stock = $data['stock'];
         $count = 0; 
        while ($count < count($idProductos)) {
          $this->db->insert('detalleventa', array(
             'idVenta' => $venta_id,
             'idProducto' => $idProductos[$count],
             'cantidad' => $cantidades[$count],
-            'precioVenta' => $subtotal[$count],
+            'precioUnitario' => $subtotal[$count],
          ));
 
          // Aqui actualizamos el stock de los productos yucaboy cuidado que te confundas ajajja
-         $estadoVenta = 2;
+         $stockAc = $stock[$count] - $cantidades[$count];
          $this->db->where('idProducto', $idProductos[$count]);
          $this->db->update('producto',  array(
-            'estado' => $estadoVenta,
+            'stock' => $$stockAc,
          ));
 
          $count ++;
@@ -230,7 +230,7 @@ class Venta_model extends CI_Model
       $this->db->update('detalleventa', array(
          'idProducto' => $data['idProducto'],
          'cantidad' => $data['cantidad'],
-         'precioVenta' => $data['precioVenta'],
+         'precioUnitario' => $data['precioUnitario'],
       ));
 
    }

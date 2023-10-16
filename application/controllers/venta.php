@@ -164,7 +164,7 @@ class Venta extends CI_Controller
         $data['idProducto'] = $_POST['idProducto'];
         $data['cantidad'] =  $_POST['cantidad'];
 
-        $data['total'] = $_POST['totalPrecio'];
+        $data['precioTotal'] = $_POST['totalPrecio'];
 
         if ($this->venta_model->registrar($data)) {
             redirect('venta/index', 'refresh');
@@ -179,7 +179,7 @@ class Venta extends CI_Controller
 
     public function modificarVenta()
     {
-        $data['precioTotal'] = $_POST['totalPrecio'];
+        $data['precioUnitario'] = $_POST['totalPrecio'];
         $data['idCliente'] = $_POST['idclient'];
         $data['idUsuario'] =  $_SESSION['idusuario'];
         $id =  $_POST['idVenta'];
