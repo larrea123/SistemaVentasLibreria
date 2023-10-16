@@ -164,7 +164,7 @@ class Venta extends CI_Controller
         $data['idProducto'] = $_POST['idProducto'];
         $data['cantidad'] =  $_POST['cantidad'];
 
-        $data['precioTotal'] = $_POST['totalPrecio'];
+        $data['total'] = $_POST['totalPrecio'];
 
         if ($this->venta_model->registrar($data)) {
             redirect('venta/index', 'refresh');
@@ -215,7 +215,7 @@ class Venta extends CI_Controller
         redirect('venta/index', 'refresh');
     }
     //--------------------------------------------------------------------------------------------------//
-    public function reportepdf()
+    /*public function reportepdf()
     {
 
        // if ($this->session->userdata('tipo') == 'admin') {
@@ -360,14 +360,14 @@ class Venta extends CI_Controller
            /* $this->pdf->Ln(80);
             $this->pdf->Cell(50,7,utf8_decode('Fecha de impresion:'),0,0,'L',0);
             $this->pdf->SetFont('Arial','',11);
-            $this->pdf->Cell(0,7,utf8_decode(date("d/m/Y")),0,1,'L',0);*/
+            $this->pdf->Cell(0,7,utf8_decode(date("d/m/Y")),0,1,'L',0);
 
-            $this->pdf->Output("DetalleVenta.pdf", "I");
+            $this->pdf->Output("DetalleVenta.pdf", "I");*/
         /*} else {
             redirect('venta/index', 'refresh');
-        }*/
+        }
     }
-    public function reportePdfCopia()
+    /*public function reportePdfCopia()
     {
 
         //if ($this->session->userdata('tipo') == 'admin') {
@@ -512,11 +512,11 @@ class Venta extends CI_Controller
            /* $this->pdf->Ln(80);
             $this->pdf->Cell(50,7,utf8_decode('Fecha de impresion:'),0,0,'L',0);
             $this->pdf->SetFont('Arial','',11);
-            $this->pdf->Cell(0,7,utf8_decode(date("d/m/Y")),0,1,'L',0);*/
+            $this->pdf->Cell(0,7,utf8_decode(date("d/m/Y")),0,1,'L',0);
 
             $this->pdf->Output("DetalleVentaCopia.pdf", "I");
         /*} else {
             redirect('venta/index', 'refresh');
         }*/
-    }
+    //}
 }

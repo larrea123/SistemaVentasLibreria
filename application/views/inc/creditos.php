@@ -1,7 +1,7 @@
         <!-- footer content -->
         <footer>
           <div class="pull-right">
-            Gentelella - Bootstrap Admin Template by <a href="https://colorlib.com">Colorlib</a>
+            LJLC - Sistema Web de Ventas Libreria JAZUL</a>
           </div>
           <div class="clearfix"></div>
         </footer>

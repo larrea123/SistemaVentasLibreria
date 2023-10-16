@@ -46,7 +46,7 @@
                                 <input type="search" name="carnet" id="carnet" class="form-control"></input>
                             </div>
                             <input hidden name="idCli" id="idCli" value="0">
-                            <!--<input hidden name="idUsuario" id="idUsuario" value="<?php echo $_SESSION['idusuario'] ?>">-->
+                            <input hidden name="idUsuario" id="idUsuario" value="<?php echo $_SESSION['idusuario'] ?>">
 
 
                             <label class="col-form-label col-md-1 label-align" for="razon">Razon Social:</label>
@@ -303,8 +303,8 @@
         },
         select: function(event, ui) {
             $('#producto').val(ui.item.nombre); // display the selected text
-            $('#marca').val(ui.item.marca); // display the selected text
-            $('#categoria').val(ui.item.categoria); // display the selected text
+            $('#marca').val(ui.item.nombrem); // display the selected text
+            $('#categoria').val(ui.item.nombrec); // display the selected text
             $('#precioU').val(ui.item.precioVenta); // save selected id to input
             $('button[id=agregarTabla]').removeAttr('disabled');
             producto = ui.item;
