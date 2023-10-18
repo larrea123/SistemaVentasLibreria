@@ -13,26 +13,44 @@ class Venta extends CI_Controller
             $this->load->view('inc/cabecera');
             $this->load->view('inc/menulateral');
             $this->load->view('inc/menusuperior');
-            $this->load->view('venta/venta_lista_read', $data);
+            $this->load->view('venta/venta_lista', $data);
             $this->load->view('inc/creditos');	
             $this->load->view('inc/pie');
 
             /*$this->load->view('inc/header');
         $this->load->view('lista_read',$data);
         $this->load->view('inc/footer');*/
-        } else {
-            $idsucursal=$this->session->userdata('idSucursal');
-            $lista = $this->venta_model->listaventaSucursal($idsucursal);
-            $data['venta'] = $lista;
+        } 
+        else 
+        {
+                if ($this->session->userdata('rol')=='contador')
+                {
+                    $lista = $this->venta_model->listaventa();
+                    $data['venta'] = $lista;
 
-            $this->load->view('inc/headergentelella');
-            $this->load->view('inc/sidebargentelellavendedor');
-            $this->load->view('inc/topbargentelella');
-            $this->load->view('venta/vendedor/venta_lista_read', $data);
-            $this->load->view('inc/creditosgentelella');
-            $this->load->view('inc/footergentelella');
+                    $this->load->view('inc/cabecera');
+                    $this->load->view('inc/menulateral_contador');
+                    $this->load->view('inc/menusuperior');
+                    $this->load->view('venta/contador/venta_lista', $data);
+                    $this->load->view('inc/creditos');	
+                    $this->load->view('inc/pie');
+                } 
+                else 
+                {
+                        
+                    $lista = $this->venta_model->listaventa();
+                    $data['venta'] = $lista;
+
+                    $this->load->view('inc/cabecera');
+                    $this->load->view('inc/menulateral_vendedor');
+                    $this->load->view('inc/menusuperior');
+                    $this->load->view('venta/vendedor/venta_lista', $data);
+                    $this->load->view('inc/creditos');	
+                    $this->load->view('inc/pie');
+                }
         }
     }
+
     public function index2()
     {
         //NO ACTIVO - NO SE USA PARA NADA
@@ -72,7 +90,7 @@ class Venta extends CI_Controller
                 $this->load->view('inc/cabecera');
                 $this->load->view('inc/menulateral_contador');
                 $this->load->view('inc/menusuperior');
-                $this->load->view('venta/venta_agregar');
+                $this->load->view('venta/contador/venta_agregar');
                 $this->load->view('inc/creditos');	
                 $this->load->view('inc/pie');
             }
@@ -81,7 +99,7 @@ class Venta extends CI_Controller
                 $this->load->view('inc/cabecera');
                 $this->load->view('inc/menulateral_vendedor');
                 $this->load->view('inc/menusuperior');
-                $this->load->view('venta/venta_agregar');
+                $this->load->view('venta/vendedor/venta_agregar');
                 $this->load->view('inc/creditos');	
                 $this->load->view('inc/pie');
             }

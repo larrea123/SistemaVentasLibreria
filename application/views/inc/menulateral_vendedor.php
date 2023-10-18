@@ -87,7 +87,7 @@
                   <li><a><i class="fa fa-shopping-cart"></i>Ventas <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                       <li>
-                          <?php echo form_open_multipart('venta/vistaAgregarVenta');?>
+                          <?php echo form_open_multipart('venta/index');?>
                             <button type="submit" class="col-md-11 btn btn-dark bg-lcv" style="background-color: transparent; border: none;">
                               Ventas
                             </button>

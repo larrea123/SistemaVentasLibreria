@@ -4,6 +4,27 @@ defined('BASEPATH') or exit('No direct script access allowed');
 class Venta_model extends CI_Model
 {
 
+   public function listaventa() //select
+   {
+      $this->db->select('venta.idVenta, venta.total, venta.estado, venta.fechaRegistro, venta.fechaActualizacion, cliente.idCliente,
+                  cliente.razonSocial, cliente.ciNit, usuario.idUsuario, usuario.login, detalleventa.precioUnitario, detalleventa.cantidad, 
+                  producto.nombre, producto.stock, producto.precioCompra, producto.precioVenta, categoria.nombre as nombrec, marca.nombre as nombrem,
+                  proveedor.razonSocial as razon, proveedor.nit'); //select *
+      $this->db->from('venta'); //tabla productos
+      $this->db->where('venta.estado', '1'); //condición where estado = 1
+      $this->db->join('cliente', 'venta.idCliente = cliente.idCliente');
+      $this->db->join('usuario', 'venta.idUsuario = usuario.idUsuario');
+      $this->db->join('detalleventa', 'venta.idVenta = detalleventa.idVenta');
+      $this->db->join('producto', 'producto.idProducto = detalleventa.idProducto');
+      $this->db->join('categoria', 'producto.idCategoria = categoria.idCategoria');
+      $this->db->join('marca', 'producto.idMarca = marca.idMarca');
+      $this->db->join('proveedor', 'producto.idProveedor = proveedor.idProveedor');
+      $this->db->order_by('venta.idVenta', 'desc');
+      $this->db->group_by('venta.idVenta'); 
+      //si se gusta añadir una especie de AND de SQL se puede repetir nuevamente la línea previa a este comentario. ($this->db->where('estado','1');)
+      return $this->db->get(); //devolucion del resultado de la consulta
+   }   
+
    public function buscarProducto($data) //get
    {
       $this->db->like('marca.nombre', $data);
@@ -200,7 +221,7 @@ class Venta_model extends CI_Model
          $stockAc = $stock[$count] - $cantidades[$count];
          $this->db->where('idProducto', $idProductos[$count]);
          $this->db->update('producto',  array(
-            'stock' => $$stockAc,
+            'stock' => $stockAc,
          ));
 
          $count ++;
