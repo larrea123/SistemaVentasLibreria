@@ -481,7 +481,7 @@ class Producto extends CI_Controller {
 
             $data['idUsuario']=$this->session->userdata('idusuario');
             $data['codigo']=$_POST['Codigo'];
-            $data['nombre']=strtoupper($_POST['Nombre']);
+            $data['nombre']=strtoupper($_POST['Nombreproducto']);
             $data['stock']=$_POST['Stock'];
             $data['precioCompra']=$_POST['Preciocompra'];
             $data['precioVenta']=$_POST['Precioventa'];                 
