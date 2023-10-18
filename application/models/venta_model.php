@@ -21,7 +21,6 @@ class Venta_model extends CI_Model
       $this->db->join('proveedor', 'producto.idProveedor = proveedor.idProveedor');
       $this->db->order_by('venta.idVenta', 'desc');
       //$this->db->group_by('venta.idVenta'); 
-      //si se gusta añadir una especie de AND de SQL se puede repetir nuevamente la línea previa a este comentario. ($this->db->where('estado','1');)
       return $this->db->get(); //devolucion del resultado de la consulta
    }   
 
@@ -306,11 +305,10 @@ class Venta_model extends CI_Model
 //--------------------------------------------------------------------------------------------------//
    public function reporteventa($idventa)
 	{
-      $this->db->select('venta.idVenta, venta.total, venta.estado, venta.fechaRegistro, venta.fechaActualizacion, cliente.idCliente, cliente.nombres, 
-                  cliente.primerApellido, cliente.segundoApellido, cliente.cedulaIdentidad, usuario.idUsuario, usuario.login, usuario.nombres AS nombresU,
-                  usuario.primerApellido AS primerApellidoU,usuario.segundoApellido AS segundoApellidoU, sucursal.idSucursal, sucursal.nombreSucursal, sucursal.direccion, 
-                  detalleventa.precioVenta, detalleventa.cantidad, producto.nroChasis, producto.color, producto.precio,
-                   modelo.nombreModelo, marca.nombreMarca'); //select *
+      $this->db->select('venta.idVenta, venta.total, venta.estado, venta.fechaRegistro, venta.fechaActualizacion, cliente.idCliente, cliente.razonSocial, 
+                  cliente.ciNit, usuario.idUsuario, usuario.login, usuario.nombres AS nombresU, usuario.primerApellido AS primerApellidoU,
+                  usuario.segundoApellido AS segundoApellidoU, detalleventa.precioUnitario, detalleventa.cantidad, producto.nombre, 
+                  producto.stock, producto.precioVenta, producto.precioCompra, categoria.nombre as nombrec, marca.nombre as nombrem'); //select *
       $this->db->from('venta'); //tabla productos
       $this->db->where('venta.estado', '1'); //condición where estado = 1
       $this->db->join('cliente', 'venta.idCliente = cliente.idCliente');
