@@ -20,7 +20,7 @@ class Venta_model extends CI_Model
       $this->db->join('marca', 'producto.idMarca = marca.idMarca');
       $this->db->join('proveedor', 'producto.idProveedor = proveedor.idProveedor');
       $this->db->order_by('venta.idVenta', 'desc');
-      $this->db->group_by('venta.idVenta'); 
+      //$this->db->group_by('venta.idVenta'); 
       //si se gusta añadir una especie de AND de SQL se puede repetir nuevamente la línea previa a este comentario. ($this->db->where('estado','1');)
       return $this->db->get(); //devolucion del resultado de la consulta
    }   
