@@ -145,7 +145,7 @@
                                 <th class="column-title">Precio </th>
                                 <th class="column-title">Stock</th>
                                 <th class="column-title">Cantidad </th>
-                                <th class="column-title">Importe </th>
+                                <th class="column-title">Importeeeee</th>
                                 <th class="column-title no-link last"><span class="nobr">Eliminar</span>
                                 </th>
                                 <th class="bulk-actions" colspan="7">
@@ -241,11 +241,11 @@
                 </button>
             </div>
             <div class="modal-body">
-                La venta fue realizada con exito!!!
+                La venta fue realizada con exit!!!
             </div>
 
             <div class="modal-footer">
-                <!--<?php echo form_open_multipart('venta/reportepdf'); ?>
+                <?php echo form_open_multipart('venta/reportepdf'); ?>
                     <?php $ventaID=$this->db->query("SELECT MAX(idVenta) AS Venta 
                                                     FROM venta");
                     $lastID = 1 ;
@@ -258,11 +258,11 @@
                         }
                         ?>
                 <?php echo form_close(); ?>
-                <?php echo form_open_multipart('venta/reportepdf'); ?>
+                <!--<?php echo form_open_multipart('venta/reportepdf'); ?>
                 <button type="submit" class="btn btn-success" text-align="text-center" value="<?php $row->idVenta;?>" ><i class="fa fa-file-pdf-o"></i> Factura</button>
                 <?php echo form_close(); ?>-->
                 <?php echo form_open_multipart('venta/index'); ?>
-                <button type="submit" class="btn btn-secondary"><i class="fa fa-chevron-left"></i> Lista</button>
+                <button type="submit" class="btn btn-secondary"><i class="fa fa-chevron-left"></i> Listaaaaa</button>
                 <?php echo form_close(); ?>
             </div>
         </div>

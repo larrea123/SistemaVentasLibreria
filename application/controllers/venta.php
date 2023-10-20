@@ -233,7 +233,7 @@ class Venta extends CI_Controller
         redirect('venta/index', 'refresh');
     }
     //--------------------------------------------------------------------------------------------------//
-    /*public function reportepdf()
+    public function reportepdf()
     {
 
        // if ($this->session->userdata('tipo') == 'admin') {
@@ -264,21 +264,15 @@ class Venta extends CI_Controller
             foreach ($actividad as $rows) {
                 $usuario =$rows->login;
                 $fecha =$rows->fechaRegistro;
-                $nombreSucursal =$rows->nombreSucursal;
-                $direccionSucursal =$rows->direccion;
             }
             $this->pdf->SetFont('Arial', 'B', 9);
             $this->pdf->Cell(20, 5, utf8_decode('Usuario:'), 0, 0, 'L', 0);
             $this->pdf->SetFont('Arial', '', 9);
             $this->pdf->Cell(30, 5, utf8_decode($usuario), 0, 1, 'L', 0);
             $this->pdf->SetFont('Arial', 'B', 9);
-            $this->pdf->Cell(20, 5, utf8_decode('Sucursal:'), 0, 0, 'L', 0);
-            $this->pdf->SetFont('Arial', '', 9);
-            $this->pdf->Cell(30, 5, utf8_decode($nombreSucursal), 0, 1, 'L', 0);
-            $this->pdf->SetFont('Arial', 'B', 9);
             $this->pdf->Cell(20, 5, utf8_decode('Direccion:'), 0, 0, 'L', 0);
             $this->pdf->SetFont('Arial', '', 9);
-            $this->pdf->Cell(30, 5, utf8_decode($direccionSucursal), 0, 1, 'L', 0);
+            $this->pdf->Cell(30, 5, utf8_decode('Calle Calama'), 0, 1, 'L', 0);
             $this->pdf->SetFont('Arial', 'B', 9);
             $this->pdf->Cell(20, 5, utf8_decode(utf8_decode('Fecha: ')), 0, 0, 'L', 0);
             $this->pdf->SetFont('Arial', '', 9);
@@ -304,7 +298,7 @@ class Venta extends CI_Controller
             $actividad = $this->venta_model->reporteventa($_POST['idventa']);
             $actividad = $actividad->result();
             foreach ($actividad as $rowa) {
-                $act = $rowa->nombres.' '.$rowa->primerApellido;
+                $act = $rowa->razonSocial;
             }
             $this->pdf->Cell(50, 7, utf8_decode('Nombre/Razon Social:'), 0, 0, 'L', 0);
             $this->pdf->SetFont('Arial', '', 11);
@@ -314,7 +308,7 @@ class Venta extends CI_Controller
             $actividad = $this->venta_model->reporteventa($_POST['idventa']);
             $actividad = $actividad->result();
             foreach ($actividad as $rows) {
-                $ci =($rows->cedulaIdentidad);
+                $ci =($rows->ciNit);
             }
             $this->pdf->SetFont('Arial', 'B', 11);
             $this->pdf->Cell(50, 7, utf8_decode('C.I./NIT:'), 0, 0, 'L', 0);
@@ -340,10 +334,10 @@ class Venta extends CI_Controller
             $num = 1;
             foreach ($req as $row) {
 
-                $descripcion = $row->nombreMarca.' - '.$row->nombreModelo.' - '.$row->color;
-                $precio = $row->precio;
+                $descripcion = $row->nombrem.' - '.$row->nombre;
+                $precio = $row->precioVenta;
                 $cantidad = $row->cantidad;
-                $total = $row->precioVenta;
+                $total = $row->precioUnitario;
 
                 $this->pdf->SetFont('Arial', '', 10);
                 $this->pdf->Cell(10, 5, $num, 1, 0, 'C', 0);
@@ -378,14 +372,14 @@ class Venta extends CI_Controller
            /* $this->pdf->Ln(80);
             $this->pdf->Cell(50,7,utf8_decode('Fecha de impresion:'),0,0,'L',0);
             $this->pdf->SetFont('Arial','',11);
-            $this->pdf->Cell(0,7,utf8_decode(date("d/m/Y")),0,1,'L',0);
+            $this->pdf->Cell(0,7,utf8_decode(date("d/m/Y")),0,1,'L',0);*/
 
-            $this->pdf->Output("DetalleVenta.pdf", "I");*/
+            $this->pdf->Output("DetalleVenta.pdf", "I");
         /*} else {
             redirect('venta/index', 'refresh');
-        }
+        }*/
     }
-    /*public function reportePdfCopia()
+     /*public function reportePdfCopia()
     {
 
         //if ($this->session->userdata('tipo') == 'admin') {

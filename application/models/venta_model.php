@@ -313,11 +313,11 @@ class Venta_model extends CI_Model
       $this->db->where('venta.estado', '1'); //condición where estado = 1
       $this->db->join('cliente', 'venta.idCliente = cliente.idCliente');
       $this->db->join('usuario', 'venta.idUsuario = usuario.idUsuario');
-      $this->db->join('sucursal', 'usuario.idSucursal = sucursal.idSucursal');
       $this->db->join('detalleventa', 'venta.idVenta = detalleventa.idVenta');
       $this->db->join('producto', 'producto.idProducto = detalleventa.idProducto');
-      $this->db->join('modelo', 'producto.idModelo = modelo.idModelo');
+      $this->db->join('categoria', 'producto.idModelo = categoria.idCategoria');
       $this->db->join('marca', 'producto.idMarca = marca.idMarca');
+      $this->db->join('proveedor', 'producto.idProveedor = proveedor.idProveedor');
       $this->db->where('venta.idVenta',$idventa);
       return $this->db->get(); //devolucion del resultado de la consulta
    
