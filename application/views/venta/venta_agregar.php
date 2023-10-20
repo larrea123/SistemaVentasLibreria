@@ -33,7 +33,7 @@
                         echo form_open_multipart('venta/index');
                         ?>
                         <button type="submit" name="buttonInhabilitados" class="btn btn-outline-success">
-                            <i class="fa fa-arrow-circle-left"></i> Volver a lista de ventas
+                            <i class="fa fa-arrow-circle-left"></i> Volver a lista de ventasss
                         </button>
                         <?php
                         echo form_close();
@@ -41,7 +41,7 @@
                         <br>
 
                         <div class="item form-group has-feedback">
-                            <label class="col-form-label col-md-1 label-align">Nit / Carnet Identidad:</label>
+                            <label class="col-form-label col-md-1 label-align">Nit / Carnet Identidaddddd:</label>
                             <div class="col-md-3">
                                 <input type="search" name="carnet" id="carnet" class="form-control"></input>
                             </div>
