@@ -41,7 +41,7 @@
                         <br>
 
                         <div class="item form-group has-feedback">
-                            <label class="col-form-label col-md-1 label-align">Nit / Carnet Identidad:</label>
+                            <label class="col-form-label col-md-1 label-align">Nit/ Carnet Identidad:</label>
                             <div class="col-md-3">
                                 <input type="search" name="carnet" id="carnet" class="form-control"></input>
                             </div>

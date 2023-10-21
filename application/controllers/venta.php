@@ -74,7 +74,7 @@ class Venta extends CI_Controller
     }
     public function vistaAgregarVenta()
     {
-        if ($this->session->userdata('tipo') == 'admin') {
+        if ($this->session->userdata('rol') == 'admin') {
 
             $this->load->view('inc/cabecera');
             $this->load->view('inc/menulateral');
@@ -255,14 +255,14 @@ class Venta extends CI_Controller
             $this->pdf->Cell(0,10,'COMPROBANTE DE VENTA',0,1,'C',1);
             //$this->pdf->Cell(0,5,'DE VENTA',0,1,'C',1);
             $this->pdf->Ln(5);
-            $this->pdf->Image("uploads/membrete1.png", 150, 23, 50, 50, 'PNG');
+            $this->pdf->Image("img/membrete1.png", 147, 21, 50, 50, 'PNG');
             $this->pdf->SetFont('Arial', 'B', 10);
-            $this->pdf->Ln(5);
+            $this->pdf->Ln(8);
 
             $actividad = $this->venta_model->reporteventa($_POST['idventa']);
             $actividad = $actividad->result();
             foreach ($actividad as $rows) {
-                $usuario =$rows->login;
+                $usuario =$rows->nombresU.' '.$rows->primerApellidoU.' '.$rows->segundoApellidoU;
                 $fecha =$rows->fechaRegistro;
             }
             $this->pdf->SetFont('Arial', 'B', 9);

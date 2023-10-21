@@ -315,7 +315,7 @@ class Venta_model extends CI_Model
       $this->db->join('usuario', 'venta.idUsuario = usuario.idUsuario');
       $this->db->join('detalleventa', 'venta.idVenta = detalleventa.idVenta');
       $this->db->join('producto', 'producto.idProducto = detalleventa.idProducto');
-      $this->db->join('categoria', 'producto.idModelo = categoria.idCategoria');
+      $this->db->join('categoria', 'producto.idCategoria = categoria.idCategoria');
       $this->db->join('marca', 'producto.idMarca = marca.idMarca');
       $this->db->join('proveedor', 'producto.idProveedor = proveedor.idProveedor');
       $this->db->where('venta.idVenta',$idventa);
