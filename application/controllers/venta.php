@@ -6,7 +6,7 @@ class Venta extends CI_Controller
     public function index()
     {
 
-        if ($this->session->userdata('tipo') == 'admin') {
+        if ($this->session->userdata('rol') == 'admin') {
             $lista = $this->venta_model->listaventa();
             $data['venta'] = $lista;
 
@@ -250,7 +250,8 @@ class Venta extends CI_Controller
 
             $this->pdf->SetLeftMargin(20); //margen izquierdo
             $this->pdf->SetRightMargin(20); //margen derecho
-            $this->pdf->SetFillColor(210, 210, 210); //color de fondo
+            $this->pdf->SetFillColor(50,25,56); //color de fondo
+            $this->pdf->SetTextColor(255, 255, 255);
             $this->pdf->SetFont('Arial', 'B', 11); //tipo de letra
             $this->pdf->Cell(0,10,'COMPROBANTE DE VENTA',0,1,'C',1);
             //$this->pdf->Cell(0,5,'DE VENTA',0,1,'C',1);
@@ -265,6 +266,7 @@ class Venta extends CI_Controller
                 $usuario =$rows->nombresU.' '.$rows->primerApellidoU.' '.$rows->segundoApellidoU;
                 $fecha =$rows->fechaRegistro;
             }
+            $this->pdf->SetTextColor(0,0,0);
             $this->pdf->SetFont('Arial', 'B', 9);
             $this->pdf->Cell(20, 5, utf8_decode('Usuario:'), 0, 0, 'L', 0);
             $this->pdf->SetFont('Arial', '', 9);
@@ -272,7 +274,7 @@ class Venta extends CI_Controller
             $this->pdf->SetFont('Arial', 'B', 9);
             $this->pdf->Cell(20, 5, utf8_decode('Direccion:'), 0, 0, 'L', 0);
             $this->pdf->SetFont('Arial', '', 9);
-            $this->pdf->Cell(30, 5, utf8_decode('Calle Calama'), 0, 1, 'L', 0);
+            $this->pdf->Cell(30, 5, utf8_decode('Calle Jordan Nro.152'), 0, 1, 'L', 0);
             $this->pdf->SetFont('Arial', 'B', 9);
             $this->pdf->Cell(20, 5, utf8_decode(utf8_decode('Fecha: ')), 0, 0, 'L', 0);
             $this->pdf->SetFont('Arial', '', 9);
@@ -287,7 +289,8 @@ class Venta extends CI_Controller
    
             $this->pdf->Ln(15);           
             $this->pdf->SetFont('Arial', 'B', 11);
-            $this->pdf->SetFillColor(0, 0, 0);
+            // $this->pdf->SetFillColor(0, 0, 0); color negro
+            $this->pdf->SetFillColor(86,61,106);
             $this->pdf->SetTextColor(255, 255, 255);
             $this->pdf->Cell(170, 8, "Datos del cliente", 0, 1, 'C', 1);
             //$this->pdf->Cell(0,5,'DE VENTA',0,1,'C',1);

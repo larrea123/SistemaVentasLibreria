@@ -64,6 +64,7 @@
                                                 <th>Cliente</th>
                                                 <th>Nit</th>
                                                 <th>Detalle Producto</th>
+                                                <th>Cantidad </th>
                                                 <th>Total (Bs.)</th>
                                                 <th>Fecha</th>
                                                 <th>Usuario</th>
@@ -80,6 +81,7 @@
                                                     <td><?php echo $row->razonSocial; ?></td>
                                                     <td><?php echo $row->ciNit; ?></td>
                                                     <td><?php echo $row->nombrem.' - '.$row->nombrec.' - '.$row->nombre; ?></td>
+                                                    <td><?php echo $row->cantidad  ?></td>  
                                                     <td> <?php echo 'Bs. '.$row->total  ?></td>                                                 
                                                     <td><?php echo formatearFecha($row->fechaRegistro); ?></td>
                                                     <td><?php echo $row->login; ?></td>
