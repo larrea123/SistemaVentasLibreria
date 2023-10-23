@@ -95,7 +95,7 @@
                       </li>
                     </ul>
                   </li>
-                  <li class="bg-lcv"><a><i class="fa fa-users"></i> Proveedores <span class="fa fa-chevron-down"></span></a>
+                  <li class="bg-lcv1"><a><i class="fa fa-users"></i> Proveedores <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                       <li>
                           <?php echo form_open_multipart('proveedor/index');?>

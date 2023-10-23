@@ -25,8 +25,8 @@
             <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
               <div class="menu_section">
                 <h3>General</h3>
-                <ul class="nav side-menu">
-                  <li><a><i class="fa fa-users"></i> Usuarios <span class="fa fa-chevron-down"></span></a>
+                <ul class="nav side-menu ">
+                  <li class="bg-lcv1"><a><i class="fa fa-users"></i> Usuarios <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                       <li>
                           <?php echo form_open_multipart('usuario/index2');?>
@@ -37,7 +37,7 @@
                       </li>
                     </ul>
                   </li>
-                  <li><a><i class="fa fa-male"></i>Clientes <span class="fa fa-chevron-down"></span></a>
+                  <li class="bg-lcv1"><a><i class="fa fa-male"></i>Clientes <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                       <li>
                           <?php echo form_open_multipart('cliente/index');?>
@@ -48,7 +48,7 @@
                       </li>
                     </ul>
                   </li>
-                  <li><a><i class="fa fa-cubes"></i>Productos <span class="fa fa-chevron-down"></span></a>
+                  <li class="bg-lcv1"><a><i class="fa fa-cubes"></i>Productos <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                       <li>
                           <?php echo form_open_multipart('producto/index');?>
@@ -73,7 +73,7 @@
                       </li>
                     </ul>
                   </li>
-                  <li><a><i class="fa fa-users"></i> Proveedores <span class="fa fa-chevron-down"></span></a>
+                  <li class="bg-lcv1"><a><i class="fa fa-users"></i> Proveedores <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                       <li>
                           <?php echo form_open_multipart('proveedor/index');?>
@@ -84,7 +84,7 @@
                       </li>
                     </ul>
                   </li>
-                  <li><a><i class="fa fa-shopping-cart"></i>Ventas <span class="fa fa-chevron-down"></span></a>
+                  <li class="bg-lcv1"><a><i class="fa fa-shopping-cart"></i>Ventas <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                       <li>
                           <?php echo form_open_multipart('venta/index');?>
