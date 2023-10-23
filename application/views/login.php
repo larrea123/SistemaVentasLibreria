@@ -23,7 +23,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <div>
         <div class="login_wrapper">
         <div class="animate form login_form">
-            <section class="login_content bg-white">
+            <section class="login_content bg-lcv1">
     <?php
 
             switch($msg)
@@ -54,10 +54,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 array('id'=>'form1','class'=>'needs-validation','method'=>'post'));
 
             ?>
-            <h1 class=" text-dark">Librería JAZUL</h1>
-            <!--<div class="content-center">
-                <img class="img-fluid rounded w-50" src="<?php echo base_url(); ?>img/2.jpg">
-            </div>-->
+            <h1 class=" text-white">Librería JAZUL</h1>
+            <div class="content-center">
+                <img class="img-fluid rounded w-50" src="<?php echo base_url(); ?>img/membrete1.png">
+            </div>
+            <br>
             <div class="rounded badge-light">
             </div>
             <div class="col-md-12 form-group has-feedback">
@@ -82,7 +83,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <div class="separator">
                 <div class="clearfix"></div>
                 <div>
-                <h1 class=" text-dark"><i class="fa fa-globe"></i> Sistema de gestión de ventas</h1>
+                <h1 class=" text-white"><i class="fa fa-globe"></i> Sistema de gestión de ventas</h1>
                 </div>
             </div>
             <?php 

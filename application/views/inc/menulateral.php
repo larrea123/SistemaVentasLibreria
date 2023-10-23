@@ -10,7 +10,7 @@
             <!-- menu profile quick info -->
             <div class="profile clearfix  bg-png">
               <div class="profile_pic">
-                <img src="<?php echo base_url(); ?>gentelella/production/images/picture.jpg" alt="..." class="img-circle profile_img">
+                <img src="<?php echo base_url(); ?>img/membrete1.png" alt="..." class="img-circle profile_img">
               </div>
               <div class="profile_info">
                 <span>Bienvenido,</span>
@@ -26,7 +26,7 @@
               <div class="menu_section">
                 <h3>General</h3>
                 <ul class="nav side-menu">
-                  <li>
+                  <li class="bg-lcv1">
                     <a>
                       <i class="fa fa-dashboard"></i>Reportes
                       <span class="fa fa-chevron-down"></span>
@@ -39,16 +39,16 @@
                             </button>
                           <?php echo form_close();?>
                       </li>-->
-                      <li>
+                      <li class="bg-lcv1">
                           <?php echo form_open_multipart('reporte/index');?>
-                            <button type="submit" class="col-md-11 btn btn-dark" style="background-color: transparent; border: none;">
+                            <button type="submit" class="col-md-11 btn btn-dark bg-lcv" style="background-color: transparent; border: none;">
                               Reportes
                             </button>
                           <?php echo form_close();?>
                       </li>
                     </ul>
                   </li>
-                  <li><a><i class="fa fa-users"></i> Usuarios <span class="fa fa-chevron-down"></span></a>
+                  <li class="bg-lcv1"><a><i class="fa fa-users"></i> Usuarios <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                       <li>
                           <?php echo form_open_multipart('usuario/index2');?>
@@ -59,7 +59,7 @@
                       </li>
                     </ul>
                   </li>
-                  <li><a><i class="fa fa-male"></i>Clientes <span class="fa fa-chevron-down"></span></a>
+                  <li class="bg-lcv1"><a><i class="fa fa-male"></i>Clientes <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                       <li>
                           <?php echo form_open_multipart('cliente/index');?>
@@ -70,7 +70,7 @@
                       </li>
                     </ul>
                   </li>
-                  <li><a><i class="fa fa-cubes"></i>Productos <span class="fa fa-chevron-down"></span></a>
+                  <li class="bg-lcv1"><a><i class="fa fa-cubes"></i>Productos <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                       <li>
                           <?php echo form_open_multipart('producto/index');?>
@@ -95,7 +95,7 @@
                       </li>
                     </ul>
                   </li>
-                  <li><a><i class="fa fa-users"></i> Proveedores <span class="fa fa-chevron-down"></span></a>
+                  <li class="bg-lcv"><a><i class="fa fa-users"></i> Proveedores <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                       <li>
                           <?php echo form_open_multipart('proveedor/index');?>
@@ -106,7 +106,7 @@
                       </li>
                     </ul>
                   </li>
-                  <li><a><i class="fa fa-shopping-cart"></i>Ventas <span class="fa fa-chevron-down"></span></a>
+                  <li class="bg-lcv1"><a><i class="fa fa-shopping-cart"></i>Ventas <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                       <li>
                           <?php echo form_open_multipart('venta/index');?>

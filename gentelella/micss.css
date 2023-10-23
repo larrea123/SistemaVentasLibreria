@@ -3,6 +3,11 @@
     background: linear-gradient(#881182, #b97ec1af), #d60a0a !important;
 }
 
+/*Background Gentelella #252868, #262450af*/
+.bg-lcv1 {
+  background: linear-gradient(#0d0f34, #68669eaf), #38deca !important;
+}
+
 /*Side Bar Gentelella, color de fondo*/
 .nav.side-menu > li.active > a {
   background: -webkit-gradient(linear, left top, left bottom, from(#7955ef), to(#4c695c)), #bc1365;
