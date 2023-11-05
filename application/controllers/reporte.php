@@ -41,7 +41,7 @@ class Reporte extends CI_Controller {
         else
         {
             //El usuario no esta logueado
-            redirect('usuarios/panel','refresh');
+            redirect('producto/index','refresh');
 
         } 	
 	}

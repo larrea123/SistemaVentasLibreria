@@ -32,7 +32,7 @@ class Usuario extends CI_Controller {
                 $this->session->set_userdata('login',$row->login);
                 $this->session->set_userdata('rol',$row->rol);
                 $this->session->set_userdata('estado',$row->estado);
-                redirect('reporte/index2','refresh');
+                redirect('usuario/panel','refresh');
             }
         } 
         else 
@@ -47,7 +47,7 @@ class Usuario extends CI_Controller {
         if($this->session->userdata('estado')=='1')
         {
             //cargo panel admin
-            redirect('producto/index','refresh');
+            redirect('reporte/index2','refresh');
         }
         if($this->session->userdata('estado')=='2')
         {
