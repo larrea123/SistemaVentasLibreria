@@ -12,7 +12,7 @@
       <div class="col-md-12 col-sm-12 ">
         <div class="x_panel">
           <div class="x_title">
-            <h2><i class="fa fa-users"></i> Reporte Productos con Mayor Rotacion</h2>
+            <h2><i class="fa fa-users"></i> Reporte Productos mas Vendidos</h2>
             <ul class="nav navbar-right panel_toolbox">
               <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
               </li>
@@ -37,7 +37,7 @@
                       <div class="row">
                           <div class="col-md-6">
                               <?php
-                              echo form_open_multipart('reporte/producto');
+                              echo form_open_multipart('reporte/productoRotacion');
                               ?>
                               <input hidden name="cantidad" id="cantidad" value="<?php echo $cantidad ?>">
                               <button type="submit" class="btn btn-round  btn-success">
@@ -51,7 +51,7 @@
                       <br><br>
                       <!-- Inicio Div card-box table-responsive -->
                       <!--<div class="btn-group ">-->
-                      <?php echo form_open_multipart('reporte/reporteProductosPdf');?>
+                      <?php echo form_open_multipart('reporte/reporteProductosRotacionPdf');?>
                       <form  method="POST">
                           <div class="item form-group has-feedback">
                               <input hidden name="cantidad" id="cantidad" value="<?php echo $cantidad ?>">
@@ -70,6 +70,7 @@
                                   <th>Nro</th>
                                   <th>Detalle Producto</th>
                                   <th>Cantidad</th>
+                                  <th>Total (Bs.)</th>
                               </tr>
                           </thead>
                           <tbody>
@@ -81,6 +82,7 @@
                                       <td><?php echo $indice; ?></td>
                                       <td><?php echo $row->nombrec; ?></td>
                                       <td><?php echo $row->cantidad; ?></td>
+                                      <td> <?php echo 'Bs. '.$row->precioD  ?></td>
                                   </tr>
                               <?php
                               $indice++;

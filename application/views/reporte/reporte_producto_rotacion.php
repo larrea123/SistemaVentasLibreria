@@ -12,7 +12,7 @@
       <div class="col-md-12 col-sm-12 ">
         <div class="x_panel">
           <div class="x_title">
-            <h2><i class="fa fa-users"></i> Reporte Productos con Mayor Rotacion</h2>
+            <h2><i class="fa fa-users"></i> Reporte Productos mas Vendidos</h2>
             <ul class="nav navbar-right panel_toolbox">
               <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
               </li>
@@ -33,34 +33,37 @@
               <!-- Inicio Div row 2 -->
               <div class="col-sm-12">
                   <!-- Inicio Div col-sm-12 2 -->
-                  <div class="card-box table-responsive-md">
-                      <div class="row">
-                          <div class="col-md-6">
-                              <?php
-                              echo form_open_multipart('reporte/producto');
-                              ?>
-                              <input hidden name="cantidad" id="cantidad" value="<?php echo $cantidad ?>">
-                              <button type="submit" class="btn btn-round  btn-success">
-                                  <i class="fa fa-search"></i> Nueva Busqueda
-                              </button>
-                              <?php
-                              echo form_close();
-                              ?>
-                          </div>
-                      </div>    
-                      <br><br>
+                  <div class="col-md-6">
+                      <?php
+                  echo form_open_multipart('reporte/index');
+                  ?>
+                  <button type="submit" class="btn btn-round  btn-success">
+                      <i class="glyphicon glyphicon-arrow-left"></i> Regresar Reportes
+                  </button>
+                  <?php
+                  echo form_close();
+                  ?>
+                  </div>
+                  <div class="card-box table-responsive">
+                    <br><br>
                       <!-- Inicio Div card-box table-responsive -->
                       <!--<div class="btn-group ">-->
-                      <?php echo form_open_multipart('reporte/reporteProductosPdf');?>
-                      <form  method="POST">
-                          <div class="item form-group has-feedback">
-                              <input hidden name="cantidad" id="cantidad" value="<?php echo $cantidad ?>">
-                              <h5>Imprimir Reporte: </h5>
-                              ⠀⠀
-                              <button type="submit" class="btn btn-danger" name="enviar" formtarget="_blank"><i class="fa fa-file-pdf-o"></i>  REPORTE PDF</button>
-                          </div><br>
-                      </form>
-                      <?php echo form_close(); ?>                          
+                      <div class="item form-group has-feedback">
+                          <?php echo form_open_multipart('reporte/productoRotacionFinal');?>
+                          <h5>Ingrese la cantidad de los productos mas vendidos</h5><br>
+                          <div class="col-md-3">
+                              <h5>Cantidad: </h5>
+                          </div>
+                          <div class="col-md-4">
+                              <input type="search" name="cantidad" class="form-control" value="0"></input>
+                          </div>
+                          <div class="col-md-4">
+                              <label for="">&nbsp;</label>
+                              <button class="btn btn-info" type="submit" data-toggle="modal" data-target="#modal-default1" >
+                                  <span class="fa fa-search"></span></button>
+                          </div>
+                          <?php echo form_close();?>  
+                      </div>
                       <!-- </div>-->
                       <br><br>
                       <!-- la tabla de abajo tenia un id por defecto que ordenaba los tr el id se llama  datatable-buttons-->
@@ -70,6 +73,7 @@
                                   <th>Nro</th>
                                   <th>Detalle Producto</th>
                                   <th>Cantidad</th>
+                                  <th>Total (Bs.)</th>
                               </tr>
                           </thead>
                           <tbody>
@@ -81,6 +85,7 @@
                                       <td><?php echo $indice; ?></td>
                                       <td><?php echo $row->nombrec; ?></td>
                                       <td><?php echo $row->cantidad; ?></td>
+                                      <td> <?php echo 'Bs. '.$row->total  ?></td>
                                   </tr>
                               <?php
                               $indice++;
@@ -88,7 +93,6 @@
                               ?>
                           </tbody>
                       </table>
-
                   </div><!-- Inicio Div card-box table-responsive -->
               </div><!-- Fin Div col-sm-12 2 -->
             </div>

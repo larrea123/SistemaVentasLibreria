@@ -38,12 +38,44 @@ class Reporte_model extends CI_Model {
         $this->db->where('estado', 1);
         return $this->db->count_all_results();
     }
-
+    //cantidad de ventas
     public function cantidadVenta()
     {
         $this->db->from('venta');		
         $this->db->where('estado', 1);
         return $this->db->count_all_results();
+    }
+    //DASHBOARD 1
+    public function getMes() //select
+    {
+
+        $this->db->select('producto.idProducto, count(categoria.idCategoria) cant, categoria.nombre nom'); //select*
+        $this->db->from('producto'); //tabla
+        $this->db->join('categoria', 'producto.idCategoria=categoria.idCategoria');
+        $this->db->join('marca', 'producto.idMarca=marca.idMarca');
+        $this->db->WHERE('producto.estado','1');
+        $this->db->group_by('categoria.idCategoria');
+        $query = $this->db->get(); //devolucion del resultado de la consulta
+        return $query->result();
+    }
+    //DASHBORD 2
+    public function getProductosVendidos() //select
+    {
+        $this->db->select('venta.idVenta, venta.total, venta.estado, venta.fechaRegistro, venta.fechaActualizacion, cliente.idCliente, cliente.razonSocial, 
+                  cliente.ciNit, usuario.idUsuario, usuario.login, detalleventa.precioUnitario, detalleventa.cantidad, producto.nombre, producto.codigo,
+                  producto.stock, producto.precioCompra, producto.precioVenta, categoria.idCategoria ,count(categoria.idCategoria) canti, categoria.nombre as nomb, 
+                  marca.nombre as nombrem'); //select *
+        $this->db->from('venta'); //tabla productos
+        $this->db->where('venta.estado', '1'); //condición where estado = 1
+        $this->db->join('cliente', 'venta.idCliente = cliente.idCliente');
+        $this->db->join('usuario', 'venta.idUsuario = usuario.idUsuario');
+        $this->db->join('detalleventa', 'venta.idVenta = detalleventa.idVenta');
+        $this->db->join('producto', 'producto.idProducto = detalleventa.idProducto');
+        $this->db->join('categoria', 'producto.idCategoria = categoria.idCategoria');
+        $this->db->join('marca', 'producto.idMarca = marca.idMarca');   
+        $this->db->group_by('categoria.idCategoria'); 
+        $query = $this->db->get(); //devolucion del resultado de la consulta
+        return $query->result();
     }
 
     public function listaventa()//select
@@ -165,8 +197,59 @@ class Reporte_model extends CI_Model {
         
         return $this->db->get(); 
 	}
+
+    // REPORTE PRODUCTOS MAS VENDIDOS
+    public function reporteProducto()
+	{
+        $this->db->select('categoria.nombre as nombrec ,marca.nombre as nombrem, ifnull(count(*),0) cantidad, sum(detalleventa.precioUnitario) total');
+        $this->db->from ('producto');
+        $this->db->join ('categoria' ,'producto.idCategoria = categoria.idCategoria');
+        $this->db->join ('marca'  ,'producto.idMarca = marca.idMarca');
+        $this->db->join ('detalleventa' ,'producto.idProducto = detalleventa.idProducto');
+        $this->db->join ('venta' ,'detalleventa.idVenta = venta.idVenta');
+        $this->db->where ('producto.estado=1');
+        $this->db->group_by ('categoria.idCategoria');
+        $this->db->order_by ('cantidad desc');
+        
+        return $this->db->get(); 
+	}
+
     // REPORTE PRODUCTOS MAS VENDIDOS MAS CANTIDAD
-    public function reporteProducto($cantidad)
+    public function reporteProductoFinal($cantidad)
+	{
+        
+        $this->db->select('producto.precioVenta, categoria.nombre as nombrec ,marca.nombre as nombrem, ifnull(count(*),0) cantidad, sum(detalleventa.precioUnitario) total');
+        $this->db->from ('producto');
+        $this->db->join ('categoria' ,'producto.idCategoria = categoria.idCategoria');
+        $this->db->join ('marca'  ,'producto.idMarca = marca.idMarca');
+        $this->db->join ('detalleventa' ,'producto.idProducto = detalleventa.idProducto');
+        $this->db->join ('venta' ,'detalleventa.idVenta = venta.idVenta');
+        $this->db->where ('producto.estado=1');
+        $this->db->group_by ('categoria.idCategoria');
+        $this->db->order_by ('cantidad desc');
+        $this->db->limit($cantidad);
+        
+        return $this->db->get(); 
+	}
+
+    // REPORTE PRODUCTOS MAYOR ROTACION
+    public function reporteProductoRotacion()
+	{
+        
+        $this->db->select('producto.precioVenta, categoria.idCategoria, categoria.nombre as nombrec, sum(detalleventa.cantidad) cantidad, sum(detalleventa.precioUnitario) total');
+        $this->db->from ('producto');
+        $this->db->join ('categoria' ,'producto.idCategoria = categoria.idCategoria');
+        $this->db->join ('detalleventa' ,'producto.idProducto = detalleventa.idProducto');
+        $this->db->join ('venta' ,'detalleventa.idVenta = venta.idVenta');
+        $this->db->where ('producto.estado=1');
+        $this->db->group_by ('categoria.idCategoria');
+        $this->db->order_by ('cantidad desc');
+        
+        return $this->db->get(); 
+	}
+
+    // REPORTE PRODUCTOS MAYOR ROTACION MAS CANTIDAD
+    public function reporteProductoRotacion1($cantidad)
 	{
         
         $this->db->select('producto.precioVenta, categoria.idCategoria, categoria.nombre as nombrec, sum(detalleventa.cantidad) cantidad, sum(detalleventa.precioUnitario) precioD, venta.total');
@@ -178,22 +261,6 @@ class Reporte_model extends CI_Model {
         $this->db->group_by ('categoria.idCategoria');
         $this->db->order_by ('cantidad desc');
         $this->db->limit($cantidad);
-        
-        return $this->db->get(); 
-	}
-
-    // REPORTE PRODUCTOS MAS VENDIDOS
-    public function reporteProducto1()
-	{
-        
-        $this->db->select('categoria.idCategoria, categoria.nombre as nombrec, sum(detalleventa.cantidad) cantidad');
-        $this->db->from ('producto');
-        $this->db->join ('categoria' ,'producto.idCategoria = categoria.idCategoria');
-        $this->db->join ('detalleventa' ,'producto.idProducto = detalleventa.idProducto');
-        $this->db->join ('venta' ,'detalleventa.idVenta = venta.idVenta');
-        $this->db->where ('producto.estado=1');
-        $this->db->group_by ('categoria.idCategoria');
-        $this->db->order_by ('cantidad desc');
         
         return $this->db->get(); 
 	}

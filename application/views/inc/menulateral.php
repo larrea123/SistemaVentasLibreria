@@ -28,17 +28,17 @@
                 <ul class="nav side-menu">
                   <li class="bg-lcv1">
                     <a>
-                      <i class="fa fa-dashboard"></i>Reportes
+                      <i class="fa fa-dashboard"></i>Inicio
                       <span class="fa fa-chevron-down"></span>
                     </a>
                     <ul class="nav child_menu">
-                      <!--<li>
-                          <?php echo form_open_multipart('dashboard/index');?>
-                            <button type="submit" class="col-md-11 btn btn-dark" style="background-color: transparent; border: none;">
+                      <li>
+                          <?php echo form_open_multipart('reporte/index2');?>
+                            <button type="submit" class="col-md-11 btn btn-dark bg-lcv" style="background-color: transparent; border: none;">
                               Inicio
                             </button>
                           <?php echo form_close();?>
-                      </li>-->
+                      </li>
                       <li class="bg-lcv1">
                           <?php echo form_open_multipart('reporte/index');?>
                             <button type="submit" class="col-md-11 btn btn-dark bg-lcv" style="background-color: transparent; border: none;">

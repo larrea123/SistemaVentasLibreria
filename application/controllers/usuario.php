@@ -32,7 +32,7 @@ class Usuario extends CI_Controller {
                 $this->session->set_userdata('login',$row->login);
                 $this->session->set_userdata('rol',$row->rol);
                 $this->session->set_userdata('estado',$row->estado);
-                redirect('usuario/panel','refresh');
+                redirect('reporte/index2','refresh');
             }
         } 
         else 

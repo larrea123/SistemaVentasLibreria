@@ -12,7 +12,7 @@
       <div class="col-md-12 col-sm-12 ">
         <div class="x_panel">
           <div class="x_title">
-            <h2><i class="fa fa-users"></i> Lista de Reportes</h2>
+            <h2><i class="fa fa-users"></i> Reporte Productos con Mayor Rotacion</h2>
             <ul class="nav navbar-right panel_toolbox">
               <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
               </li>
@@ -50,7 +50,7 @@
                       <!--<div class="btn-group ">-->
                       <div class="item form-group has-feedback">
                           <?php echo form_open_multipart('reporte/productoFinal');?>
-                          <h5>Ingrese la cantidad de los productos mas vendidos</h5><br>
+                          <h5>Ingrese la cantidad de los productos con mayor rotacion</h5><br>
                           <div class="col-md-3">
                               <h5>Cantidad: </h5>
                           </div>
@@ -72,7 +72,7 @@
                               <tr class="headings">
                                   <th>Nro</th>
                                   <th>Detalle Producto</th>
-                                  <th>Cantidad</th>
+                                  <th>Cantidad de Ventas</th>
                                   <!--<th>Total (Bs.)</th>-->
                               </tr>
                           </thead>

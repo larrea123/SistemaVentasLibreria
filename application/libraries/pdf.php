@@ -20,7 +20,7 @@
         
            $this->SetY(-15);
            $this->SetFont('Arial','I',8);
-           $this->Cell(50,7,utf8_decode('Fecha de impresion: ').utf8_decode(date("d/m/Y")).' - ',0,0,'L',0);
+           $this->Cell(50,7,utf8_decode('Fecha de impresion: ').utf8_decode(date("d/m/Y")),0,0,'L',0);
            $this->SetFont('Arial','I',8);
            $this->Cell(0,10,'Pag. '.$this->PageNo().'/{nb}',0,0,'R');
       }
