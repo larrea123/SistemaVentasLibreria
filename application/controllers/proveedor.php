@@ -334,9 +334,9 @@ class Proveedor extends CI_Controller {
             redirect('proveedor/index','refresh');
         }
     }
-    public function deshabilitarbd() 
+    public function deshabilitarbd( $idproveedor) 
     {
-        $idproveedor=$_POST['idproveedor'];
+        //$idproveedor=$_POST['idproveedor'];
         $data['estado']='0';
 
         $this->proveedor_model->modificarproveedor($idproveedor,$data);

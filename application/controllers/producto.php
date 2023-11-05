@@ -494,9 +494,9 @@ class Producto extends CI_Controller {
             redirect('producto/index','refresh');
         }
     }
-    public function deshabilitarbd() 
+    public function deshabilitarbd($idproducto) 
     {
-        $idproducto=$_POST['idproducto'];
+        //$idproducto=$_POST['idproducto'];
         $data['estado']='0';
 
         $this->producto_model->modificarproducto($idproducto,$data);

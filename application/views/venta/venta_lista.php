@@ -68,7 +68,7 @@
                                                 <th>Total (Bs.)</th>
                                                 <th>Fecha</th>
                                                 <th>Usuario</th>
-                                                <!--<th>Acciones</th>-->
+                                                <th>Acciones</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -86,22 +86,22 @@
                                                     <td><?php echo formatearFecha($row->fechaRegistro); ?></td>
                                                     <td><?php echo $row->login; ?></td>
 
-                                                    <!--<td class="text-center">
-                                                        <div class="btn-group">
+                                                    <td class="text-center">
+                                                        <!--<div class="btn-group">
                                                             <?php echo form_open_multipart('venta/reportePdfCopia');?>
                                                             <input type="hidden" name="idventa" value="<?php echo $row->idVenta;?>">
                                                             <button class="btn btn-danger" data-toggle="tooltip" formtarget="_blank" data-placement="top" title="PDF">
                                                             <i class="fa fa-file-pdf-o"></i>
                                                             </button>
-                                                            <?php echo form_close();?>
+                                                            <?php echo form_close();?>-->
 
 
                                                             <input type="hidden" name="idproducto" value="<?php echo $row->idVenta;?>">
-                                                            <button class="btn btn-outline-danger" data-toggle="tooltip"  onclick="return confirm_modalDeshabilitar(<?php echo $row->idVenta; ?>)"  data-placement="top" title="Deshabilitar">
+                                                            <button class="btn btn-outline-danger" data-toggle="tooltip"  onclick="return confirm_modalDeshabilitar(<?php echo $row->idVenta; ?>)"  data-placement="top" title="Anular Venta">
                                                             <i class="fa fa-toggle-off"></i>
                                                             </button>
                                                         </div>
-                                                    </td>-->
+                                                    </td>
                                                 </tr>
                                             <?php
                                             }
@@ -144,13 +144,7 @@
 </div>
 
 <script>
-    function confirm_modalFotos(id) {
-        var url = '<?php echo base_url() . "index.php/venta/deshabilitarbd/"; ?>';
-        $("#url-delete").attr('href', url + id);
-        // jQuery('#confirmar').modal('show', {backdrop: 'static'});
-        $('#modalConfirmacion').modal('show');
-    }
-         function confirm_modalDeshabilitar(id) 
+    function confirm_modalDeshabilitar(id) 
     {
         var url = '<?php echo base_url() . "index.php/venta/deshabilitarbd/"; ?>';
         $("#url-delete").attr('href', url + id);

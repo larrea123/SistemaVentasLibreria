@@ -258,9 +258,9 @@ class Marca extends CI_Controller {
                 redirect('marca/index','refresh');
         }
     }
-    public function deshabilitarbd() 
+    public function deshabilitarbd($idmarca) 
     {
-        $idmarca=$_POST['idmarca'];
+        //$idmarca=$_POST['idmarca'];
         $data['estado']='0';
 
         $this->marca_model->modificarmarca($idmarca,$data);

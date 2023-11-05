@@ -63,7 +63,7 @@
                           <th>Nro</th>
                           <th>Categoria</th>
                           <th>Fecha de ingreso</th>
-                          <th>Modificar</th>
+                          <th class="text-center">Acciones</th>
                           <!--<th>Eliminar</th>-->
                         </tr>
                       </thead>
@@ -78,26 +78,22 @@
                           <td><?php echo $indice; ?></td>
                           <td><?php echo $row->nombre; ?></td>
                           <td><?php echo formatearFecha($row->fechaRegistro); ?></td>
-                          <td>
-                          <?php 
-                              echo form_open_multipart('categoria/modificar');
-                              ?>
+                          <td class="text-center">
+                            <div class="btn-group">
+                              <?php echo form_open_multipart('categoria/modificar');?>
                               <input type="hidden" name="idcategoria" value="<?php echo $row->idCategoria; ?>">
-                              <button type="submit" class="btn btn-success">MODIFICAR</button>
-                              <?php   
-                              echo form_close();
-                              ?>                            
+                              <button class="btn btn-warning" data-toggle="tooltip" data-placement="top" title="Editar">
+                              <i class="fa fa-edit"></i>
+                              </button>
+                              <?php echo form_close();?>
+
+
+                              <!--<input type="hidden" name="idcategoria" value="<?php echo $row->idCategoria; ?>">
+                              <button class="btn btn-outline-danger" data-toggle="tooltip"  onclick="return confirm_modalDeshabilitar(<?php echo $row->idCategoria; ?>)"  data-placement="top" title="Deshabilitar">
+                                <i class="fa fa-toggle-off"></i>
+                              </button>-->
+                            </div>
                           </td>
-                          <!--<td>
-                              <?php 
-                              echo form_open_multipart('categoria/deshabilitarbd');
-                              ?>
-                              <input type="hidden" name="idcategoria" value="<?php echo $row->idCategoria; ?>">
-                              <button type="submit" class="btn btn-danger">ELIMINAR</button>
-                              <?php   
-                              echo form_close();
-                              ?>                            
-                          </td>-->
                         </tr>
                         <?php
                           $indice++;
@@ -117,3 +113,39 @@
   </div>
 </div>  
 <!-- /page content -->
+
+
+
+<!------------------------------------------------- Modal ------------------------------------------------------->
+<div class="modal fade" id="modalConfirmacion" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content alert alert-danger ">
+            <div class="modal-content alert-secondary ">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle"> Confirmación Deshabilitar</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Estás seguro de Deshabilitar?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-dark" data-dismiss="modal">Cancelar</button>
+                    <a id="url-delete" type="submit" class="btn btn-outline-danger"><i class="fa fa-check-circle-o"></i> Deshabilitar</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function confirm_modalDeshabilitar(id) 
+    {
+        var url = '<?php echo base_url() . "index.php/categoria/deshabilitarbd/"; ?>';
+        $("#url-delete").attr('href', url + id);
+        // jQuery('#confirmar').modal('show', {backdrop: 'static'});
+        $('#modalConfirmacion').modal('show');
+    }
+</script>
+

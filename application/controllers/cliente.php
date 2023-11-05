@@ -327,9 +327,9 @@ class Cliente extends CI_Controller {
             redirect('cliente/index','refresh');
         }
     }
-    public function deshabilitarbd() 
+    public function deshabilitarbd( $idcliente) 
     {
-        $idcliente=$_POST['idcliente'];
+        //$idcliente=$_POST['idcliente'];
         $data['estado']='0';
 
         $this->cliente_model->modificarcliente($idcliente,$data);

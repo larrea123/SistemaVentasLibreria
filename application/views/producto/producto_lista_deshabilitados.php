@@ -46,7 +46,7 @@
                     </div>
                     <br><br>
                     <p class="text-muted font-13 m-b-30">
-                      The Buttons extension for DataTables provides a common set of options, API methods and styling to display buttons on a page that will interact with a DataTable. The core library provides the based framework upon which plug-ins can built.
+                     Estimado administrador, los productos que usted está viendo a continuación no serán visibles al momento de realizar una venta.
                     </p>
                     <table id="datatable-buttons" class="table table-striped table-bordered" style="width:100%">
                       <thead>
@@ -79,7 +79,9 @@
                               echo form_open_multipart('producto/habilitarbd');
                               ?>
                               <input type="hidden" name="idproducto" value="<?php echo $row->idProducto; ?>">
-                              <button type="submit" class="btn btn-warning">HABILITAR</button>
+                              <button class="btn btn-success">
+                                <i class="fa fa-toggle-on"></i> HABILITAR
+                              </button>
                               <?php   
                               echo form_close();
                               ?>                            

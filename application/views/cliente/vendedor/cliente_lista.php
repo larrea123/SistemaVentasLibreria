@@ -65,7 +65,7 @@
                           <th>Nro. CI/NIT</th>
                           <th>Nro. Celular</th>
                           <th>Fecha de ingreso</th>
-                          <th>Modificar</th>
+                          <th class="text-center">Acciones</th>
                         </tr>
                       </thead>
 
@@ -81,15 +81,21 @@
                           <td><?php echo $row->ciNit; ?></td>
                           <td><?php echo $row->telefono; ?></td>
                           <td><?php echo formatearFecha($row->fechaRegistro); ?></td>
-                          <td>
-                          <?php 
-                              echo form_open_multipart('cliente/modificar');
-                              ?>
+                          <td class="text-center">
+                            <div class="btn-group">
+                              <?php echo form_open_multipart('cliente/modificar');?>
                               <input type="hidden" name="idcliente" value="<?php echo $row->idCliente; ?>">
-                              <button type="submit" class="btn btn-success">MODIFICAR</button>
-                              <?php   
-                              echo form_close();
-                              ?>                            
+                              <button class="btn btn-warning" data-toggle="tooltip" data-placement="top" title="Editar">
+                              <i class="fa fa-edit"></i>
+                              </button>
+                              <?php echo form_close();?>
+
+
+                              <!--<input type="hidden" name="idcliente" value="<?php echo $row->idCliente; ?>">
+                              <button class="btn btn-outline-danger" data-toggle="tooltip"  onclick="return confirm_modalDeshabilitar(<?php echo $row->idCliente; ?>)"  data-placement="top" title="Deshabilitar">
+                                <i class="fa fa-toggle-off"></i>
+                              </button>-->
+                            </div>
                           </td>
                         </tr>
                         <?php
@@ -110,3 +116,37 @@
   </div>
 </div>  
 <!-- /page content -->
+
+<!------------------------------------------------- Modal ------------------------------------------------------->
+<div class="modal fade" id="modalConfirmacion" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content alert alert-danger ">
+            <div class="modal-content alert-secondary ">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle"> Confirmación Deshabilitar</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Estás seguro de Deshabilitar?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-dark" data-dismiss="modal">Cancelar</button>
+                    <a id="url-delete" type="submit" class="btn btn-outline-danger"><i class="fa fa-check-circle-o"></i> Deshabilitar</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function confirm_modalDeshabilitar(id) 
+    {
+        var url = '<?php echo base_url() . "index.php/cliente/deshabilitarbd/"; ?>';
+        $("#url-delete").attr('href', url + id);
+        // jQuery('#confirmar').modal('show', {backdrop: 'static'});
+        $('#modalConfirmacion').modal('show');
+    }
+</script>
+

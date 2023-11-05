@@ -41,9 +41,9 @@
                         <br>
 
                         <div class="item form-group has-feedback">
-                            <label class="col-form-label col-md-1 label-align">Nit123 / Carnet Identidad:</label>
+                            <label class="col-form-label col-md-1 label-align">Nit / Carnet Identidad:</label>
                             <div class="col-md-3">
-                                <input type="search" name="carnet" id="carnet" class="form-control"></input>
+                                <input type="search" name="cliente" id="cliente" class="form-control"></input>
                             </div>
                             <input hidden name="idCli" id="idCli" value="0">
                             <input hidden name="idUsuario" id="idUsuario" value="<?php echo $_SESSION['idusuario'] ?>">
@@ -122,7 +122,7 @@
                             </div>
 
                             <div class="col-md-3">
-                                <button id="agregarTabla" disabled type="text" class="btn btn-success">
+                                <button id="agregarTabla" disabled type="text" class="btn btn-success" onclick="limpiar2()">
                                     <i class="fa fa-plus-circle"></i> Agregar a la tabla
                                 </button>
                             </div>
@@ -314,7 +314,7 @@
     });
 
 
-    $("#carnet").autocomplete({
+    $("#cliente").autocomplete({
         source: function(request, response) {
             // Fetch data
             $.ajax({
@@ -332,7 +332,7 @@
         },
         select: function(event, ui) {
             // Set selection
-            $('#carnet').val(ui.item.value); // display the selected text
+            $('#cliente').val(ui.item.value); // display the selected text
             $('#telefono').val(ui.item.telefono); // display the selected text
             $('#razon').val(ui.item.razonSocial); // save selected id to input
             $('#idCli').val(ui.item.idCliente); // save selected id to input
@@ -514,5 +514,14 @@
         $(".even").remove();
         cambiarTotal();
 
+    }
+    function limpiar2() {
+
+    $("#marca").val("");
+    $("#precioV").val("");
+    $("#categoria").val("");
+    $("#producto").val("");
+    $("#producto1").val("");
+    $("#agregarTabla").prop('disabled', true);
     }
 </script>

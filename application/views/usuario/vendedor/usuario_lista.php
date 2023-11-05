@@ -71,7 +71,9 @@
                               echo form_open_multipart('usuario/modificar');
                               ?>
                               <input type="hidden" name="idusuario" value="<?php echo $row->idUsuario; ?>">
-                              <button type="submit" class="btn btn-success">MODIFICAR</button>
+                              <button type="submit" class="btn btn-warning">
+                                <i class="fa fa-edit"></i> Modificar
+                              </button>
                               <?php   
                               echo form_close();
                               ?>                            

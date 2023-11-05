@@ -147,7 +147,7 @@
                       </div>
                     </div>
                     
-                    <button type="submit" class="btn btn-success">
+                    <button type="submit" class="btn btn-warning">
                         <i class="fa fa-edit"></i> Modificar
                     </button>
 

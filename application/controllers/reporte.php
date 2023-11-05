@@ -19,8 +19,22 @@ class Reporte extends CI_Controller {
         }
         else
         {
-            //El usuario no esta logueado
-            redirect('usuarios/panel','refresh');
+            if($this->session->userdata('rol')=='contador')
+            {
+                
+                $this->load->view('inc/cabecera');
+                $this->load->view('inc/menulateral_contador');
+                $this->load->view('inc/menusuperior');
+                $this->load->view('reporte/reporte_lista');
+                $this->load->view('inc/creditos');	
+                $this->load->view('inc/pie');
+    
+            }
+            else
+            {
+                //El usuario no esta logueado
+                redirect('usuarios/panel','refresh');
+            } 
 
         } 	
 	}
@@ -40,10 +54,24 @@ class Reporte extends CI_Controller {
         }
         else
         {
-            //El usuario no esta logueado
-            redirect('producto/index','refresh');
+            if($this->session->userdata('rol')=='contador')
+            {
+                
+                $this->load->view('inc/cabecera');
+                $this->load->view('inc/menulateral_contador');
+                $this->load->view('inc/menusuperior');
+                $this->load->view('reporte/reporte_listainicio');
+                $this->load->view('inc/creditos');	
+                $this->load->view('inc/pie');
+    
+            }
+            else
+            {
+                //El usuario no esta logueado
+                redirect('producto/index','refresh');
+            } 
 
-        } 	
+        } 
 	}
 
     // REPORTE GENERAL DE VENTAS

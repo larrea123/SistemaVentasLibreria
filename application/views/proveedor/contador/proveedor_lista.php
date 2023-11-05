@@ -67,7 +67,7 @@
                           <th>Telefono</th>
                           <th>Correo</th>
                           <th>Fecha de ingreso</th>
-                          <th>Modificar</th>
+                          <th class="text-center">Acciones</th>
                           <!--<th>Eliminar</th>-->
                         </tr>
                       </thead>
@@ -86,26 +86,22 @@
                           <td><?php echo $row->telefono; ?></td>
                           <td><?php echo $row->correo; ?></td>
                           <td><?php echo formatearFecha($row->fechaRegistro); ?></td>
-                          <td>
-                          <?php 
-                              echo form_open_multipart('proveedor/modificar');
-                              ?>
+                          <td class="text-center">
+                            <div class="btn-group">
+                              <?php echo form_open_multipart('proveedor/modificar');?>
                               <input type="hidden" name="idproveedor" value="<?php echo $row->idProveedor; ?>">
-                              <button type="submit" class="btn btn-success">MODIFICAR</button>
-                              <?php   
-                              echo form_close();
-                              ?>                            
+                              <button class="btn btn-warning" data-toggle="tooltip" data-placement="top" title="Editar">
+                              <i class="fa fa-edit"></i>
+                              </button>
+                              <?php echo form_close();?>
+
+
+                              <!--<input type="hidden" name="idproveedor" value="<?php echo $row->idProveedor; ?>">
+                              <button class="btn btn-outline-danger" data-toggle="tooltip"  onclick="return confirm_modalDeshabilitar(<?php echo $row->idProveedor; ?>)"  data-placement="top" title="Deshabilitar">
+                                <i class="fa fa-toggle-off"></i>
+                              </button>-->
+                            </div>
                           </td>
-                          <!--<td>
-                              <?php 
-                              echo form_open_multipart('proveedor/deshabilitarbd');
-                              ?>
-                              <input type="hidden" name="idproveedor" value="<?php echo $row->idProveedor; ?>">
-                              <button type="submit" class="btn btn-danger">ELIMINAR</button>
-                              <?php   
-                              echo form_close();
-                              ?>                            
-                          </td>-->
                         </tr>
                         <?php
                           $indice++;

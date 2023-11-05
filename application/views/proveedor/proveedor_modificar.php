@@ -55,7 +55,7 @@
                     ?>
                     <input type="hidden" name="idproveedor" value="<?php echo $row->idProveedor;?>">
                     <div class="item form-group has-feedback">
-                      <label class="col-form-label col-md-1 label-align" for="inputN">Nombre Proveedor:</label>
+                      <label class="col-form-label col-md-1 label-align" for="inputN">Razon Social:</label>
                       <div class="col-md-3">
                           <input type="text" name="RazonSocial" class="form-control has-feedback-left" value="<?php echo $row->razonSocial;?>">
                           <span class="fa fa-sign-in form-control-feedback left" aria-hidden="true"></span>
@@ -90,8 +90,8 @@
                       </div>     
                     </div>
                                         
-                    <button type="submit" class="btn btn-success">
-                        <i class="fa fa-plus-circle"></i> Modificar
+                    <button type="submit" class="btn btn-warning">
+                        <i class="fa fa-edit"></i> Modificar
                     </button>
                     <?php 
                       echo form_close();

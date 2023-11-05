@@ -258,9 +258,9 @@ class Categoria extends CI_Controller {
                 redirect('categoria/index','refresh');
         }
     }
-    public function deshabilitarbd() 
+    public function deshabilitarbd($idcategoria) 
     {
-        $idcategoria=$_POST['idcategoria'];
+        //$idcategoria=$_POST['idcategoria'];
         $data['estado']='0';
 
         $this->categoria_model->modificarcategoria($idcategoria,$data);

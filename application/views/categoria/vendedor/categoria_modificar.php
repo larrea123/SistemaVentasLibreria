@@ -63,8 +63,8 @@
                       </div>
                     </div>
                                         
-                    <button type="submit" class="btn btn-success">
-                        <i class="fa fa-plus-circle"></i> Modificar
+                    <button type="submit" class="btn btn-warning">
+                        <i class="fa fa-edit"></i> Modificar
                     </button>
                     <?php 
                       echo form_close();

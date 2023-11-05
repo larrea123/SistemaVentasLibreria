@@ -473,9 +473,9 @@ class Usuario extends CI_Controller {
         $this->usuario_model->modificarusuario($idusuario,$data);
         redirect('usuario/index2','refresh');
     }
-    public function deshabilitarbd() 
+    public function deshabilitarbd($idusuario) 
     {
-        $idusuario=$_POST['idusuario'];
+        //$idusuario=$_POST['idusuario'];
         $data['estado']='0';
 
         $this->usuario_model->modificarusuario($idusuario,$data);

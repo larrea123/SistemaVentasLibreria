@@ -45,7 +45,7 @@
                     </div>
                     <br><br>
                     <p class="text-muted font-13 m-b-30">
-                      The Buttons extension for DataTables provides a common set of options, API methods and styling to display buttons on a page that will interact with a DataTable. The core library provides the based framework upon which plug-ins can built.
+                      Estimado administrador, las categorias que usted está viendo a continuación no serán visibles al momento de realizar una venta.
                     </p>
                     <table id="datatable-buttons" class="table table-striped table-bordered" style="width:100%">
                       <thead>
@@ -53,7 +53,7 @@
                           <th>Nro</th>
                           <th>Categoria</th>
                           <th>Fecha de ingreso</th>
-                          <th>Habilitar</th>
+                          <th class="text-center">Habilitar</th>
                         </tr>
                       </thead>
 
@@ -67,12 +67,14 @@
                           <td><?php echo $indice; ?></td>
                           <td><?php echo $row->nombre; ?></td>
                           <td><?php echo formatearFecha($row->fechaRegistro); ?></td>
-                          <td>
+                          <td class="text-center">
                           <?php 
                               echo form_open_multipart('categoria/habilitarbd');
                               ?>
                               <input type="hidden" name="idcategoria" value="<?php echo $row->idCategoria; ?>">
-                              <button type="submit" class="btn btn-success">HABILITAR</button>
+                              <button class="btn btn-success">
+                                <i class="fa fa-toggle-on"></i> HABILITAR
+                              </button>
                               <?php   
                               echo form_close();
                               ?>                            
