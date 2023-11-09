@@ -216,7 +216,8 @@ class Usuario extends CI_Controller {
         }
         else{
             $carnet = $_POST['CedulaIdentidad'];
-            $validarcarnet = $this->cliente_model->validarcarnet($carnet);
+            $validarcarnet = $this->usuario_model->validarcarnet($carnet);
+
             if ($validarcarnet->num_rows() > 0) {
                 redirect('usuario/agregar/2', 'refresh');
             } 
