@@ -52,7 +52,7 @@ class Venta_model extends CI_Model
 
          foreach ($records as $row) {
             //$value = $row->nombreProducto. ' - ' . $row->nombreMarca;
-            $value = $row->nombre;
+            $value = $row->nombre. ' - ' . $row->nombrem;
             $response2[] = array(
                "value" => $value,
                "nombre" => $row->nombre,
@@ -291,7 +291,7 @@ class Venta_model extends CI_Model
  
         foreach($records as $row ){
             $response2[] = array(
-            "value"=>$row->ciNit,
+            "value"=>$row->ciNit. ' - ' . $row->razonSocial,
             "idCliente"=>$row->idCliente,
             "ciNit"=>$row->ciNit,
             "razonSocial"=>$row->razonSocial,

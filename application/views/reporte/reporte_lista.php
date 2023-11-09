@@ -63,7 +63,7 @@
                 <div class="col-xl-6 col-md-6 mb-4">
                     <div class="card border-png shadow h-100">
                         <div class="card-body bg-lcv1 font-weight-bold">    
-                            <div class="h2 mb-0 font-weight-bold"><h3 class="fa fa-file-text x2 text-light"> Reporte de Productos mas vendidos</h3></div>
+                            <div class="h2 mb-0 font-weight-bold"><h3 class="fa fa-file-text x2 text-light"> Reporte de Productos más vendidos</h3></div>
                         </div>
                         <div class="card-footer bg-lcv1 font-weight-bold">
                             <?php echo form_open_multipart('reporte/productoRotacion');?>
