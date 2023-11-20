@@ -45,9 +45,10 @@
                       ⠀<!--aquí se encuentra un caracter en blanco con el propósito de separar los botones de forma "limpia"-->
                     </div>
                     <br><br>
-                    <p class="text-muted font-13 m-b-30">
+                    <h4>
                       Usted está por actualizar los datos de una categoria, por favor llene el siguiente campo:
-                    </p>
+                    </h4> 
+                    <p class="text-muted font-13 m-b-30">Indica un campo obligatorio(*)</p>
                     <?php 
                       foreach($infocategoria->result() as $row)
                       {
@@ -55,7 +56,7 @@
                     ?>
                     <input type="hidden" name="idcategoria" value="<?php echo $row->idCategoria;?>">
                     <div class="item form-group has-feedback">
-                      <label class="col-form-label col-md-1 label-align" for="nombrecategoria">Nombre Categoria:</label>
+                      <label class="col-form-label col-md-1 label-align" for="nombrecategoria">(*) Nombre Categoria:</label>
                       <div class="col-md-3">
                           <input type="text" name="NombreCategoria" class="form-control has-feedback-left" value="<?php echo $row->nombre;?>">
                           <span class="fa fa-male form-control-feedback left" aria-hidden="true"></span>

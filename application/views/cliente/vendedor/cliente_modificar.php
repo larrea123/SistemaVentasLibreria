@@ -45,9 +45,10 @@
                       ⠀<!--aquí se encuentra un caracter en blanco con el propósito de separar los botones de forma "limpia"-->
                     </div>
                     <br><br>
-                    <p class="text-muted font-13 m-b-30">
-                      Usted está por actualizar los datos de un cliente, por favor llene el siguiente campo:
-                    </p>
+                    <h4>
+                     Usted está por actualizar los datos de un cliente, por favor llene el siguiente campo::
+                    </h4> 
+                    <p class="text-muted font-13 m-b-30">Indica un campo obligatorio(*)</p>
                     <?php 
                       foreach($infocliente->result() as $row)
                       {
@@ -55,13 +56,13 @@
                     ?>
                     <input type="hidden" name="idcliente" value="<?php echo $row->idCliente;?>">
                     <div class="item form-group has-feedback">
-                      <label class="col-form-label col-md-1 label-align" for="razonsocial">Razon Social:</label>
+                      <label class="col-form-label col-md-1 label-align" for="razonsocial">(*) Razon Social:</label>
                       <div class="col-md-3">
                           <input type="text" name="RazonSocial" class="form-control has-feedback-left" value="<?php echo $row->razonSocial;?>">
                           <span class="fa fa-male form-control-feedback left" aria-hidden="true"></span>
                           <?php echo form_error('RazonSocial'); ?>
                       </div>
-                      <label class="col-form-label col-md-1 label-align" for="cinit">Nro. Carnet:</label>
+                      <label class="col-form-label col-md-1 label-align" for="cinit">(*) Nro. Carnet:</label>
                       <div class="col-md-3">
                           <input type="text" name="CiNit" class="form-control has-feedback-left" value="<?php echo $row->ciNit;?>">
                           <span class="fa fa-list-alt form-control-feedback left" aria-hidden="true"></span>

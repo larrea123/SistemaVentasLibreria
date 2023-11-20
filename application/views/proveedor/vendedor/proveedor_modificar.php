@@ -46,8 +46,10 @@
                     </div>
                     <br><br>
                     <p class="text-muted font-13 m-b-30">
+                    <h4>
                       Usted está por actualizar los datos de un proveedor, por favor llene el siguiente campo:
-                    </p>
+                    </h4> 
+                    <p class="text-muted font-13 m-b-30">Indica un campo obligatorio(*)</p>
                     <?php 
                       foreach($infoproveedor->result() as $row)
                       {
@@ -55,19 +57,19 @@
                     ?>
                     <input type="hidden" name="idproveedor" value="<?php echo $row->idProveedor;?>">
                     <div class="item form-group has-feedback">
-                      <label class="col-form-label col-md-1 label-align" for="inputN">Razon Social:</label>
+                      <label class="col-form-label col-md-1 label-align" for="inputN">(*) Razon Social:</label>
                       <div class="col-md-3">
                           <input type="text" name="RazonSocial" class="form-control has-feedback-left" value="<?php echo $row->razonSocial;?>">
                           <span class="fa fa-sign-in form-control-feedback left" aria-hidden="true"></span>
                           <?php echo form_error('RazonSocial'); ?>
                       </div>
-                      <label class="col-form-label col-md-1 label-align" for="nit">NIT:</label>
+                      <label class="col-form-label col-md-1 label-align" for="nit">(*) NIT:</label>
                       <div class="col-md-3">
                           <input type="text" name="Nit" class="form-control has-feedback-left" value="<?php echo $row->nit;?>">
                           <span class="fa fa-list-alt form-control-feedback left" aria-hidden="true"></span>
                           <?php echo form_error('Nit'); ?>
                       </div>
-                      <label class="col-form-label col-md-1 label-align" for="telf">Telefono:</label>
+                      <label class="col-form-label col-md-1 label-align" for="telf">(*) Telefono:</label>
                       <div class="col-md-3">
                           <input type="text" name="Telefono" class="form-control has-feedback-left" value="<?php echo $row->telefono;?>">
                           <span class="fa fa-mobile-phone form-control-feedback left" aria-hidden="true"></span>
@@ -82,7 +84,7 @@
                           <span class="fa fa-male form-control-feedback left" aria-hidden="true"></span>
                           <?php echo form_error('Correo'); ?>
                       </div>   
-                      <label class="col-form-label col-md-1 label-align" for="genero">Direccion:</label>
+                      <label class="col-form-label col-md-1 label-align" for="genero">(*) Direccion:</label>
                       <div class="col-md-3">
                         <textarea name="Direccion" class="form-control has-feedback-left" ><?php echo $row->direccion; ?></textarea>
                         <span class="fa fa-list form-control-feedback left" aria-hidden="true"></span>

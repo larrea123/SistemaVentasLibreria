@@ -45,15 +45,16 @@
                       ⠀<!--aquí se encuentra un caracter en blanco con el propósito de separar los botones de forma "limpia"-->
                     </div>
                     <br><br>
-                    <p class="text-muted font-13 m-b-30">
+                    <h4>
                       Usted va a insertar un nuevo producto, por favor llene el siguiente campo:
-                    </p>
+                    </h4> 
+                    <p class="text-muted font-13 m-b-30">Indica un campo obligatorio(*)</p>
                     <?php 
                       echo form_open_multipart('producto/agregarbd');
                     ?>
 
                     <div class="item form-group has-feedback">
-                      <label class="col-form-label col-md-1 label-align" for="marca">Marca:</label>
+                      <label class="col-form-label col-md-1 label-align" for="marca">(*) Marca:</label>
                       <div class="col-md-3">
                           <select class="form-control" name="idMarca" required>
                           <option value="" disabled selected >Seleccione una marca:</option>
@@ -69,7 +70,7 @@
                           ?>
                           </select> 
                       </div>
-                      <label class="col-form-label col-md-1 label-align" for="proveedor">Proveedor:</label>
+                      <label class="col-form-label col-md-1 label-align" for="proveedor">(*) Proveedor:</label>
                       <div class="col-md-3">
                           <select class="form-control" name="idProveedor" required>
                               <option value="" disabled selected >Seleccione un proveedor:</option>
@@ -82,7 +83,7 @@
                               ?>
                           </select> 
                       </div>
-                      <label class="col-form-label col-md-1 label-align" for="categoria">Categoria:</label>
+                      <label class="col-form-label col-md-1 label-align" for="categoria">(*) Categoria:</label>
                       <div class="col-md-3">
                           <select class="form-control" name="idCategoria" required>
                           <option value="" disabled selected >Seleccione una categoria:</option>
@@ -101,21 +102,21 @@
                     </div>
 
                     <div class="item form-group has-feedback">
-                      <label class="col-form-label col-md-1 label-align" for="inputCo">Codigo:</label>
+                      <label class="col-form-label col-md-1 label-align" for="inputCo">(*) Codigo:</label>
                       <div class="col-md-3">
                           <input type="text" name="Codigo" class="form-control has-feedback-left"
                           value="<?php echo set_value('Codigo');?>">
                           <span class="fa fa-barcode form-control-feedback left" aria-hidden="true"></span>
                           <?php echo form_error('Codigo'); ?>
                       </div>
-                      <label class="col-form-label col-md-1 label-align" for="inputNP">Descripcion:</label>
+                      <label class="col-form-label col-md-1 label-align" for="inputNP">(*) Descripcion:</label>
                       <div class="col-md-3">
                           <input type="text" name="Nombreproducto" class="form-control has-feedback-left"
                           value="<?php echo set_value('Nombreproducto');?>">
                           <span class="fa fa-money form-control-feedback left" aria-hidden="true"></span>
                           <?php echo form_error('Nombreproducto'); ?>
                       </div>
-                      <label class="col-form-label col-md-1 label-align" for="inputCa">Cantidad:</label>
+                      <label class="col-form-label col-md-1 label-align" for="inputCa">(*) Cantidad:</label>
                       <div class="col-md-3">
                           <input type="text" name="Cantidad" class="form-control has-feedback-left"
                           value="<?php echo set_value('Cantidad');?>">
@@ -125,14 +126,14 @@
                     </div>
 
                     <div class="item form-group has-feedback">
-                      <label class="col-form-label col-md-1 label-align" for="inputPreC">Precio Compra (Bs):</label>
+                      <label class="col-form-label col-md-1 label-align" for="inputPreC">(*) Precio Compra (Bs):</label>
                       <div class="col-md-3">
                           <input type="text" name="Preciocompra" class="form-control has-feedback-left"
                           value="<?php echo set_value('Preciocompra');?>">
                           <span class="fa fa-money form-control-feedback left" aria-hidden="true"></span>
                           <?php echo form_error('Preciocompra'); ?>
                       </div>
-                      <label class="col-form-label col-md-1 label-align" for="inputPreV">Precio Venta (Bs):</label>
+                      <label class="col-form-label col-md-1 label-align" for="inputPreV">(*) Precio Venta (Bs):</label>
                       <div class="col-md-3">
                           <input type="text" name="Precioventa" class="form-control has-feedback-left"
                           value="<?php echo set_value('Precioventa');?>">

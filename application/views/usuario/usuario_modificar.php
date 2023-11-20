@@ -45,9 +45,10 @@
                       ⠀<!--aquí se encuentra un caracter en blanco con el propósito de separar los botones de forma "limpia"-->
                     </div>
                     <br><br>
-                    <p class="text-muted font-13 m-b-30">
+                    <h4>
                       Usted está por actualizar los datos de un usuario, por favor llene el siguiente campo:
-                    </p>
+                    </h4> 
+                    <p class="text-muted font-13 m-b-30">Indica un campo obligatorio(*)</p>
                     <?php 
                       foreach($infousuario->result() as $row)
                       {
@@ -56,13 +57,13 @@
                     <input type="hidden" name="idusuario" value="<?php echo $row->idUsuario;?>">
                     
                     <div class="item form-group has-feedback">
-                      <label class="col-form-label col-md-1 label-align" for="nombres">Nombres:</label>
+                      <label class="col-form-label col-md-1 label-align" for="nombres">(*) Nombres:</label>
                       <div class="col-md-3">
                           <input type="text" name="Nombres" class="form-control has-feedback-left" value="<?php echo $row->nombres;?>">
                           <span class="fa fa-male form-control-feedback left" aria-hidden="true"></span>
                           <?php echo form_error('Nombres'); ?>
                       </div>
-                      <label class="col-form-label col-md-1 label-align" for="primerapellido">Primer Apellido:</label>
+                      <label class="col-form-label col-md-1 label-align" for="primerapellido">(*) Primer Apellido:</label>
                       <div class="col-md-3">
                           <input type="text" name="PrimerApellido" class="form-control has-feedback-left" value="<?php echo $row->primerApellido;?>">
                           <span class="fa fa-male form-control-feedback left" aria-hidden="true"></span>
@@ -77,7 +78,7 @@
                     </div>
 
                     <div class="item form-group has-feedback">
-                      <label class="col-form-label col-md-1 label-align" for="rol">Rol Usuario:</label>
+                      <label class="col-form-label col-md-1 label-align" for="rol">(*) Rol Usuario:</label>
                       <div class="col-md-3">
                           <select class="form-control" name="Rol" required>
                               <option value="<?php echo $row->rol;?>"><?php echo $row->rol;?></option>
@@ -86,13 +87,13 @@
                               <option value="contador">contador</option>
                           </select>
                       </div>
-                      <label class="col-form-label col-md-1 label-align" for="numeroci">Nro. Carnet:</label>
+                      <label class="col-form-label col-md-1 label-align" for="numeroci">(*) Nro. Carnet:</label>
                       <div class="col-md-3">
                           <input type="text" name="CedulaIdentidad" class="form-control has-feedback-left" value="<?php echo $row->cedulaIdentidad;?>">
                           <span class="fa fa-list-alt form-control-feedback left" aria-hidden="true"></span>
                           <?php echo form_error('CedulaIdentidad'); ?>
                       </div>
-                      <label class="col-form-label col-md-1 label-align" for="numerocelular">Nro. Celular:</label>
+                      <label class="col-form-label col-md-1 label-align" for="numerocelular">(*) Nro. Celular:</label>
                       <div class="col-md-3">
                           <input type="text" name="Telefono" class="form-control has-feedback-left" value="<?php echo $row->telefono;?>">
                           <span class="fa fa-mobile-phone form-control-feedback left" aria-hidden="true"></span>
@@ -101,7 +102,7 @@
                     </div>
 
                     <div class="item form-group has-feedback">
-                      <label class="col-form-label col-md-1 label-align" for="genero">Direccion:</label>
+                      <label class="col-form-label col-md-1 label-align" for="genero">(*) Direccion:</label>
                       <div class="col-md-3">
                         <textarea name="Direccion" class="form-control has-feedback-left" ><?php echo $row->direccion; ?></textarea>
                         <span class="fa fa-list form-control-feedback left" aria-hidden="true"></span>

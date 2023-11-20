@@ -45,15 +45,16 @@
                       ⠀<!--aquí se encuentra un caracter en blanco con el propósito de separar los botones de forma "limpia"-->
                     </div>
                     <br><br>
-                    <p class="text-muted font-13 m-b-30">
-                      Usted va a insertar un nuevo marca, por favor llene el siguiente campo:
-                    </p>
+                    <h4>
+                    Usted va a insertar un nuevo marca, por favor llene el siguiente campo:
+                    </h4> 
+                    <p class="text-muted font-13 m-b-30">Indica un campo obligatorio(*)</p>
                     <?php 
                       echo form_open_multipart('marca/agregarbd');
                     ?>
                     
                     <div class="item form-group has-feedback">
-                      <label class="col-form-label col-md-1 label-align" for="razonsocial">Nombre Marca:</label>
+                      <label class="col-form-label col-md-1 label-align" for="razonsocial">(*) Nombre Marca:</label>
                       <div class="col-md-3">
                           <input type="text" name="NombreMarca" class="form-control has-feedback-left"
                           value="<?php echo set_value('NombreMarca');?>">

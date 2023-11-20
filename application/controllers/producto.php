@@ -595,4 +595,16 @@ class Producto extends CI_Controller {
             redirect('usuario/index/2','refresh');
         }
     }
+    public function aumentar_stock()
+    {
+        $idProducto = $this->input->post('idProductoAumentar');
+        $cantidad = $this->input->post('cantidadAumentar');
+
+        // Validaciones si es necesario
+
+        $this->load->model('producto_model'); // Reemplaza 'Tu_modelo' con el nombre de tu modelo
+        $this->producto_model->aumentar_stock($idProducto, $cantidad);
+
+        redirect('producto/index','refresh'); 
+    }
 }

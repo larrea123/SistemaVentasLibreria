@@ -38,10 +38,14 @@
                         <?php
                         echo form_close();
                         ?>
-                        <br>
+                        <br><br>
+                        <h4>
+                            Usted está por realizar una venta, por favor llene los siguientes campos:
+                        </h4> 
+                        <p class="text-muted font-13 m-b-30">Indica un campo obligatorio(*)</p>
 
                         <div class="item form-group has-feedback">
-                            <label class="col-form-label col-md-1 label-align">Nit/ Carnet Identidad:</label>
+                            <label class="col-form-label col-md-1 label-align">(*) Nit/ Carnet Identidad:</label>
                             <div class="col-md-3">
                                 <input type="search" name="cliente" id="cliente" class="form-control"></input>
                             </div>
@@ -99,7 +103,7 @@
 
                         <div class="item form-group has-feedback">
 
-                            <label class="col-form-label col-md-1 label-align" for="nombre">Nombre Producto:</label>
+                            <label class="col-form-label col-md-1 label-align" for="nombre">(*) Nombre Producto:</label>
                             <div class="col-md-3">
                                 <input type="search" class="form-control" value="" name="producto" id="producto" placeholder="Escriba nombre del producto" />
                                 <input type="hidden" name="producto1" id="producto1" value="">

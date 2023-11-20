@@ -45,28 +45,29 @@
                       ⠀<!--aquí se encuentra un caracter en blanco con el propósito de separar los botones de forma "limpia"-->
                     </div>
                     <br><br>
-                    <p class="text-muted font-13 m-b-30">
+                    <h4>
                       Usted va a insertar un nuevo proveedor, por favor llene el siguiente campo:
-                    </p>
+                    </h4> 
+                    <p class="text-muted font-13 m-b-30">Indica un campo obligatorio(*)</p>
                     <?php 
                       echo form_open_multipart('proveedor/agregarbd');
                     ?>
                     <div class="item form-group has-feedback">
-                      <label class="col-form-label col-md-1 label-align" for="inputN">Razon Social:</label>
+                      <label class="col-form-label col-md-1 label-align" for="inputN">(*) Razon Social:</label>
                       <div class="col-md-3">
                           <input type="text" name="RazonSocial" class="form-control has-feedback-left"
                           value="<?php echo set_value('RazonSocial');?>">
                           <span class="fa fa-sign-in form-control-feedback left" aria-hidden="true"></span>
                           <?php echo form_error('RazonSocial'); ?>
                       </div>
-                      <label class="col-form-label col-md-1 label-align" for="nit">NIT:</label>
+                      <label class="col-form-label col-md-1 label-align" for="nit">(*) NIT:</label>
                       <div class="col-md-3">
                           <input type="text" name="Nit" class="form-control has-feedback-left"
                           value="<?php echo set_value('Nit');?>">
                           <span class="fa fa-list-alt form-control-feedback left" aria-hidden="true"></span>
                           <?php echo form_error('Nit'); ?>
                       </div>
-                      <label class="col-form-label col-md-1 label-align" for="telf">Telefono:</label>
+                      <label class="col-form-label col-md-1 label-align" for="telf">(*) Telefono:</label>
                       <div class="col-md-3">
                           <input type="text" name="Telefono" class="form-control has-feedback-left"
                           value="<?php echo set_value('Telefono');?>">
@@ -83,7 +84,7 @@
                           <span class="fa fa-male form-control-feedback left" aria-hidden="true"></span>
                           <?php echo form_error('Correo'); ?>
                       </div>   
-                      <label class="col-form-label col-md-1 label-align" for="dir">Direccion:</label>
+                      <label class="col-form-label col-md-1 label-align" for="dir">(*) Direccion:</label>
                       <div class="col-md-3">
                         <textarea name="Direccion" class="form-control has-feedback-left"></textarea>
                         <span class="fa fa-list form-control-feedback left" aria-hidden="true"></span>

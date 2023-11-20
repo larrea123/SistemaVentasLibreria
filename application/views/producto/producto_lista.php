@@ -33,27 +33,17 @@
                 <div class="col-sm-12">
                   <div class="card-box table-responsive">
                     <div class="btn-group">
-                    <?php 
-                        echo form_open_multipart('producto/agregar');
-                      ?>
+                      <?php echo form_open_multipart('producto/agregar'); ?>
                       <button type="submit" class="btn btn-success">
                         <i class="fa fa-plus-circle"></i> Insertar Productos
                       </button>
-                      <?php 
-                        echo form_close();
-                      ?>
+                      <?php echo form_close(); ?>
                       ⠀<!--aquí se encuentra un caracter en blanco con el propósito de separar los botones de forma "limpia"-->
-                      <?php 
-                        echo form_open_multipart('producto/deshabilitados');
-                      ?>
+                      <?php echo form_open_multipart('producto/deshabilitados'); ?>
                       <button type="submit" name="buttonDeshabilitados" class="btn btn-info">
                           <i class="fa fa-eye"></i> Productos Deshabilitados
                       </button>
-                      <?php 
-                        echo form_close();
-                      ?>
-                      
-
+                      <?php echo form_close(); ?>
                     </div>
                     <br><br>
                     <p class="text-muted font-13 m-b-30">
@@ -71,12 +61,10 @@
                           <th class="text-center">Acciones</th>
                         </tr>
                       </thead>
-
                       <tbody>
                       <?php
-                        $indice=1;
-                        foreach ($producto->result() as $row)
-                        {
+                        $indice = 1;
+                        foreach ($producto->result() as $row) {
                       ?>
                         <tr>
                           <td><?php echo $indice; ?></td>
@@ -90,21 +78,23 @@
                               <?php echo form_open_multipart('producto/modificar');?>
                               <input type="hidden" name="idproducto" value="<?php echo $row->idProducto; ?>">
                               <button class="btn btn-warning" data-toggle="tooltip" data-placement="top" title="Editar">
-                              <i class="fa fa-edit"></i>
+                                <i class="fa fa-edit"></i>
                               </button>
-                              <?php echo form_close();?>
-
+                              <?php echo form_close(); ?>
 
                               <input type="hidden" name="idproducto" value="<?php echo $row->idProducto; ?>">
                               <button class="btn btn-outline-danger" data-toggle="tooltip"  onclick="return confirm_modalDeshabilitar(<?php echo $row->idProducto; ?>)"  data-placement="top" title="Deshabilitar">
                                 <i class="fa fa-toggle-off"></i>
+                              </button>
+                              <button class="btn btn-success" onclick="abrirModalAumentarStock(<?php echo $row->idProducto; ?>)">
+                                <i class="fa fa-plus"></i> Aumentar Stock
                               </button>
                             </div>
                           </td>
                         </tr>
                         <?php
                           $indice++;
-                          }
+                        }
                         ?>
                       </tbody>
                     </table>
@@ -112,7 +102,6 @@
                 </div>
               </div>
             </div>
-
           </div>
         </div>
       </div>
@@ -121,7 +110,31 @@
 </div>  
 <!-- /page content -->
 
-
+<div class="modal fade" id="modalAumentarStock" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <?php echo form_open('producto/aumentar_stock', ['id' => 'formAumentarStock']); ?>
+            <div class="modal-header">
+                <h5 class="modal-title">Aumentar Stock</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <input type="hidden" name="idProductoAumentar" id="idProductoAumentar" />
+                <div class="form-group">
+                    <label for="cantidadAumentar">Cantidad a aumentar:</label>
+                    <input type="number" class="form-control" name="cantidadAumentar" required>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-primary" onclick="procesarAumentoStock()">Aumentar</button>
+            </div>
+            <?php echo form_close(); ?>
+        </div>
+    </div>
+</div>
 <!------------------------------------------------- Modal ------------------------------------------------------->
 <div class="modal fade" id="modalConfirmacion" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
@@ -146,11 +159,33 @@
 </div>
 
 <script>
-    function confirm_modalDeshabilitar(id) 
-    {
+    function abrirModalAumentarStock(idProducto) {
+        $('#idProductoAumentar').val(idProducto);
+        $('#modalAumentarStock').modal('show');
+    }
+
+    function procesarAumentoStock() {
+    if (confirm('¿Estás seguro de aumentar el stock?')) {
+        $.ajax({
+            type: "POST",
+            // Incluye la URL base completa en la solicitud AJAX
+            url: "<?php echo base_url('index.php/producto/aumentar_stock'); ?>",
+            data: $('#formAumentarStock').serialize(),
+            dataType: "json",
+            success: function (response) {
+                if (response.success) {
+                    $('#modalAumentarStock').modal('hide');
+                    location.reload();
+                }
+            }
+        });
+    }
+}
+
+
+    function confirm_modalDeshabilitar(id) {
         var url = '<?php echo base_url() . "index.php/producto/deshabilitarbd/"; ?>';
         $("#url-delete").attr('href', url + id);
-        // jQuery('#confirmar').modal('show', {backdrop: 'static'});
         $('#modalConfirmacion').modal('show');
     }
 </script>

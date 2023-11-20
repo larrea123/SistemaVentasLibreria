@@ -44,9 +44,10 @@
                       ?>
                     </div>
                     <br><br>
-                    <p class="text-muted font-13 m-b-30">
+                    <h4>
                       Usted está por actualizar los datos de un producto, por favor llene el siguiente campo:
-                    </p>
+                    </h4> 
+                    <p class="text-muted font-13 m-b-30">Indica un campo obligatorio(*)</p>
                     <?php 
                       foreach($infoproducto->result() as $rows)
                       {
@@ -55,7 +56,7 @@
                     <input type="hidden" name="idproducto" value="<?php echo $rows->idProducto;?>">
                     <br>
                     <div class="item form-group has-feedback">
-                      <label class="col-form-label col-md-1 label-align" for="inputMa">Marca:</label>
+                      <label class="col-form-label col-md-1 label-align" for="inputMa">(*) Marca:</label>
                       <div class="col-md-3">
                           <select class="form-control" name="idMarca" required>
                             <option value="<?php echo $rows->idMarca; ?>">
@@ -73,7 +74,7 @@
                             ?>
                           </select>
                       </div>
-                      <label class="col-form-label col-md-1 label-align" for="proveedor">Proveedor:</label>
+                      <label class="col-form-label col-md-1 label-align" for="proveedor">(*) Proveedor:</label>
                       <div class="col-md-3">
                           <select class="form-control" name="idProveedor" required>
                               <option value="<?php echo $rows->idProveedor; ?>">
@@ -91,7 +92,7 @@
                               ?>
                           </select> 
                       </div>
-                      <label class="col-form-label col-md-1 label-align" for="categoria">Categoria:</label>
+                      <label class="col-form-label col-md-1 label-align" for="categoria">(*) Categoria:</label>
                       <div class="col-md-3">
                           <select class="form-control" name="idCategoria" required>
                             <option value="<?php echo $rows->idCategoria; ?>">
@@ -112,19 +113,19 @@
                     </div>
 
                     <div class="item form-group has-feedback">
-                      <label class="col-form-label col-md-1 label-align" for="inputCo">Codigo:</label>
+                      <label class="col-form-label col-md-1 label-align" for="inputCo">(*) Codigo:</label>
                       <div class="col-md-3">
                           <input type="text" name="Codigo" value="<?php echo $rows->codigo;?>" class="form-control has-feedback-left" >
                           <span class="fa fa-barcode form-control-feedback left" aria-hidden="true"></span>
                           <?php echo form_error('Codigo'); ?>
                       </div>
-                      <label class="col-form-label col-md-1 label-align" for="inputNP">Descripcion:</label>
+                      <label class="col-form-label col-md-1 label-align" for="inputNP">(*) Descripcion:</label>
                       <div class="col-md-3">
                           <input type="text" name="Nombreproducto" class="form-control has-feedback-left" value="<?php echo $rows->nombre; ?>" >
                           <span class="fa fa-money form-control-feedback left" aria-hidden="true"></span>
                           <?php echo form_error('Nombreproducto'); ?>
                       </div>
-                      <label class="col-form-label col-md-1 label-align" for="inputCa">Cantidad:</label>
+                      <label class="col-form-label col-md-1 label-align" for="inputCa">(*) Cantidad:</label>
                       <div class="col-md-3">
                           <input type="text" name="Cantidad" class="form-control has-feedback-left" value="<?php echo $rows->cantidad; ?>">
                           <span class="fa fa-barcode form-control-feedback left" aria-hidden="true"></span>
@@ -133,13 +134,13 @@
                     </div>
 
                     <div class="item form-group has-feedback">
-                      <label class="col-form-label col-md-1 label-align" for="inputPreC">Precio Compra (Bs):</label>
+                      <label class="col-form-label col-md-1 label-align" for="inputPreC">(*) Precio Compra (Bs):</label>
                       <div class="col-md-3">
                           <input type="text" name="Preciocompra" class="form-control has-feedback-left" value="<?php echo $rows->precioCompra; ?>">
                           <span class="fa fa-money form-control-feedback left" aria-hidden="true"></span>
                           <?php echo form_error('Preciocompra'); ?>
                       </div>
-                      <label class="col-form-label col-md-1 label-align" for="inputPreV">Precio Venta (Bs):</label>
+                      <label class="col-form-label col-md-1 label-align" for="inputPreV">(*) Precio Venta (Bs):</label>
                       <div class="col-md-3">
                           <input type="text" name="Precioventa" class="form-control has-feedback-left" value="<?php echo $rows->precioVenta; ?>">
                           <span class="fa fa-money form-control-feedback left" aria-hidden="true"></span>

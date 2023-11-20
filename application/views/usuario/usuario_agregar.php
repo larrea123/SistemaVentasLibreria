@@ -45,22 +45,23 @@
                       ⠀<!--aquí se encuentra un caracter en blanco con el propósito de separar los botones de forma "limpia"-->
                     </div>
                     <br><br>
-                    <p class="text-muted font-13 m-b-30">
+                    <h4>
                       Usted va a insertar un nuevo usuario, por favor llene el siguiente campo:
-                    </p>
+                    </h4> 
+                    <p class="text-muted font-13 m-b-30">Indica un campo obligatorio(*)</p>
                     <?php 
                       echo form_open_multipart('usuario/agregarbd');
                     ?>
 
                     <div class="item form-group has-feedback">
-                      <label class="col-form-label col-md-1 label-align" for="nombres">Nombres:</label>
+                      <label class="col-form-label col-md-1 label-align" for="nombres">(*) Nombres:</label>
                       <div class="col-md-3">
                           <input type="text" name="Nombres" class="form-control has-feedback-left"
                           value="<?php echo set_value('Nombres');?>">
                           <span class="fa fa-male form-control-feedback left" aria-hidden="true"></span>
                           <?php echo form_error('Nombres'); ?>
                       </div>
-                      <label class="col-form-label col-md-1 label-align" for="primerapellido">Primer Apellido:</label>
+                      <label class="col-form-label col-md-1 label-align" for="primerapellido">(*) Primer Apellido:</label>
                       <div class="col-md-3">
                           <input type="text" name="PrimerApellido" class="form-control has-feedback-left"
                           value="<?php echo set_value('PrimerApellido');?>">
@@ -77,7 +78,7 @@
                     </div>
 
                     <div class="item form-group has-feedback">
-                    <label class="col-form-label col-md-1 label-align" for="rol">Rol Usuario:</label>
+                    <label class="col-form-label col-md-1 label-align" for="rol">(*) Rol Usuario:</label>
                       <div class="col-md-3">
                           <select class="form-control" name="Rol" required>
                               <option value="" disabled selected >Seleccione un rol:</option>
@@ -86,7 +87,7 @@
                               <option value="contador">contador</option>
                           </select>
                       </div> 
-                      <label class="col-form-label col-md-1 label-align" for="numeroci">Nro. Carnet:</label>
+                      <label class="col-form-label col-md-1 label-align" for="numeroci">(*) Nro. Carnet:</label>
                       <div class="col-md-3">
                           <input type="text" name="CedulaIdentidad" class="form-control has-feedback-left"
                           value="<?php echo set_value('CedulaIdentidad');?>">
@@ -96,7 +97,7 @@
                               <p id="validar"> (*) numero de carnet ya existente</p>
                           <?php } ?>
                       </div>
-                      <label class="col-form-label col-md-1 label-align" for="numerocelular">Nro. Celular:</label>
+                      <label class="col-form-label col-md-1 label-align" for="numerocelular">(*) Nro. Celular:</label>
                       <div class="col-md-3">
                           <input type="text" name="Telefono" class="form-control has-feedback-left"
                           value="<?php echo set_value('Telefono');?>">
@@ -106,7 +107,7 @@
                     </div>
 
                     <div class="item form-group has-feedback">
-                      <label class="col-form-label col-md-1 label-align" for="genero">Direccion:</label>
+                      <label class="col-form-label col-md-1 label-align" for="genero">(*) Direccion:</label>
                       <div class="col-md-3">
                         <textarea name="Direccion" class="form-control has-feedback-left"></textarea>
                         <span class="fa fa-list form-control-feedback left" aria-hidden="true"></span>
