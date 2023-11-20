@@ -93,6 +93,13 @@
                               </button>
                               <?php echo form_close();?>
 
+                              <?php echo form_open_multipart('producto/modificarCantidad'); ?>
+                              <input type="hidden" name="idproducto" value="<?php echo $row->idProducto; ?>">
+                              <button class="btn btn-success" data-toggle="tooltip" data-placement="top" title="Agregar Stock">
+                                  <i class="fa fa-upload"></i>
+                              </button>
+                              <?php echo form_close(); ?>
+
 
                               <!--<input type="hidden" name="idproducto" value="<?php echo $row->idProducto; ?>">
                               <button class="btn btn-outline-danger" data-toggle="tooltip"  onclick="return confirm_modalDeshabilitar(<?php echo $row->idProducto; ?>)"  data-placement="top" title="Deshabilitar">

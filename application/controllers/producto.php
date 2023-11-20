@@ -595,6 +595,39 @@ class Producto extends CI_Controller {
             redirect('usuario/index/2','refresh');
         }
     }
+
+    //formulario para aumental stop
+    public function modificarCantidad()
+    {
+        $idproducto = $_POST['idproducto'];
+        $data['infoproducto'] = $this->producto_model->recuperarproducto($idproducto);
+        $this->load->view('inc/cabecera');
+        $this->load->view('inc/menulateral_vendedor');
+        $this->load->view('inc/menusuperior');
+        $this->load->view('producto/producto_formulario_update_cantidad', $data);
+        $this->load->view('inc/creditos');	
+        $this->load->view('inc/pie');
+    }
+
+    public function modificarbdcantidad()
+    {
+    
+        $idproducto = $_POST['idproducto'];
+        
+        /*$data['nombreProducto'] =mb_strtoupper($_POST['nombre']);
+        $data['precio'] = $_POST['precio'];
+        $data['codigo'] = mb_strtoupper($_POST['codigo']);*/
+        $data['stock'] = $_POST['Stock'];
+        //$data['descripcion'] = mb_strtoupper($_POST['descripcion']);
+        $data['fechaActualizacion'] = date('Y-m-d H:i:s');
+
+    
+            // echo "No hay datos";
+            $this->producto_model->modificarproductos($idproducto, $data);
+                redirect('producto/index', 'refresh');
+
+
+    }
     public function aumentar_stock()
     {
         $idProducto = $this->input->post('idProductoAumentar');
@@ -606,5 +639,16 @@ class Producto extends CI_Controller {
         $this->producto_model->aumentar_stock($idProducto, $cantidad);
 
         redirect('producto/index','refresh'); 
+    }
+
+    public function incrementarstock()
+	{
+        $idproducto = $this->input->post('idproducto');
+        $data['idUsuario'] = $this->session->userdata('idusuario');
+        $data['stock'] = $this->input->post('Stock');
+        $data['fechaActualizacion'] = date('Y-m-d H:i:s');
+    
+        $this->producto_model->aumentar_stock($idproducto, $data);
+        redirect('producto/index', 'refresh');
     }
 }

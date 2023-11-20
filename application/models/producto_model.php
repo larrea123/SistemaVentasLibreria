@@ -68,16 +68,19 @@
 
         }
 
-        public function modificarproducto($idproducto,$data)
+        public function modificarproductos($idproducto,$data)
         {
             $this->db->where('idProducto',$idproducto);
             $this->db->update('producto',$data);
         }
         //----Funcion para aumentar stock-----
-        public function aumentar_stock($idProducto, $cantidad)
+        public function aumentar_stock($idproducto, $data)
         {
-            $this->db->set('stock', 'stock+' . (int)$cantidad, false);
+            $this->db->where('idProducto', $idproducto);
+            $this->db->update('producto', $data);
+
+            /*$this->db->set('stock', 'stock+' . (int)$data, false);
             $this->db->where('idProducto', $idProducto);
-            $this->db->update('producto');
+            $this->db->update('producto');*/
         }
 }
