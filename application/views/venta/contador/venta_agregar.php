@@ -314,7 +314,7 @@
     });
 
 
-    $("#carnet").autocomplete({
+    $("#cliente").autocomplete({
         source: function(request, response) {
             // Fetch data
             $.ajax({
@@ -332,7 +332,7 @@
         },
         select: function(event, ui) {
             // Set selection
-            $('#carnet').val(ui.item.value); // display the selected text
+            $('#cliente').val(ui.item.value); // display the selected text
             $('#telefono').val(ui.item.telefono); // display the selected text
             $('#razon').val(ui.item.razonSocial); // save selected id to input
             $('#idCli').val(ui.item.idCliente); // save selected id to input
@@ -342,12 +342,16 @@
         }
     });
 
-    console.log(producto);
     let count = 0;
-    $(document).ready(function() {
-        $("#agregarTabla").click(function() {
-            // Para este ejemplo, en realidad no envíe el formulario
+
+    $(document).ready(function () {
+        $("#agregarTabla").click(function () {
             event.preventDefault();
+            if (productoYaAgregado(producto.idProducto)) {
+                alert("El producto ya está en la tabla de ventas.");
+                return;
+            }
+
             markup = "<tr name='fila' id='fila" + count + "' class='even pointer'>" +
                 "<td>" + producto.nombre + "<input class='form-control' name='idProducto[]' hidden type='number' value=" + producto.idProducto + " ></td>" +
                 "<td>" + producto.marca + "</td>" +
@@ -358,13 +362,25 @@
                 "<td ><input class='form-control' name='subtotal[]' id='subtotal' readonly type='number' value=" + producto.precioVenta + " ></td>" +
                 "<td> <input type='button' class='form-control'  onclick='eliminarFila(" + count + ");' value='Eliminar' /></td>" +
                 "</tr>";
+
             tableBody = $("#bodyTabla");
             tableBody.append(markup);
             count += 1;
             cambiarTotal();
-
+            limpiar2();
         });
     });
+
+    function productoYaAgregado(idProducto) {
+        let productosAgregados = document.getElementsByName("idProducto[]");
+        for (let i = 0; i < productosAgregados.length; i++) {
+            if (productosAgregados[i].value == idProducto) {
+                return true;
+            }
+        }
+        return false;
+    }
+
 
     function eliminarFila(index) {
         // console.log("#fila" + index);
@@ -514,5 +530,13 @@
         $(".even").remove();
         cambiarTotal();
 
+    }
+    function limpiar2() {
+        $("#marca").val("");
+        $("#precioV").val("");
+        $("#categoria").val("");
+        $("#producto").val("");
+        $("#producto1").val("");
+        $("#agregarTabla").prop('disabled', true);
     }
 </script>

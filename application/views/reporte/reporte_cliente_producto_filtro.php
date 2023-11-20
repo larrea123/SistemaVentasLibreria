@@ -11,7 +11,7 @@
       <div class="col-md-12 col-sm-12 ">
         <div class="x_panel">
           <div class="x_title">
-            <h2><i class="fa fa-users"></i> REPORTE GENERAL POR FECHAS</h2>
+            <h2><i class="fa fa-users"></i> REPORTE DE CLIENTES CON MAYORES COMPRAS POR FECHAS</h2>
             <ul class="nav navbar-right panel_toolbox">
               <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
               </li>
@@ -34,7 +34,7 @@
                     <!-- Inicio Div col-sm-12 2 -->
                     <div class="card-box table-responsive">
                         <?php
-                            echo form_open_multipart('reporte/general');
+                            echo form_open_multipart('reporte/clienteProducto');
                             ?>
                             <button type="submit" class="btn btn-round  btn-success">
                                 <i class="fa fa-search"></i> Nueva Busqueda
@@ -44,7 +44,7 @@
                             ?>
                             <br><br>
                         <!-- Inicio Div card-box table-responsive -->
-                        <?php echo form_open_multipart('reporte/reporteFechasPdf');?>
+                        <?php echo form_open_multipart('reporte/clienteProductoFechasPdf');?>
                         <form  method="POST">
                             <div class="item form-group has-feedback">
                                 <label class="col-form-label col-md-1 label-align">Fecha Inicio: </label>
@@ -66,24 +66,30 @@
                         <table id="datatable" class="table table-striped table-bordered jambo_table bulk_action" style="width:100%">
                             <thead>
                                 <tr class="headings">
-                                    <th>Cliente</th>
-                                    <th>Detalle Producto</th>                                                
-                                    <th>Fecha</th>
-                                    <th>Total (Bs.)</th>
+                                  <th>Nro</th>
+                                  <th>Cliente</th>
+                                  <th>CI / NIT</th>
+                                  <th>Celular</th>
+                                  <th>Cantidad</th>
+                                  <!--<th>Fecha</th>-->
                                 </tr>
                             </thead>
                             <tbody>
                                 <?php
+                                $indice=1;
                                 foreach ($fecha->result() as $row) {
                                 ?>
                                     <tr>
-                                        <td><?php echo $row->razonSocial; ?></td>
-                                        <td><?php echo $row->nombrem.' - '.$row->nombre; ?></td>                                              
-                                        <td><?php echo formatearSoloFecha($row->fechaRegistro); ?></td>
-                                        <td> <?php echo 'Bs. '.$row->total  ?></td>
+                                      <td><?php echo $indice; ?></td>
+                                      <td><?php echo $row->razonSocial; ?></td>
+                                      <td><?php echo $row->ciNit; ?></td>
+                                      <td> <?php echo $row->telefono;  ?></td>                                                
+                                      <td><?php echo $row->cantidad; ?></td>                                              
+                                      <!--<td><?php echo formatearSoloFecha($row->fechaRegistro); ?></td>-->
 
                                     </tr>
                                 <?php
+                            $indice++;
                                 }
                                 ?>
                             </tbody>

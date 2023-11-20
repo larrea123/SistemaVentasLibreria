@@ -382,12 +382,12 @@ class Venta extends CI_Controller
             redirect('venta/index', 'refresh');
         }*/
     }
-     /*public function reportePdfCopia()
+    public function reportePdfCopia()
     {
 
         //if ($this->session->userdata('tipo') == 'admin') {
 
-            $req = $this->reporte_model->detalle($_POST['idventa']);
+            $req = $this->venta_model->reporteventa($_POST['idventa']);
             $req = $req->result(); //convertir a array bidemencional
 
             //$this->pdf = new Pdf();
@@ -399,35 +399,31 @@ class Venta extends CI_Controller
 
             $this->pdf->SetLeftMargin(20); //margen izquierdo
             $this->pdf->SetRightMargin(20); //margen derecho
-            $this->pdf->SetFillColor(210, 210, 210); //color de fondo
+            $this->pdf->SetFillColor(50,25,56); //color de fondo
+            $this->pdf->SetTextColor(255, 255, 255);
             $this->pdf->SetFont('Arial', 'B', 11); //tipo de letra
             $this->pdf->Cell(0,10,'COMPROBANTE DE VENTA (COPIA)',0,1,'C',1);
             //$this->pdf->Cell(0,5,'DE VENTA',0,1,'C',1);
-            $this->pdf->Ln();
-            $this->pdf->Image("uploads/membrete1.png", 150, 23, 50, 50, 'PNG');
+            $this->pdf->Ln(5);
+            $this->pdf->Image("img/membrete1.png", 147, 21, 50, 50, 'PNG');
             $this->pdf->SetFont('Arial', 'B', 10);
-                      
-            $actividad = $this->reporte_model->detalle($_POST['idventa']);
+            $this->pdf->Ln(8);
+
+            $actividad = $this->venta_model->reporteventa($_POST['idventa']);
             $actividad = $actividad->result();
             foreach ($actividad as $rows) {
-                $usuario =$rows->login;
+                $usuario =$rows->nombresU.' '.$rows->primerApellidoU.' '.$rows->segundoApellidoU;
                 $fecha =$rows->fechaRegistro;
-                $nombreSucursal =$rows->nombreSucursal;
-                $direccionSucursal =$rows->direccion;
             }
-
+            $this->pdf->SetTextColor(0,0,0);
             $this->pdf->SetFont('Arial', 'B', 9);
             $this->pdf->Cell(20, 5, utf8_decode('Usuario:'), 0, 0, 'L', 0);
             $this->pdf->SetFont('Arial', '', 9);
             $this->pdf->Cell(30, 5, utf8_decode($usuario), 0, 1, 'L', 0);
             $this->pdf->SetFont('Arial', 'B', 9);
-            $this->pdf->Cell(20, 5, utf8_decode('Sucursal:'), 0, 0, 'L', 0);
-            $this->pdf->SetFont('Arial', '', 9);
-            $this->pdf->Cell(30, 5, utf8_decode($nombreSucursal), 0, 1, 'L', 0);
-            $this->pdf->SetFont('Arial', 'B', 9);
             $this->pdf->Cell(20, 5, utf8_decode('Direccion:'), 0, 0, 'L', 0);
             $this->pdf->SetFont('Arial', '', 9);
-            $this->pdf->Cell(30, 5, utf8_decode($direccionSucursal), 0, 1, 'L', 0);
+            $this->pdf->Cell(30, 5, utf8_decode('Calle Jordan Nro.152'), 0, 1, 'L', 0);
             $this->pdf->SetFont('Arial', 'B', 9);
             $this->pdf->Cell(20, 5, utf8_decode(utf8_decode('Fecha: ')), 0, 0, 'L', 0);
             $this->pdf->SetFont('Arial', '', 9);
@@ -442,7 +438,8 @@ class Venta extends CI_Controller
    
             $this->pdf->Ln(15);           
             $this->pdf->SetFont('Arial', 'B', 11);
-            $this->pdf->SetFillColor(0, 0, 0);
+            // $this->pdf->SetFillColor(0, 0, 0); color negro
+            $this->pdf->SetFillColor(86,61,106);
             $this->pdf->SetTextColor(255, 255, 255);
             $this->pdf->Cell(170, 8, "Datos del cliente", 0, 1, 'C', 1);
             //$this->pdf->Cell(0,5,'DE VENTA',0,1,'C',1);
@@ -450,20 +447,20 @@ class Venta extends CI_Controller
             $this->pdf->Ln(3);
             $this->pdf->SetTextColor(0, 0, 0); 
             $this->pdf->SetFont('Arial', 'B', 11);
-            $actividad = $this->reporte_model->detalle($_POST['idventa']);
+            $actividad = $this->venta_model->reporteventa($_POST['idventa']);
             $actividad = $actividad->result();
             foreach ($actividad as $rowa) {
-                $act = $rowa->nombres.' '.$rowa->primerApellido;
+                $act = $rowa->razonSocial;
             }
             $this->pdf->Cell(50, 7, utf8_decode('Nombre/Razon Social:'), 0, 0, 'L', 0);
             $this->pdf->SetFont('Arial', '', 11);
             $this->pdf->Cell(160, 7, utf8_decode($act), 0, 1, 'L', 0);
 
             $this->pdf->Ln(0);
-            $actividad = $this->reporte_model->detalle($_POST['idventa']);
+            $actividad = $this->venta_model->reporteventa($_POST['idventa']);
             $actividad = $actividad->result();
             foreach ($actividad as $rows) {
-                $ci =($rows->cedulaIdentidad);
+                $ci =($rows->ciNit);
             }
             $this->pdf->SetFont('Arial', 'B', 11);
             $this->pdf->Cell(50, 7, utf8_decode('C.I./NIT:'), 0, 0, 'L', 0);
@@ -484,15 +481,15 @@ class Venta extends CI_Controller
             $this->pdf->Cell(30, 8, utf8_decode('Subtotal (Bs.)'), 1, 1, 'C', 0);
 
 
-            $actividad = $this->reporte_model->detalle($_POST['idventa']);
+            $actividad = $this->venta_model->reporteventa($_POST['idventa']);
             $actividad = $actividad->result();
             $num = 1;
             foreach ($req as $row) {
 
-                $descripcion = $row->nombreMarca.' - '.$row->nombreModelo.' - '.$row->color;
-                $precio = $row->precio;
+                $descripcion = $row->nombrem.' - '.$row->nombre;
+                $precio = $row->precioVenta;
                 $cantidad = $row->cantidad;
-                $total = $row->precioVenta;
+                $total = $row->precioUnitario;
 
                 $this->pdf->SetFont('Arial', '', 10);
                 $this->pdf->Cell(10, 5, $num, 1, 0, 'C', 0);
@@ -527,11 +524,11 @@ class Venta extends CI_Controller
            /* $this->pdf->Ln(80);
             $this->pdf->Cell(50,7,utf8_decode('Fecha de impresion:'),0,0,'L',0);
             $this->pdf->SetFont('Arial','',11);
-            $this->pdf->Cell(0,7,utf8_decode(date("d/m/Y")),0,1,'L',0);
+            $this->pdf->Cell(0,7,utf8_decode(date("d/m/Y")),0,1,'L',0);*/
 
             $this->pdf->Output("DetalleVentaCopia.pdf", "I");
         /*} else {
             redirect('venta/index', 'refresh');
         }*/
-    //}
+    }
 }

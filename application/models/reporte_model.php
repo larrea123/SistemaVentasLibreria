@@ -214,7 +214,7 @@ class Reporte_model extends CI_Model {
         return $this->db->get(); 
 	}
 
-    // REPORTE PRODUCTOS MAS VENDIDOS MAS CANTIDAD
+    /* REPORTE PRODUCTOS MAS VENDIDOS MAS CANTIDAD ---> este es con cantidad
     public function reporteProductoFinal($cantidad)
 	{
         
@@ -228,6 +228,24 @@ class Reporte_model extends CI_Model {
         $this->db->group_by ('categoria.idCategoria');
         $this->db->order_by ('cantidad desc');
         $this->db->limit($cantidad);
+        
+        return $this->db->get(); 
+	}*/
+
+        // REPORTE PRODUCTOS MAS VENDIDOS por fechas
+    public function reporteProductoFinal($Inicio,$Fin)
+	{
+        
+        $this->db->select('producto.precioVenta, producto.fechaRegistro, producto.fechaActualizacion,categoria.nombre as nombrec ,marca.nombre as nombrem, ifnull(count(*),0) cantidad, sum(detalleventa.precioUnitario) total');
+        $this->db->from ('producto');
+        $this->db->join ('categoria' ,'producto.idCategoria = categoria.idCategoria');
+        $this->db->join ('marca'  ,'producto.idMarca = marca.idMarca');
+        $this->db->join ('detalleventa' ,'producto.idProducto = detalleventa.idProducto');
+        $this->db->join ('venta' ,'detalleventa.idVenta = venta.idVenta');
+        $this->db->where ('producto.estado=1');
+        $this->db->where("producto.fechaRegistro BETWEEN'{$Inicio}' AND '{$Fin},23:59:59'");
+        $this->db->group_by ('categoria.idCategoria');
+        $this->db->order_by ('cantidad desc');
         
         return $this->db->get(); 
 	}
@@ -248,7 +266,7 @@ class Reporte_model extends CI_Model {
         return $this->db->get(); 
 	}
 
-    // REPORTE PRODUCTOS MAYOR ROTACION MAS CANTIDAD
+    /*REPORTE PRODUCTOS MAYOR ROTACION MAS CANTIDAD ---> este es con cantidad
     public function reporteProductoRotacion1($cantidad)
 	{
         
@@ -261,6 +279,24 @@ class Reporte_model extends CI_Model {
         $this->db->group_by ('categoria.idCategoria');
         $this->db->order_by ('cantidad desc');
         $this->db->limit($cantidad);
+        
+        return $this->db->get(); 
+	}*/
+
+    // REPORTE PRODUCTOS MAYOR ROTACION MAS CANTIDAD
+    public function reporteProductoRotacion1($Inicio,$Fin)
+	{
+        
+        $this->db->select('producto.precioVenta, producto.fechaRegistro, producto.fechaActualizacion, categoria.idCategoria, categoria.nombre as nombrec, sum(detalleventa.cantidad) cantidad, sum(detalleventa.precioUnitario) precioD, venta.total');
+        $this->db->from ('producto');
+        $this->db->join ('categoria' ,'producto.idCategoria = categoria.idCategoria');
+        $this->db->join ('detalleventa' ,'producto.idProducto = detalleventa.idProducto');
+        $this->db->join ('venta' ,'detalleventa.idVenta = venta.idVenta');
+        $this->db->where ('producto.estado=1');
+        $this->db->where("producto.fechaRegistro BETWEEN'{$Inicio}' AND '{$Fin},23:59:59'");
+        $this->db->group_by ('categoria.idCategoria');
+        $this->db->order_by ('cantidad desc');
+        //$this->db->limit($cantidad);
         
         return $this->db->get(); 
 	}
@@ -490,4 +526,82 @@ class Reporte_model extends CI_Model {
                 $this->db->join('sucursal S', 'S.idSucursal=U.idSucursal');
                 return $this->db->get(); //devolucion del resultado de la consulta
 	}
+
+    //------------------REPORTE CLIENTES CON MAYORES COMPRAS------------------------------------------------------------------------------------------
+    public function clienteproducto()
+	{
+        $this->db->select('c.idCliente, c.razonSocial, c.ciNit, c.telefono, ifnull(count(c.idCliente),0)as cantidad, sum(v.total) as totalSum'); //select *
+        $this->db->from('venta v'); //tabla
+        $this->db->join('cliente c', 'v.idCliente=c.idCliente');
+        $this->db->where('v.estado','1');
+        $this->db->group_by('c.idCliente'); 
+        $this->db->order_by('cantidad', 'desc');
+        return $this->db->get(); //devolucion del resultado de la consulta
+	}
+    //REPORTE CLIENTES CON MAYORES COMPRAS POR FECHAS
+    public function clienteproductoFechas($Inicio,$Fin) //select
+    {
+        $this->db->select('v.fechaRegistro, v.fechaActualizacion, c.idCliente, c.razonSocial, c.ciNit, c.telefono, ifnull(count(c.idCliente),0)as cantidad, sum(v.total) as totalSum'); //select *
+        $this->db->from('venta v'); //tabla
+        $this->db->join('cliente c', 'v.idCliente=c.idCliente');
+        $this->db->where('v.estado','1');
+        $this->db->where("v.fechaRegistro BETWEEN'{$Inicio}' AND '{$Fin},23:59:59'");
+        $this->db->group_by('c.idCliente'); 
+        $this->db->order_by('cantidad', 'desc');
+        return $this->db->get(); //devolucion del resultado de la consulta
+    }
+    //------------------REPORTE CATEGORIAS------------------------------------------------------------------------------------------
+    public function reporteCategorias()
+	{
+        $this->db->select('c.nombre, c.fechaRegistro, c.fechaActualizacion, u.nombres, u.primerApellido, u.segundoApellido');
+        $this->db->from('categoria c');
+        $this->db->join('usuario u', 'c.idUsuario=u.idUsuario');
+        $this->db->where('c.estado','1');
+        $this->db->group_by('c.idCategoria'); 
+        $this->db->order_by('c.nombre');
+        return $this->db->get();
+        
+	}
+    //------------------REPORTE MARCAS------------------------------------------------------------------------------------------
+    public function reporteMarcas()
+	{
+        $this->db->select('m.nombre, m.fechaRegistro, m.fechaActualizacion, u.nombres, u.primerApellido, u.segundoApellido');
+        $this->db->from('marca m');
+        $this->db->join('usuario u', 'm.idUsuario=u.idUsuario');
+        $this->db->where('m.estado','1');
+        $this->db->group_by('m.idMarca'); 
+        $this->db->order_by('m.nombre');
+        return $this->db->get();
+        
+	}
+    //------------------REPORTE PROVEEDORES------------------------------------------------------------------------------------------
+    public function reporteProveedores()
+	{
+        $this->db->select('p.razonSocial, p.nit,p.direccion,p.telefono,p.correo, u.nombres, u.primerApellido, u.segundoApellido,p.fechaRegistro');
+        $this->db->from('proveedor p');
+        $this->db->join('usuario u', 'p.idUsuario=u.idUsuario');
+        $this->db->where('p.estado','1');
+        $this->db->group_by('p.idProveedor'); 
+        $this->db->order_by('p.razonSocial');
+        return $this->db->get();
+        
+	}
+
+    //------------------REPORTE PRODUCTO PROVEEDORES------------------------------------------------------------------------------------------
+    public function reporteProductoProveedor($idProveedor)
+	{
+        $this->db->select('p.idProducto,p.nombre as nombrep, m.nombre as nombrem, c.nombre as nombrec, p.precioCompra, precioVenta, p.stock, p.estado, pr.idProveedor,
+                            pr.razonSocial');
+        $this->db->from('producto p');
+        $this->db->where('p.estado','1');
+        $this->db->where('pr.idProveedor',$idProveedor);
+        $this->db->join('marca m', 'p.idMarca=m.idMarca');
+        $this->db->join('categoria c', 'p.idCategoria=c.idCategoria');
+        $this->db->join('proveedor pr', 'p.idProveedor=pr.idProveedor');
+        $this->db->group_by('p.idProducto'); 
+        $this->db->order_by('p.nombre');
+        return $this->db->get();
+        
+	}
+
 }

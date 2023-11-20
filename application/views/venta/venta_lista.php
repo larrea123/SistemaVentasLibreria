@@ -87,13 +87,13 @@
                                                     <td><?php echo $row->login; ?></td>
 
                                                     <td class="text-center">
-                                                        <!--<div class="btn-group">
+                                                        <div class="btn-group">
                                                             <?php echo form_open_multipart('venta/reportePdfCopia');?>
                                                             <input type="hidden" name="idventa" value="<?php echo $row->idVenta;?>">
                                                             <button class="btn btn-danger" data-toggle="tooltip" formtarget="_blank" data-placement="top" title="PDF">
                                                             <i class="fa fa-file-pdf-o"></i>
                                                             </button>
-                                                            <?php echo form_close();?>-->
+                                                            <?php echo form_close();?>
 
 
                                                             <input type="hidden" name="idproducto" value="<?php echo $row->idVenta;?>">

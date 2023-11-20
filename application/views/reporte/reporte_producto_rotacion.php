@@ -3,7 +3,6 @@
   <div class="">
     <div class="page-title">
       <div class="title_left">
-        <h3><i class="fa fa-users"></i> REPORTES</h3>
       </div>
     </div>
 
@@ -48,7 +47,26 @@
                     <br><br>
                       <!-- Inicio Div card-box table-responsive -->
                       <!--<div class="btn-group ">-->
-                      <div class="item form-group has-feedback">
+                      <?php echo form_open_multipart('reporte/productoRotacionFinal'); ?>
+                        <form  method="POST">
+                            <div class="item form-group has-feedback">
+                                <label class="col-form-label col-md-1 label-align">Fecha Inicio: </label>
+                                <div class="col-md-3">
+                                    <input type="date" value="<?php echo date('Y-m-d'); ?>" name="inicio" id="inicio" class="form-control"></input>
+                                </div>
+                                <label class="col-form-label col-md-1 label-align">Fecha Fin: </label>
+                                <div class="col-md-3">
+                                    <input type="date" value="<?php echo date('Y-m-d'); ?>" name="fin" id="fin" class="form-control"></input>
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="">&nbsp;</label>
+                                    <button type="submit" class="btn btn-info" >
+                                        <span class="fa fa-search"></span> Buscar</button>
+                                </div>
+                            </div><br>
+                        </form>
+                      <?php echo form_close(); ?>   
+                      <!--<div class="item form-group has-feedback">
                           <?php echo form_open_multipart('reporte/productoRotacionFinal');?>
                           <h5>Ingrese la cantidad de los productos mas vendidos</h5><br>
                           <div class="col-md-3">
@@ -64,7 +82,7 @@
                           </div>
                           <?php echo form_close();?>  
                       </div>
-                      <!-- </div>-->
+                       </div>-->
                       <br><br>
                       <!-- la tabla de abajo tenia un id por defecto que ordenaba los tr el id se llama  datatable-buttons-->
                       <table id="datatable" class="table table-striped table-bordered jambo_table bulk_action" style="width:100%">

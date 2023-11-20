@@ -3,7 +3,6 @@
   <div class="">
     <div class="page-title">
       <div class="title_left">
-        <h3><i class="fa fa-users"></i> REPORTES</h3>
       </div>
     </div>
 
@@ -39,7 +38,7 @@
                               <?php
                               echo form_open_multipart('reporte/productoRotacion');
                               ?>
-                              <input hidden name="cantidad" id="cantidad" value="<?php echo $cantidad ?>">
+                              <!--<input hidden name="cantidad" id="cantidad" value="<?php echo $cantidad ?>">-->
                               <button type="submit" class="btn btn-round  btn-success">
                                   <i class="fa fa-search"></i> Nueva Busqueda
                               </button>
@@ -52,6 +51,23 @@
                       <!-- Inicio Div card-box table-responsive -->
                       <!--<div class="btn-group ">-->
                       <?php echo form_open_multipart('reporte/reporteProductosRotacionPdf');?>
+                        <form  method="POST">
+                            <div class="item form-group has-feedback">
+                                <label class="col-form-label col-md-1 label-align">Fecha Inicio: </label>
+                                <div class="col-md-2">
+                                    <input type="date" value="<?php echo $inicio; ?>" name="inicio" id="inicio" class="form-control"></input>
+                                </div>
+                                <label class="col-form-label col-md-1 label-align">Fecha Fin: </label>
+                                <div class="col-md-2">
+                                    <input type="date" value="<?php echo $fin; ?>" name="fin" id="fin" class="form-control"></input>
+                                </div>
+                                <div class="col-md-3">
+                                    <button type="submit" class="btn btn-danger" name="enviar" formtarget="_blank"><i class="fa fa-file-pdf-o"></i>  REPORTE PDF</button>
+                                </div>
+                            </div><br>
+                        </form>
+                        <?php echo form_close(); ?>
+                      <!--<?php echo form_open_multipart('reporte/reporteProductosRotacionPdf');?>
                       <form  method="POST">
                           <div class="item form-group has-feedback">
                               <input hidden name="cantidad" id="cantidad" value="<?php echo $cantidad ?>">
@@ -60,7 +76,7 @@
                               <button type="submit" class="btn btn-danger" name="enviar" formtarget="_blank"><i class="fa fa-file-pdf-o"></i>  REPORTE PDF</button>
                           </div><br>
                       </form>
-                      <?php echo form_close(); ?>                          
+                      <?php echo form_close(); ?>  -->                        
                       <!-- </div>-->
                       <br><br>
                       <!-- la tabla de abajo tenia un id por defecto que ordenaba los tr el id se llama  datatable-buttons-->
@@ -76,7 +92,7 @@
                           <tbody>
                               <?php
                               $indice=1;
-                              foreach ($infoProductoVendido->result() as $row) {
+                              foreach ($fecha->result() as $row) {
                               ?>
                                   <tr>
                                       <td><?php echo $indice; ?></td>

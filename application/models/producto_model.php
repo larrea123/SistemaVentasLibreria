@@ -73,4 +73,11 @@
             $this->db->where('idProducto',$idproducto);
             $this->db->update('producto',$data);
         }
+        //----Funcion para aumentar stock-----
+        public function aumentar_stock($idProducto, $cantidad)
+        {
+            $this->db->set('stock', 'stock+' . (int)$cantidad, false);
+            $this->db->where('idProducto', $idProducto);
+            $this->db->update('producto');
+        }
 }

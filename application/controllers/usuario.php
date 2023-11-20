@@ -29,9 +29,12 @@ class Usuario extends CI_Controller {
             foreach($consulta->result() as $row)
             {
                 $this->session->set_userdata('idusuario',$row->idUsuario);
-                $this->session->set_userdata('login',$row->login);
+                $this->session->set_userdata('login',$row->login);;
                 $this->session->set_userdata('rol',$row->rol);
                 $this->session->set_userdata('estado',$row->estado);
+                $this->session->set_userdata('nombres', $row->nombres);
+                $this->session->set_userdata('primerApellido', $row->primerApellido);
+                $this->session->set_userdata('segundoApellido', $row->segundoApellido);
                 redirect('usuario/panel','refresh');
             }
         } 

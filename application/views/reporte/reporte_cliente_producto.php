@@ -11,7 +11,7 @@
       <div class="col-md-12 col-sm-12 ">
         <div class="x_panel">
           <div class="x_title">
-            <h2><i class="fa fa-file-text"></i>  REPORTE GENERAL</h2>
+            <h2><i class="fa fa-file-text"></i>  REPORTE DE CLIENTES CON MAYORES COMPRAS</h2>
             <ul class="nav navbar-right panel_toolbox">
               <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
               </li>
@@ -43,7 +43,7 @@
                         ?>
                         <br><br>
                     <!-- Inicio Div card-box table-responsive -->
-                    <?php echo form_open_multipart('reporte/general_filtro'); ?>
+                    <?php echo form_open_multipart('reporte/clienteProductoFiltro'); ?>
                     <form  method="POST">
                         <div class="item form-group has-feedback">
                             <label class="col-form-label col-md-1 label-align">Fecha Inicio: </label>
@@ -65,7 +65,7 @@
                     <div class="item form-group has-feedback">
                         <div class="col-md-10"></div>
                         <div class="col-md-2">
-                            <?php echo form_open_multipart('reporte/listapdf'); ?>
+                            <?php echo form_open_multipart('reporte/clienteProductoPdf'); ?>
                             <button type="submit" class="btn btn-danger" name="enviar" formtarget="_blank"><i class="fa fa-file-pdf-o"></i>  REPORTE PDF</button>
                             <?php echo form_close(); ?>
                         </div>
@@ -75,37 +75,28 @@
                     <table id="datatable" class="table table-striped table-bordered jambo_table bulk_action" style="width:100%">
                         <thead>
                             <tr class="headings">
-                                <th scope="col">Nro</th>
-                                <th>Cliente</th>
-                                <th>Detalle Producto</th>
-                                <th>Total (Bs.)</th>
-                                <th>Fecha</th>
-                                <th>Comprobante</th>
+                              <th>Nro</th>
+                              <th>Cliente</th>
+                              <th>CI / NIT</th>
+                              <th>Celular</th>
+                              <th>Cantidad</th>
                             </tr>
                         </thead>
                         <tbody>
                             <?php
                             $indice=1;
-                            foreach ($fecha->result() as $row) {
+                            foreach ($cliente->result() as $row) {
                             ?>
                                 <tr>
-                                    <th scope="row"><?php echo $indice++; ?></th>
+                                    <td><?php echo $indice; ?></td>
                                     <td><?php echo $row->razonSocial; ?></td>
-                                    <td><?php echo $row->nombrem.' - '.$row->nombre; ?></td>
-                                    <td> <?php echo 'Bs. '.$row->total  ?></td>                                                
-                                    <td><?php echo formatearSoloFecha($row->fechaRegistro); ?></td>
-                                    <td class="text-center">
-                                      <div class="btn-group">
-                                        <?php echo form_open_multipart('venta/reportePdfCopia');?>
-                                        <input type="hidden" name="idventa" value="<?php echo $row->idVenta;?>">
-                                        <button class="btn btn-danger" data-toggle="tooltip" formtarget="_blank" data-placement="top" title="PDF">
-                                        <i class="fa fa-file-pdf-o"></i>
-                                        </button>
-                                        <?php echo form_close();?>
-                                      </div>
-                                    </td>
+                                    <td><?php echo $row->ciNit; ?></td>
+                                    <td> <?php echo $row->telefono;  ?></td>                                                
+                                    <td><?php echo $row->cantidad; ?></td>
+
                                 </tr>
                             <?php
+                            $indice++;
                             }
                             ?>
                         </tbody>
