@@ -67,7 +67,7 @@
                                                 <th>Total (Bs.)</th>
                                                 <th>Fecha</th>
                                                 <th>Usuario</th>
-                                                <!--<th>Acciones</th>-->
+                                                <th>Acciones</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -84,7 +84,7 @@
                                                     <td><?php echo formatearFecha($row->fechaRegistro); ?></td>
                                                     <td><?php echo $row->login; ?></td>
 
-                                                    <!--<td class="text-center">
+                                                    <td class="text-center">
                                                         <div class="btn-group">
                                                             <?php echo form_open_multipart('venta/reportePdfCopia');?>
                                                             <input type="hidden" name="idventa" value="<?php echo $row->idVenta;?>">
@@ -94,12 +94,12 @@
                                                             <?php echo form_close();?>
 
 
-                                                            <input type="hidden" name="idproducto" value="<?php echo $row->idVenta;?>">
+                                                            <!--<input type="hidden" name="idproducto" value="<?php echo $row->idVenta;?>">
                                                             <button class="btn btn-outline-danger" data-toggle="tooltip"  onclick="return confirm_modalDeshabilitar(<?php echo $row->idVenta; ?>)"  data-placement="top" title="Deshabilitar">
                                                             <i class="fa fa-toggle-off"></i>
-                                                            </button>
+                                                            </button>-->
                                                         </div>
-                                                    </td>-->
+                                                    </td>
                                                 </tr>
                                             <?php
                                             }
