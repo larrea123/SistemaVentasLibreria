@@ -29,7 +29,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             switch($msg)
             {
             case '1':
-                $mensaje="Error de ingreso";
+                $mensaje='<p style="text-shadow: none;" class="text-danger font-weight-bold">Usuario u contraseña incorrecta</p>';
                 $clase="primary";
                 break;
             case '2':
@@ -37,7 +37,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 $clase="danger";
                 break;
             case '3':
-                $mensaje="Gracias por usar el sistema";
+                $mensaje='<p style="text-shadow: none;" class="text-success font-weight-bold">Gracias por usar el sistema!</p>';
                 $clase="warning";
                 break;
             default:

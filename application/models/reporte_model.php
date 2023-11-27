@@ -49,7 +49,7 @@ class Reporte_model extends CI_Model {
     public function getMes() //select
     {
 
-        $this->db->select('producto.idProducto, count(categoria.idCategoria) cant, categoria.nombre nom'); //select*
+        $this->db->select('producto.idProducto, SUM(producto.stock) cant, categoria.nombre nom'); //select*
         $this->db->from('producto'); //tabla
         $this->db->join('categoria', 'producto.idCategoria=categoria.idCategoria');
         $this->db->join('marca', 'producto.idMarca=marca.idMarca');
