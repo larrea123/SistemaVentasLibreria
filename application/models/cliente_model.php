@@ -7,6 +7,7 @@ class Cliente_model extends CI_Model {
         $this->db->select('*');
         $this->db->from('cliente');
         $this->db->where('estado','1');
+        $this->db->order_by('idCliente', 'desc');
         return $this->db->get();
     }
 

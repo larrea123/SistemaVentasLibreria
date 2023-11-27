@@ -16,6 +16,7 @@ class Usuario_model extends CI_Model {
         $this->db->select('*');
         $this->db->from('usuario');
         $this->db->where('estado','1');
+        $this->db->order_by('idUsuario', 'desc');
         return $this->db->get();
     }
 

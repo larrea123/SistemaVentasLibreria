@@ -17,6 +17,7 @@
             $this->db->join('marca MA', 'P.idMarca=MA.idMarca');
             $this->db->join('categoria CA', 'P.idCategoria=CA.idCategoria');
             $this->db->join('proveedor PR', 'P.idProveedor=PR.idProveedor');
+            $this->db->order_by('idProducto', 'desc');
             return $this->db->get(); 
         }
 
@@ -66,6 +67,12 @@
             $this->db->join('proveedor PR', 'P.idProveedor=PR.idProveedor');
             return $this->db->get(); //devolucion del resultado de la consulta
 
+        }
+
+        public function modificarproducto($idproducto,$data)
+        {
+            $this->db->where('idProducto',$idproducto);
+            $this->db->update('producto',$data);
         }
 
         public function modificarproductos($idproducto,$data)

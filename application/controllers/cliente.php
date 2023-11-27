@@ -114,9 +114,8 @@ class Cliente extends CI_Controller {
         $this->form_validation->set_rules(
             'Telefono',
             'Número de Celular del cliente',
-            'required|exact_length[8]|is_natural',
-            array('required'=>'Se requiere ingresar el Nro. Celular del cliente.',
-                    'exact_length'=>'¡Ingrese un número de celular válido!.',
+            'exact_length[8]|is_natural',
+            array('exact_length'=>'¡Ingrese un número de celular válido!.',
                     'is_natural'=>'¡No ingrese caracteres que no sean números!.'
                     )
         );
@@ -265,9 +264,8 @@ class Cliente extends CI_Controller {
         $this->form_validation->set_rules(
             'Telefono',
             'Número de Celular del cliente',
-            'required|exact_length[8]|is_natural',
-            array('required'=>'Se requiere ingresar el Nro. Celular del cliente.',
-                    'exact_length'=>'¡Ingrese un número de celular válido!.',
+            'exact_length[8]|is_natural',
+            array('exact_length'=>'¡Ingrese un número de celular válido!.',
                     'is_natural'=>'¡No ingrese caracteres que no sean números!.'
                     )
         );

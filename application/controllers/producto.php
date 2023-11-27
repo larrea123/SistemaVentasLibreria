@@ -185,7 +185,7 @@ class Producto extends CI_Controller {
                 'required'=>'Se requiere ingresar la Stock en Unidades.',
                 'min_length'=>'La Stock debe tenero debe tener al menos 1 unidad.',
                 'max_length'=>'¡La Stock no debe contener más de 999 unidades!.',
-                'numeric'=>'¡El año solo debe contener numeros!.'
+                'numeric'=>'¡El Stock solo debe contener numeros!.'
                 )
         );
         $this->form_validation->set_rules(
@@ -386,7 +386,7 @@ class Producto extends CI_Controller {
                 'required'=>'Se requiere ingresar la Stock en Unidades.',
                 'min_length'=>'La Stock debe tenero debe tener al menos 1 unidad.',
                 'max_length'=>'¡La Stock no debe contener más de 999 unidades!.',
-                'numeric'=>'¡El año solo debe contener numeros!.'
+                'numeric'=>'¡El Stock solo debe contener numeros!.'
                 )
         );
         $this->form_validation->set_rules(
