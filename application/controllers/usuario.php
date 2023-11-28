@@ -60,7 +60,8 @@ class Usuario extends CI_Controller {
         
         else
         {
-            redirect('usuario/index/2','refresh');
+            $this->session->sess_destroy();
+            redirect('usuario/index/3','refresh');
         }
     }
 
